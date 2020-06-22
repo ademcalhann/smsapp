@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.mesajplus.nosms" version="2.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.mesajplus.sms" version="2.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Mesaj Plus</name>
     <description>
-     Yoklama Terminali Entegreli Ücretsiz Sms ve Kurumsal Mesajlaşma Programı...
+     Mesaj Plus sms terminali içeren sürümüdür.
     </description>
     <author email="ademcalhan@yandex.com" href="https://mesajplus.com">
       Adem Çalhan
@@ -17,8 +17,8 @@
     <plugin name="cordova-plugin-file-transfer" source="npm" spec="~1.5.0" />
     <plugin name="cordova-plugin-network-information" source="npm" spec="~1.2.0" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
-	
-	   <plugin spec="https://github.com/rampicos/Cordova-SMS-Plugin" source="git" />
+	<plugin spec="https://github.com/rampicos/Cordova-SMS-Plugin" source="git" />
+	<gap:plugin name="cordova-plugin-sms" source="npm" />
 	
 
 	<access origin="*" />

@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.mesajplus.system;
+package com.mesajplus.nosms;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
