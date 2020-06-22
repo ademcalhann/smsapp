@@ -1,0 +1,3367 @@
+﻿<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <title>Mesaj Gönder</title>
+    <script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="yukle.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="cookie.js"></script>
+   
+    <style type="text/css">
+.uyari {
+	color: #FFFFFF;
+	background-image: url(icon/ela.png);
+	background-repeat: repeat;
+	text-align: center;
+	height: 50px;
+	width: 80%;
+	margin-left: 4%;
+	padding-top: 15px;
+	position: fixed;
+	z-index: 20;
+	border-right-width: 8px;
+	border-left-width: 8px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #00FF66;
+	border-left-color: #00FF66;
+	font-family: "calibri";
+	font-size: 20px;
+	font-weight: bold;
+	bottom: 45%;
+	display: none;
+}	
+.evet {
+	color: #FFF;
+	height: 32px;
+	width: 70%;
+	margin-left: 15%;
+	text-align: center;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	padding-top: 8px;
+	border-radius: 5px;
+	margin-top: 90px;
+	background-color: #0F6;
+	box-shadow: 0 0 5px 2px #FFF;
+}
+.dikkat {
+	width: 92%;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-left: 2%;
+	box-shadow: 0 0 5px 2px #FFF;
+	font-family: calibri;
+	padding-top: 20px;
+	padding-bottom: 15px;
+	text-decoration: blink;
+	color: #FFF;
+	padding-left: 15px;
+	height: 130px;
+	display: none;
+	background-image: url(icon/mavix.png);
+}
+.u2 {
+	width: 92%;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-left: 2%;
+	box-shadow: 0 0 5px 2px #FFF;
+	font-family: calibri;
+	padding-top: 20px;
+	padding-bottom: 15px;
+	text-decoration: blink;
+	color: #FFF;
+	padding-left: 15px;
+	height: 130px;
+	background-image: url(icon/lilb.png);
+}
+
+.ay {
+	font-size: 18px;
+	font-weight: bold;
+	color: #FFFFFF;
+	height: 25px;
+	position: absolute;
+	width: 91px;
+	text-align: center;
+	padding-bottom: 3px;
+	padding-top: 17px;
+	font-family: sansa-serif;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFF;
+	
+
+	}
+	.merhaba {
+	font-size: 17px;
+	font-weight: bold;
+	color: #ffffff;
+	height: 24px;
+	position: absolute;
+	margin-top: 30px;
+	width: 90px;
+	text-align: center;
+	background-color: #00FF66;
+	border-radius: 8px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	}
+
+.gun {
+	font-size: 32px;
+	font-weight: bold;
+	color: #FFFFFF;
+	height: 20px;
+	width: 80px;
+	position: absolute;
+	margin-left: 28px;
+	margin-top: 44px;
+}
+
+      .markabar {
+	height: 40px;
+	text-align: center;
+	font-size: 26px;
+	font-weight: bold;
+	color: #FFF;
+	width: 100%;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	padding-top: 5px;
+	z-index: 5;
+background: rgb(7,7,11);
+background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,93,114,1) 100%);
+}
+.menu {
+	float: left;
+	height: 20px;
+	width: 35px;
+	margin-top: 5px;
+	margin-left: 10px;
+	background-image: url(icon/y.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+.marka {float: left;
+	margin-left: 18%;
+	margin-top: 5px;
+}
+.orta {
+	clear: left;
+	width: 100%;
+	overflow: scroll;
+	margin-top: 50px;
+}
+.d_yazi {
+	font-family: calibri;
+	font-size: 12px;
+	color:#0d586b;
+	text-align: center;
+	margin-top: 92px;
+	width: 90px;
+	margin-left: 2px;
+
+}
+.d_yazi2 {
+	font-family: calibri;
+	font-size: 12px;
+	color:#0d586b;
+	text-align: center;
+	margin-left: 2px;
+	margin-top: 30px;
+	width: 90px;
+}
+.isim {
+	font-family: calibri;
+	font-size: 11px;
+	color:#0d586b;
+	text-align: center;
+	margin-top: 35px;
+	width: 80px;
+	
+}
+.p_isim {
+	font-family: calibri;
+	font-size: 11px;
+	color: #06F;
+	text-align: center;
+	margin-top: 35px;
+	width: 80px;	
+}
+.d_daire {
+	height: 90px;
+	width: 90px;
+	margin-top: 25px;
+	margin-left: 20px;
+	border-radius: 50%;
+	float: left;
+	
+}
+.b_daire {
+	height: 75px;
+	width: 75px;
+	border-radius: 50%;
+	float: left;
+	margin-left: 25px;
+	margin-top: 15px;
+	margin-bottom: 25px;	
+}
+.g_boxx {
+	height: 70px;
+	width: 70px;
+	border-radius: 50%;
+	float: left;
+	margin-left: 20px;
+	margin-top: 15px;
+	margin-bottom: 15px;	
+}
+
+.daire {
+	height: 90px;
+	width: 90px;
+	margin-top: 28px;
+	margin-left: 20px;
+	border-radius: 50%;
+	border: 1px solid #0d586b;
+	box-shadow: 0px 0px 5px 1px #0d586b;
+	float: left;
+	background-image: url(icon/profil.jpg);
+	background-size:contain;
+}
+.dairex {
+	height: 90px;
+	width: 90px;
+	border-radius: 50%;
+	border: 1px solid #0d586b;
+	float: left;
+	margin-top: -18px;
+	background-image: url(icon/yoklamax.png);
+	box-shadow: 0px 0px 5px 1px #0d586b;
+}
+.dairec {
+	height: 90px;
+	width: 90px;
+	border-radius: 50%;
+	border: 1px solid #FFF;
+	float: left;
+	display: none;
+	margin-top: -10px;
+	background-size: cover;
+	background-color: #0CF;
+	opacity: 50%;
+	margin-bottom:-75px;
+}
+.dairey {
+	height: 90px;
+	width: 90px;
+	border-radius: 50%;
+	border: 1px solid #0d586b;;
+	box-shadow: 0px 0px 5px 1px #0d586b;
+	float: left;
+	margin-top: -18px;
+	background-image: url(icon/profil.jpg);
+}
+.daires {
+	height: 90px;
+	width: 90px;
+	border-radius: 50%;
+	border: 1px solid #0d586b;
+	float: left;
+	margin-top: -18px;
+	background-color: #FFF;
+	background-size: cover;
+	box-shadow: 0px 0px 5px 1px #0d586b;
+}
+.d_yazis {
+	font-family: calibri;
+	font-size: 12px;
+	color:#FFF;
+	text-align: center;
+	margin-top: 32px;
+	width: 90px;
+}
+.scodes {
+	font-family:calibri;
+	font-size: 17px;
+	font-weight: bold;
+	color: #FFF;
+	height: 24px;
+	margin-top: 30px;
+	width: 90px;
+	text-align: center;
+	background-color: #09F;
+	border-radius: 8px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	}
+    .panel {
+	display: none;
+	width: 100%;
+	overflow: scroll;
+	margin-top: 50px;
+	height: 595px;
+	padding-bottom:100px;
+}
+    .tam_panel {
+	display: none;
+	width: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	margin-top: 50px;
+	height:100%;
+	padding-bottom:80px;
+	}
+    .ogrenci {
+	height: 70px;
+	width: 70px;
+	margin-top: 30px;
+	margin-left: 10px;
+	border-radius: 50%;
+	border: 1px solid #0d586b;
+	box-shadow: 0px 0px 5px 1px #0d586b;
+	float: left;
+	color: #06F;
+    background: linear-gradient(49deg, rgb(181, 191, 185) 0%, rgb(255, 255, 255) 100%);
+}
+    .okul {
+	height: 70px;
+	width: 70px;
+	margin-top: 30px;
+	margin-left: 10px;
+	border-radius: 50%;
+	border: 1px solid #999;
+	float: left;
+	color: #06F;
+	background-image: url(icon/okul.png);
+	background-size:cover;
+	box-shadow: 0px 0px 5px 1px #0d586b;
+
+}
+.ogrencix {
+	height: 75px;
+	width: 75px;
+	border-radius: 50%;
+	border: 1px solid #0d586b;
+	box-shadow: 0px 0px 5px 1px #0d586b;
+	float: left;
+	color: #06F;
+	background: linear-gradient(49deg, rgb(181, 191, 185) 0%, rgb(255, 255, 255) 100%);
+	background-size:contain;
+}
+.kullanici {
+	height: 75px;
+	width: 75px;
+	border-radius: 50%;
+	border: 1px solid #0d586b;
+	float: left;
+	color: #3F9;
+	background-size: cover;
+	box-shadow: 0px 0px 5px 1px #0d586b;
+}
+.listey {
+	height: 80px;
+	width: 80px;
+	border-radius: 50%;
+	border: 1px solid #999;
+	float: left;
+	color: #06F;
+	background-image: url(icon/profils.png);
+	background-size: cover;
+	box-shadow: 0px 0px 5px 1px #0d586b;
+
+}
+    .y_ogrenci {
+	height: 70px;
+	width: 70px;
+	margin-top: 30px;
+	margin-left: 10px;
+	border-radius: 50%;
+	border: 1px solid #0d586b;
+	box-shadow: 0px 0px 5px 1px #0d586b;	
+	background: linear-gradient(49deg, rgb(181, 191, 185) 0%, rgb(255, 255, 255) 100%);
+    float: left;
+	color: #06F;
+}
+.nmr {
+	margin-top: 30%;
+    text-align: center;
+    color: #0d586b;
+    padding-top: 5px;
+    font-family: sans-serif;
+    font-size: 15px;
+	
+}
+.iptal {
+	height: 15px;
+	width: 15px;
+	margin-top: -40px;
+	border: 1px solid #FF0000;
+	text-align: center;
+	float: right;
+	border-radius: 50%;
+	background-image: url(icon/x.png);
+	background-position: center center;
+}
+.sil {
+	height: 15px;
+	width: 15px;
+	border: 1px solid #FF0000;
+	border-radius: 50%;
+	background-image: url(icon/x.png);
+    background-size:contain;
+}
+.msayi {
+	height: 12px;
+	padding-bottom: 5px;
+	width: 35px;
+	color: #F00;
+	border: 1px solid #085B70;
+	text-align: center;
+	float: right;
+	border-radius: 5px;
+	margin-right:-5px;
+	background-image: url(icon/byz.png);
+	font-family: calibri;
+	font-weight: bold;
+	font-size: 14px;
+	position:relative;
+}
+.sms_d {
+	height: 15px;
+	width: 15px;
+	text-align: center;
+	float: left;
+	border-radius: 50%;
+	background-size: cover;
+	border: 1px solid #09F;
+}
+.silx {
+	height: 15px;
+	width: 15px;
+	margin-top: -25px;
+	border: 1px solid #FF0000;
+	text-align: center;
+	float: right;
+	margin-right: 2px;
+	border-radius: 50%;
+	display: none;
+	background-image: url(icon/x.png);
+	background-position: center center;
+}
+.sil_box {
+	height: 15px;
+	width: 15px;
+	border: 1px solid #FF0000;
+	text-align: center;
+	float: right;
+	border-radius: 50%;
+	background-image: url(icon/x.png);
+	background-position: center center;
+	margin-right: -7px;
+	margin-bottom:-10px;
+}
+.silg {
+	height: 15px;
+	width: 15px;
+	border: 1px solid #FF0000;
+	text-align: center;
+	float: right;
+	border-radius: 50%;
+	background-image: url(icon/x.png);
+	background-position: center center;
+	margin-right: -7px;
+}
+.sily {
+	height: 15px;
+	width: 15px;
+	border: 1px solid #FF0000;
+	text-align: center;
+	float: right;
+	border-radius: 50%;
+	background-image: url(icon/x.png);
+	background-position: center center;
+	margin-right: -7px;
+}
+.sil_ogr {
+	height: 15px;
+	width: 15px;
+	border: 1px solid #FF0000;
+	text-align: center;
+	border-radius: 50%;
+	background-image: url(icon/x.png);
+    background-size:contain;
+	margin-bottom:-10px;
+}
+.sil_liste {
+	height: 15px;
+	width: 15px;
+	border: 1px solid #FF0000;
+	text-align: center;
+
+	float: right;
+	border-radius: 50%;
+	background-image: url(icon/x.png);
+	background-position: center center;
+	margin-right: -7px;
+	margin-bottom:-10px;
+}
+
+    .taban {
+	width: 100%;
+	height: 35px;
+	text-align: center;
+	bottom: 0px;
+	right: 0px;
+	font-weight: bold;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #085B68;
+	position: fixed;
+    background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,93,114,1) 100%);
+
+}
+.geri {
+	width: 35%;
+	border: 1px solid #00CC00;
+	color: #00CC00;
+	float: left;
+	margin-left: 10%;
+	margin-top: 5px;
+	margin-bottom: 3px;
+	padding-top: 3px;
+	height: 22px;
+	border-radius: 6px;
+	background-color: #FFFFFF;
+}
+
+.geri_a {
+	width: 35%;
+	border: 1px solid #00CC00;
+	color: #00CC00;
+	float: left;
+	margin-left: 10%;
+	margin-top: 5px;
+	margin-bottom: 3px;
+	padding-top: 3px;
+	height: 22px;
+	border-radius: 6px;
+	background-color: #FFFFFF;
+}
+.onayla {
+	width: 35%;
+	border: 1px solid #00CC00;
+	color: #00CC00;
+	float: left;
+	margin-left: 10%;
+	margin-top: 5px;
+	margin-bottom: 3px;
+	padding-top: 3px;
+	height: 22px;
+	border-radius: 5px;
+	background-color: #FFFFFF;
+}
+.onay_ogrt{
+	width: 35%;
+    border: 1px solid #4afb4a;
+    color: #ffffff;
+    margin-left: 2%;
+    margin-top: 10px;
+    margin-bottom: -10px;
+    padding-top: 3px;
+    height: 22px;
+    border-radius: 5px;
+    text-align: center;
+    background: rgb(3,3,3);
+    background: linear-gradient(31deg, rgba(3,3,3,1) 0%, rgba(0,233,152,1) 85%);
+    font-family: sans-serif;
+    font-size: 15px;
+}
+.o_goster {
+	width: 96%;
+	margin-left: 2%;
+	margin-top: 15px;
+	box-shadow: 0 0 5px 2px white;
+	display: none;
+	margin-bottom: -10px;
+	background-image: url(icon/byz.png);
+}
+.saat {
+	width:auto;
+	padding-left:5px;
+	padding-right:5px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	height: 24px;
+	padding-top: 6px;
+	color: #FFF;
+	font-family: calibiri;
+	float: left;
+	text-align: center;
+	border-radius: 5px;
+	font-weight: 700;
+	background-image: url(icon/lilc.png);
+	border: 1px solid #FFF;
+}
+.dik {
+	padding-top: 10px;
+	width: 100%;
+	overflow: scroll;
+    background: linear-gradient(31deg, rgba(3,3,3,1) 0%, rgb(0, 233, 152) 85%);
+	border-radius:5px;
+	}
+.p_kapat {
+	font-family: Verdana;
+	font-size: 15px;
+	color: #FF0000;
+	background-color: #FFFFFF;
+	float: right;
+	height: 21px;
+	width: 70px;
+	margin-top: -15px;
+	padding-top: 4px;
+	padding-right: 12px;
+	padding-bottom: 4px;
+	padding-left: 12px;
+	border: 1px solid #FF0000;
+	position: absolute;
+	z-index: 7;
+	text-align: center;
+	margin-left: 2%;
+        }
+.alt_kapat {
+	font-family: Verdana;
+	font-size: 15px;
+	color: #FF0000;
+	background-color: #FFFFFF;
+	float: right;
+	height: 21px;
+	width: 70px;
+	margin-top: 5px;
+	padding-top: 4px;
+	padding-right: 12px;
+	padding-bottom: 4px;
+	padding-left: 12px;
+	border: 1px solid #FF0000;
+	position: absolute;
+	z-index: 4;
+	text-align: center;
+	margin-left: 2%;
+        }		
+.yatay {
+	width: 75%;
+	float: left;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #0D596D;
+	border-bottom-color: #0D596D;
+	overflow: scroll;
+	height: 42px;
+}
+.uzun {
+	width: 680px;
+	
+}
+.sinif {
+	float: left;
+	height: 21px;
+	width: 91px;
+	margin-right: 6px;
+	text-align: center;
+	padding-top: 8px;
+	color: #0D596D;
+	margin-bottom: 3px;
+	padding-bottom: 5px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #0D596D;
+	margin-top: 4px;
+}	
+.ekle_liste {
+	float: left;
+	height: 25px;
+	width: 120px;
+	margin-right: 6px;
+	text-align: center;
+	padding-top: 4px;
+	color: #000000;
+	margin-bottom: 3px;
+	padding-bottom: 3px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #3399FF;
+	margin-top: 3px;
+	background-image: url(icon/arti.png);
+	border-radius: 25%;
+	background-repeat: no-repeat;
+	background-position: center center;
+}		
+.liste {
+	color: #ffffff;
+	font-family: calibri;
+	font-size: 14px;
+	text-align: center;
+	height: 24px;
+    width: 80%;
+    padding-top: 8px;
+	margin-left: 10%;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	background: rgb(2,0,36);
+    background: linear-gradient(184deg, rgba(2,0,36,0.9220063025210083) 0%, rgba(16,228,226,1) 100%);
+	
+}
+    .yoklama {
+	width: 24%;
+	font-size: 17px;
+	color: #0D596D;
+	height: 24px;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 8px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #0D596D;
+	border-bottom-color: #0D596D;
+	float: left;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #FFF;
+	font-family: sans-serif;
+}
+ .tab {
+	width: 40%;
+	font-size: 18px;
+	color: #3CF;
+	height: 22px;
+	background-color: #FFF;
+	text-align: center;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	float: left;
+	margin-top: 25px;
+	margin-bottom: 15px;
+	border: 1px solid #3CF;
+}
+    .kutu {
+	height: 495px;
+	width: 100%;
+	margin-top: 42px;
+	display: none;
+	overflow: scroll;
+}
+.alt_panel {
+	width:100%;
+	position: fixed;
+	z-index: 3;
+	left: 0px;
+	overflow: scroll;
+	visibility: visible;
+	background-image: url(icon/byz.png);
+	background-repeat: repeat;
+	background-position: center;
+    bottom:0px;
+	display: none;
+	height:81%;
+	padding-bottom:80px;
+}
+.listex {
+	background-repeat: repeat;
+	width: 100%;
+	height: 229px;
+	padding-bottom: 80px;
+	overflow: scroll;
+	background-color: #e7eaea;
+}
+.baslik {
+	color: #ffffff;
+	font-family: verdana;
+	font-size: 15px;
+	text-align: center;
+	height: 22px;
+	width: 80%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-left: 10%;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	background: rgb(2,0,36);
+    background: linear-gradient(184deg, rgba(2,0,36,0.9220063025210083) 0%, rgba(16,228,226,1) 100%);
+}
+
+.mesaj {
+	width: 94%;
+	margin-top: 45px;
+	padding-top: 5px;
+	color: #1c826b;
+	padding-bottom: 5px;
+	font-family:calibri;
+	margin-left: 2%;
+}
+.basla {
+	height: 20px;
+	width: 50%;
+	padding-top: 5px;
+	padding-bottom: 2px;
+	text-align: center;
+	font-size: 15px;
+	color: #FFFFFF;
+	background-image: url(icon/mavi.png);
+	margin-top: 10px;
+	margin-left: 24%;
+	font-family: calibri;
+	box-shadow: 0 0 5px 2px #09F;
+	border: 1px solid #FFFFFF;
+	border-radius:5px;
+}
+.sol_panel {
+	width: 100%;
+	position: fixed;
+	z-index: 8;
+	top: 45px;
+	left: 0px;
+	display: none;
+	overflow: scroll;
+	visibility: inherit;
+	background-image: url(icon/blck.png);
+	background-repeat: repeat;
+	background-position: center;
+	height: 100%;
+	margin-bottom: 81px;
+}
+.ut {
+	height: 89%;
+	width: 100%;
+	margin-bottom: 80px;
+	display: none;
+	overflow: scroll;
+	padding-bottom: 50px;
+	visibility: visible;
+	padding-top: 10px;
+    background: linear-gradient(30deg, rgba(7,7,11,0.9528186274509804) 4%, rgba(4,242,176,1) 100%);}
+.alti {
+	height: 30px;
+	width: 100%;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	position: fixed;
+	z-index: 6;
+	overflow: scroll;
+	padding-top: 3px;
+	bottom: 0px;
+	visibility: visible;
+	background-image: url(icon/blck.png);
+	background-repeat: repeat;
+}
+.y_tur {
+	width: 31.5px;
+	height: 35px;
+	margin-left: 5px;
+	float: left;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 15px;
+	background-image: url(icon/yesil.jpg);
+	border: 1px solid #FFF;
+	border-radius: 5px;
+	font-weight: bold;
+}
+.ux {
+	float: left;
+	height: 22px;
+	width: 120px;
+	text-align: center;
+	padding-top: 4px;
+	color: #FFFFFF;
+	padding-bottom: 3px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #FFFFFF;
+	margin-left: 2px;
+	font-family: calibri;
+	font-size: 14px;
+}.uzun2 {
+	width: 570px;
+}
+.ust {
+	width: 79%;
+	height: 70px;
+	padding-left: 5%;
+}.px{
+    float: left;
+    height: 20px;
+    width: 20px;
+    box-shadow: 0 0 5px 2px white;
+    border-radius: 50%;
+}
+.profil {
+	float: left;
+	height: 85px;
+	width: 85px;
+	box-shadow: 0 0 5px 2px #FFFFFF;
+	border-radius: 50%;
+}
+.y_panel {
+	height: auto;
+	width:98%;
+	float: left;
+	margin-left:1%;
+	display: none;
+	padding-bottom:15px;
+	padding-top:15px;
+	background: rgb(3,3,3);
+    background: linear-gradient(31deg, rgba(3,3,3,1) 0%, rgba(0,233,152,1) 85%);
+	margin-top:25px;
+	box-shadow: 0 0 5px 2px #00000085
+
+}
+.kul {
+    height: 20px;
+    padding-top: 20px;
+    color: #FFFFFF;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 15px;
+    padding-bottom: 20px;
+    width: 50%;
+    text-align: center;
+    float: left;
+    margin-left: 10px;
+}
+    .yazi {
+	color: #0CC;
+	width: 90px;
+	clear: left;
+	text-align: center;
+	margin-bottom: 8px;
+}
+    .kaydet {   
+	color: #0F0;
+    text-align: center;
+    width: 90px;
+    border: 1px solid #0d596d;
+    margin-top: 20px;
+    background-color: #FFF;
+    box-shadow: inset 0 0 5px 2px #0d596d;
+    margin-left: -1px;
+    border-radius: 30%;
+    height: 35px;
+    padding-top: 15px;
+    font-family: sans-serif;
+    font-size: 17px;
+}
+    .simge_ekle {   
+	color: #0F0;
+    text-align: center;
+    width: 90px;
+    border: 1px solid #0d596d;
+    margin-top: 20px;
+    background-color: #FFF;
+    box-shadow: inset 0 0 5px 2px #0d596d;
+    margin-left: -1px;
+    border-radius: 30%;
+    height: 35px;
+    padding-top: 15px;
+    font-family: sans-serif;
+    font-size: 17px;
+}
+ .uye_ol_div {
+	color: #0F0;
+	text-align: center;
+	width: 90%;
+	border: 1px solid #0F0;
+	background-color: #FFF;
+	box-shadow: 0 0 5px 2px white;
+	font-weight: bold;
+	border-radius: 6px;
+	padding: 5px;
+	  }
+ .guncelle {
+    color: #FFFFFF;
+    text-align: center;
+    width: 74px;
+    height: 20px;
+    margin-top: -50px;
+    margin-left: 1px;
+    border-bottom-right-radius: 29px;
+    border-bottom-left-radius: 29px;
+    padding-bottom: 7px;
+    font-family: sans-serif;
+    font-size: 14px;
+    padding-top: 5px;
+	background: rgb(94,194,132);
+    background: linear-gradient(31deg, rgba(94,194,132,1) 0%, rgba(41,251,8,1) 100%);
+    box-shadow: inset 0px 0px 5px 1px #0d586b;
+}
+
+    .tut {
+	background-color: #CCC;
+	height: 250px;
+	width: 96%;
+	margin-left: 2%;
+}
+ 
+    .metin {    
+	color: #06F;
+    height: 22px;
+    width: 80%;
+    margin-left: 10%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    text-align: center;
+    border: 1px solid #06F;
+    border-radius: 6px;
+    font-family: calibri;
+    font-size: 14px;
+}
+.cikis {
+	color: #FFF;
+	width: 60%;
+	height: 20px;
+	margin-left: 28%;
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom:4px;
+	position: absolute;
+    margin-top: 70px;
+	border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background: linear-gradient(18deg, rgb(37, 17, 17) 0%, rgb(255, 26, 26) 100%);}
+.kapa {
+	width: 100%;
+	height: 158px;
+}
+.profilx {
+	float: left;
+	height: 60px;
+	width: 60px;
+	box-shadow: 0 0 5px 2px #FFFFFF;
+	border-radius: 50%;
+}
+.ic_kapat {
+	background-color: #FFFFFF;
+	height: 21px;
+	width: 40%;
+	position: absolute;
+	z-index: 4;
+	border: 1px solid #FF0000;
+	color: #FF0000;
+	visibility: visible;
+	text-align: center;
+	margin-top: 38px;
+	margin-left: 30%;
+	font-size: 18px;
+	padding-bottom: 3px;
+	font-family: calibri;
+	box-shadow: 0 0 5px 2px red;
+}
+.buton {
+	float: left;
+	height: 24px;
+	width: 65%;
+	text-align: center;
+	padding-top: 4px;
+	color: #FFFFFF;
+	margin-bottom: 5px;
+	padding-bottom: 3px;
+	border: 1px solid #FFFFFF;
+	margin-left: 2%;
+	background-image: url(icon/mavi.png);
+	font-family: calibri;
+	font-size: 16px;
+	margin-right: 2%;
+}
+        #progress {
+	display: none;
+	position: relative;
+	width: 96%;
+	border: 1px solid #39F;
+	padding: 1px;
+	border-radius: 3px;
+	margin-left: 1%;
+}
+        #bar {
+	background-color: #33FF66;
+	width: 0%;
+	height: 20px;
+	border-radius: 3px;
+}
+#yuzde { position:absolute; display:inline-block; top:3px; left:48%; }
+.yayiny {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 13;
+	bottom: 0px;
+	left: 0px;
+	background-image: url(icon/blck.png);
+	display: none;
+	overflow: scroll;
+}
+#style-3::-webkit-scrollbar-track
+{
+	
+	background-color: #FFFFFF;
+}
+
+#style-3::-webkit-scrollbar
+{
+	width: 0px;
+	height: 0px;
+	background-color:#999999;
+}
+
+#style-3::-webkit-scrollbar-thumb
+{
+	background-color:#999999;
+}
+
+.yan_menu {
+	width: 100%;
+	position: fixed;
+	z-index: 8;
+	top: 0px;
+	left: 0px;
+	overflow: scroll;
+	visibility: inherit;
+	background-image: url(icon/blck.png);
+	background-repeat: repeat;
+	background-position: center;
+	height: 100%;
+	margin-bottom: 81px;
+	display: none;
+	background-size: cover;
+}
+.m_box {
+	color: #FFFFFF;
+	height: auto;
+	padding-top: 5px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	font-size: 13px;
+	border-radius: 15px;
+	width: 98%;
+	margin-bottom: 10px;
+}
+
+.m_gonder {
+	width: 100%;
+	height: 35px;
+	bottom: 10px;
+	right: 0px;
+	position: fixed;
+}
+.d_gonder {
+	padding-top:10px;
+	width: 100%;
+	height: 70px;
+	float: left;
+	position: fixed;
+	bottom: 50px;
+	display: none;
+	background-image: url(icon/blck.png);
+}
+    .yuvarlak {
+	float: left;
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    margin-left: 5px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-top: 4px;
+}
+
+    .m_veri {
+	font-family: calibri;
+	font-size: 14px;
+	background-color: #FFF;
+	width: 218px;
+	height: 36px;
+	float: left;
+	border-radius: 6px;
+	margin-left: 5px;
+}
+ .m_div {
+	width: 96%;
+	margin-left: 2%;
+	margin-bottom: 8px;
+	padding-bottom: 5px;
+	height: 85%;
+	padding-right: 4px;
+	overflow: scroll;
+}
+
+.y_y {
+	color: #FFFFFF;
+	height: auto;
+	padding-top: 10px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-left: 3px;
+	margin-left: 5px;
+	font-size: 12px;
+	font-family: calibri;
+	margin-top: 5px;
+}
+.isimx {
+	color: #FFFFFF;
+	height: 19px;
+	width: 45%;
+	padding-top: 3px;
+	margin-bottom: 5px;
+	margin-top: 3px;
+	margin-left: 14%;
+	padding-left: 5px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFFFFF;
+	font-size: 12px;
+	padding-right: 5px;
+}
+  .eski {
+	height: 20px;
+	width: 50%;
+	padding-top: 5px;
+	padding-bottom: 2px;
+	text-align: center;
+	font-size: 13px;
+	color: #FFFFFF;
+	background-image: url(icon/mavi.png);
+	margin-top: 15px;
+	margin-left: 24%;
+	font-family: Verdana;
+	box-shadow: 0 0 5px 2px #00CCFF;
+	border: 1px solid #FFFFFF;
+	margin-bottom: 5px;
+		border-radius:5px;
+
+}
+.resim {
+	margin-top: 10px;
+	box-shadow: 0 0 5px 2px #FFF;
+	border-radius: 6px;
+	height: auto;
+	}
+    .zaman {
+	color: #4ce699;
+	font-size: 11px;
+	font-family: calibri;
+	height: 22px;
+	width: 80px;
+	text-align: center;
+	margin-left: 70%;
+	margin-top: -30px;
+}
+    .scode {
+	height: 60px;
+	width: 60%;
+	margin-left: 20%;
+	font-size: 54px;
+	color: #999;
+	border: 1px solid #FFF;
+	font-family: calibri;
+	font-weight: bold;
+	padding-bottom: 15px;
+	margin-top: 35px;
+	background-color: #FFF;
+	box-shadow: 0 0 5px 2px #000;
+	text-align: center;
+	border-radius:5px;
+}
+    .s_sure {
+	height: 22px;
+	width: 24%;
+	margin-top: 10px;
+	margin-bottom: 15px;
+	padding-bottom: 5px;
+	text-align: center;
+	margin-left: 2%;
+	border: 1px solid #FFF;
+	font-family: calibri;
+	font-size: 18px;
+	float: left;
+	background-color: #FFF;
+	box-shadow: 0 0 5px 2px #0099FF;
+	padding-top: 4px;
+	border-radius:5px;
+}
+.d_cer {
+	height: 40px;
+	width: 100%;
+	margin-bottom: -8px;
+	margin-top: 10px;
+	text-align: center;
+}
+.d_cerx {
+	height: 40px;
+	width: 100%;
+	margin-bottom: -5px;
+	margin-top: 10px;
+	text-align: center;
+	
+}
+.okul_box {
+	background-color: #09F;
+	font-family: calibri;
+	font-size: 16px;
+	font-weight: bold;
+	color: #FFF;
+	width: 50%;
+	float: left;
+	height: 30px;
+	padding-top: 8px;
+}
+.aciklama {
+	font-family: calibri;
+	font-size: 15px;
+	color: #39F;
+	padding: 5px;
+	margin-top: 10px;
+}
+    .sayi_box {
+	color: #FFF;
+	background-color: #0F6;
+	font-family: calibri;
+	font-size: 16px;
+	font-weight: bold;
+	width: 25%;
+	float: left;
+	height: 30px;
+	padding-top: 8px;
+}
+
+.zum_is {
+	color: #FFFFFF;
+	text-align: center;
+	width: 94px;
+	height: 27px;
+	margin-top: -55px;
+	margin-left: -2px;
+	box-shadow: 0 0 2px 2px #0d586b;
+	border-radius: 5px;
+	padding-bottom: 7px;
+	padding-top:5px;
+	font-family:sans-serif;
+	font-size: 13px;
+	background: linear-gradient(184deg, rgba(2,0,36,0.9220063025210083) 0%, rgba(16,228,226,1) 100%);
+
+	}
+.c_sinif {
+	color: #085B70;
+	font-size: 18px;
+	font-weight:900;
+	margin-top: 40%;
+	text-align: center;
+	background-size: cover;
+	height: 26px;
+	font-family: calibri;
+}
+    </style>
+</head>
+<body onload="onLoad()">
+<script>
+        function onLoad() {
+            //Jquery yazım alanı
+var a=new Date();
+var ay=a.getMonth();
+var gun=a.getUTCDate();
+switch(ay){
+	case 0:
+	ay='Ocak';
+	break;
+	case 1:
+	ay='Şubat';
+	break;
+	case 2:
+	ay='Mart';
+	break;
+	case 3:
+	ay='Nisan';
+	break;
+	case 4:
+	ay='Mayıs';
+	break;
+	case 5:
+	ay='Haziran';
+	break;
+	case 6:
+	ay='Temmuz';
+	break;
+	case 7:
+	ay='Ağustos';
+	break;
+	case 8:
+	ay='Eylül';
+	break;
+	case 9:
+	ay='Ekim';
+	break;
+	case 10:
+	ay='Kasım';
+	break;
+	case 11:
+	ay='Aralık';
+	break;
+	};
+if(gun<10){gun='0'+gun;}	
+$('.gun').html(gun);
+$('.ay').html(ay);	
+//GELEN KUTUSU SETINTERVAL			
+$.c_box=function(){
+var box_id=$('.kul').attr('id');
+if(box_id>0){
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/sohbet.php",
+			data:({"c_box":box_id}),
+			dataType: "json",
+			success: function(cevap){
+				if(cevap.veri>0){$('.menu').css("background-image",'url(icon/k.gif)');
+				$('#g_box').css('background-image','url(icon/1.png)');
+				//gif başladı tekarar sormaya gerek yok !
+				clearInterval(c_boxx);
+				}
+				if(cevap.veri==0){
+					$('#g_box').css('background-image','url()');
+var v=$('.menu').attr('v');
+if(v==0){$('.menu').css('background-image','url(icon/y.png)');}
+if(v==1){$('.menu').css('background-image','url(icon/xx.png)');}	
+					}
+}});//ajax ve cevap
+}};//son c_box
+c_boxx=setInterval('$.c_box()',30000);		
+
+
+//GELEN KUTUSU SETINTERVAL			
+$.zum_box=function(){
+var zum_box=$('.kul').attr('id');
+if(zum_box>0){		
+var zumre=$('.kul').attr('zumre');
+var ilce=$('.kul').attr('ilce'); var ilcex=ilce+zumre; 
+var il=$('.kul').attr('il'); var ilx=il+zumre;
+var okul_sayi=Cookies.get('okul_sayi');if(okul_sayi==null){okul_sayi=0;}
+var ilce_sayi=Cookies.get('ilce_sayi');if(ilce_sayi==null){ilce_sayi=0;}
+var il_sayi=Cookies.get('il_sayi');if(il_sayi==null){il_sayi=0;}
+var ulke_sayi=Cookies.get('ulke_sayi');if(ulke_sayi==null){ulke_sayi=0;}
+var y_say=Cookies.get('y_say');if(y_say==null){y_say=0;}
+var okul_id=$('.kul').attr('okul_id');
+
+//DÜZENLEYECEĞİZ
+//cookies gunceelemesi yaazacaz
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/sohbet.php",
+			data:({"ilce_sayi":ilce_sayi,
+			       "il_sayi":il_sayi,
+				   "okul_sayi":okul_sayi,
+			       "ulke_sayi":ulke_sayi,
+				   "ilx":ilx,
+				   "ilcex":ilcex,
+				   "y_say":y_say,
+				   "okulx":okul_id}),
+			dataType: "json",
+			success: function(cevap){
+				$('#il_say').html(cevap.il);
+				$('#ilce_say').html(cevap.ilce);
+				$('#ulke_say').html(cevap.ulke);
+				$('#yonet').html(cevap.yonet);
+				$('#okul_say').html(cevap.okul);
+				$('#zumre_say').html(cevap.zumre);//toplam
+}});//ajax ve cevap
+}};//son zum_box
+
+zum_boxx=setInterval('$.zum_box()',30000);
+//ux ut işlemleri
+$('.ux').click(function(){
+$('.ux').css('border-color','#FFFFFF').css('color','#FFFFFF');
+	$('.ut').slideUp();
+	$(this).css('border-color','#00CCFF').css('color','#00CCFF');
+	var xc=$(this).index();
+	$('.ut:eq('+xc+')').slideDown();
+	
+});
+
+// scode alanı
+$('.ux[name=scode]').click(function(){
+$(".kutu").show();
+	function scode(length) {
+   var result           = '';
+   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
+
+var scode=scode(6);
+$('.scode').html(scode);
+//AKTİF SCODE GETİRİLMESİ
+var kul_id=$('.kul').attr('id');
+if(kul_id>0){
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"gscode":kul_id}),
+			dataType: "json",
+			success: function(cevap){
+				$('#ascode').html(cevap.veri);
+var aa=$('.daires').length;
+
+$.yenile=function(i){
+if(i<aa){	
+	var yazi=$('.daires:eq('+i+')').children('.d_yazis').html();
+	var texti=yazi.slice(0,1); 
+	var k=yazi.slice(1,4); 
+if(texti=='0'){$('.daires:eq('+i+')').children('.d_yazis').html('Tek Seferlik');}
+if(texti=='H'){$('.daires:eq('+i+')').children('.d_yazis').html('Saat: '+k+' için');}
+if(texti=='z'){$('.daires:eq('+i+')').children('.d_yazis').html(k+'.Gün için');}
+if(texti=='W'){$('.daires:eq('+i+')').children('.d_yazis').html(k+'.Hafta için');}
+i++;
+$.yenile(i);	
+}};	
+$.yenile(0);			
+	//scode silme			
+$('.sily').click(function(){
+var sil_code=$(this).attr('id');	
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"sil_code":sil_code}),
+			dataType: "json",
+			success: function(cevap){
+$('.d_daire[id='+sil_code+']').slideUp();	
+$.uyari(cevap.veri);			
+}});//ajax ve cevap
+});//scode sil
+}});//ajax ve cevap
+}//kul_id son	
+});//scode son
+//sure seçme	
+$('.s_sure').click(function(){
+$('.s_sure').attr('durum',0).css('background-color','#FFF').css('color','#000');
+$(this).attr('durum',1).css('background-color','#09F').css('color','#FFF');
+});//s_sure son	
+
+//KAYDET SCODE
+$('#k_scode').click(function(){
+var scode=$('.scode').html();
+var s_sure=$('.s_sure[durum=1]').attr('value');
+var kul_id=$('.kul').attr('id');
+if(kul_id>0){
+var o_id=$('.kul').attr('okul_id');
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"scode":scode,
+			       "s_sure":s_sure,
+				   "sp_id":kul_id,
+				   "so_id":o_id}),
+			dataType: "json",
+			success: function(cevap){
+				$.uyari(cevap.veri);
+					
+}});//ajax ve cevap	
+}else{$.uyari('Giriş Yapmalısınız...')}//kul_id
+});//kaydet scode son
+//TABDAN ETKİLENMEYEN GELEN KUTUSU
+$('#g_box').click(function(){
+var box_id=$('.kul').attr('id');
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/sohbet.php",
+			data:({"box_id":box_id}),
+			dataType: "json",
+			success: function(cevap){
+			$('.ut:eq(2)').html(cevap.veri).slideDown();
+//Tekrar döngüyü çalıştırdım hepsini okudun saydım
+c_boxx=setInterval('$.c_box()',30000);
+$.sil_box();
+$.ozel_mesaj2();
+//------EKSİK PROFİL RESMİ TAMAMLAMA
+$("img").on("error", function(){ $(this).attr('src', 'icon/profil.jpg');});	
+ 				
+}});//ajax ve cevap
+});//g_box
+
+//Cookies Kullanıcı Giriş Kontrol
+$.sil=function(){Cookies.remove('kek');};
+var kek=Cookies.get('kek');
+var kekim=kek+'</div>';
+var uye_ol_div=$('.ust').html();
+$('.ust').html(kekim).show();
+//Fotoğraf hatası Düzelt
+$(".profil").on("error", function(){ $(this).attr('src', 'icon/profil.jpg');});	 
+ // null ile deneriz var harf = $('.ust').html();
+
+//PROFİL İŞLEMELERİ  
+//--------PROFİL FOTOĞRAFI DEĞİŞTİRME
+$('#p_degistir').click(function(){
+$('#dv_ekle').fadeIn();
+var p_img=$(this).attr('p_img');	
+var kul_id=$('.kul').attr('id');
+$('#profil_id').val(kul_id);
+var okul_id=$('.kul').attr('okul_id');	
+$('#p_img').val(p_img);
+ var options={
+	    target:'#profilx',
+	    dataType:'json',	 	
+        beforeSend: function() 
+        {
+	var html=' <div id="progress"><div id="bar"></div><div id="yuzde">0%</div></div><br/><div id="mesaj"></div>';
+	$('.uyari').html(html).slideDown();
+	
+            $("#progress").show();
+            //clear everything
+            $("#bar").width('0%');
+            $("#mesaj").html("");
+            $("#yuzde").html("0%");
+        },
+        uploadProgress: function(event, position, total, percentComplete) 
+        {
+            $("#bar").width(percentComplete+'%');
+            $("#yuzde").html(percentComplete+'%');
+ 
+        },
+        success:function() {      
+	      $('.buton[name="dosya"]').val('');
+            $("#bar").width('100%');
+            $("#yuzde").html('100%');
+},
+        complete: function(response) 
+        {
+        $('.uyari').html('Fotoğraf Yüklendi !');
+		$.uyari();
+		$('#dv_ekle').slideUp();	
+		  $('.buton[name="dosya"]').val('');
+            $("#bar").width('100%');
+            $("#yuzde").html('100%');
+		 
+ $.ajax({
+                    type: "POST",
+                    url: "https://mesajplus.com/profil.php",
+                    data: ({"ckul_id":kul_id,
+					        "cokul_id":okul_id }),
+                    dataType: "json",
+                    success: function (cevap) {
+                           $('.ust').html(cevap.veri).show();
+                            var kayit = $('.ust').html();
+		 Cookies.set('kek', kayit); 
+		 $.fotograf();}
+
+});	 
+		 
+        },
+	
+        error: function()
+        {
+            $('.uyari').html('Bir Sorun Oluştu !');
+					$.uyari();
+		}}
+	
+$("#profilx").ajaxForm(options);//---dosya yükleme son
+
+//ANLAMADIM $('.ic_kapat').click(function(){$('#p_ekle').slideUp();});		
+//$('#p_ekle').slideDown();
+});//------profil son  
+//BUNLARI BELKİDE SİLMELİYİZ
+$('.ic_kapat').click(function () { $('#dv_ekle,.d_gonder').fadeOut();});
+$('#d_ekle').click(function () { $('.d_gonder').fadeIn();});
+
+
+//---------DOSYA YÜKLEME 
+$("#dosyayukle").ajaxForm({
+	
+        beforeSend: function() 
+        {
+	var html=' <div id="progress"><div id="bar"></div><div id="yuzde">0%</div></div><br/><div id="mesaj"></div>';
+	$('.uyari').html(html).slideDown();
+	
+            $("#progress").show();
+            //clear everything
+            $("#bar").width('0%');
+            $("#mesaj").html("");
+            $("#yuzde").html("0%");
+        },
+        uploadProgress: function(event, position, total, percentComplete) 
+        {
+            $("#bar").width(percentComplete+'%');
+            $("#yuzde").html(percentComplete+'%');
+ 
+        },
+        success: function() 
+        {   $('.buton[name="dosya"]').val('');
+            $("#bar").width('100%');
+            $("#yuzde").html('100%');
+ 
+        },
+        complete: function(response) 
+        {
+          	$('.uyari').html('Fotoğraf Gönderildi !');
+					$.uyari();
+					
+        },
+        error: function()
+        {
+            $("#mesaj").html("<font color='red'> Bir hata oluştu</font>");
+ 
+        }
+    });//---dosya yükleme son	
+
+//-------fotoğraf SİL FONKSİYONU
+$.p_sil=function(){
+$('#p_sil').click(function(){
+var url=$(this).attr('name');
+$('#profilim').attr('src','icon/profil.jpg');
+$('#profilim').attr('name','icon/profil.jpg');
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/profil.php",
+			data:({"p_sil":url}),
+			dataType: "json",
+			success: function(cevap){
+				if (cevap.hata){alert(cevap.hata);} else {
+					$('.uyari').html(cevap.olumlu);
+					$.uyari();
+					
+        $('.ust').html();
+         var kayit = $('.ust').html();
+		 Cookies.set('kek', kayit); $.fotograf();
+$('#profilim').css('background-image','url(profil.jpg)');
+
+
+}//ELSE
+}//CEVAP
+});//AJAX	
+});};//----fotograf silson
+$.p_sil();
+//fotograf function
+$.fotograf=function(){
+$('.resim,.profil').on("click",function(){
+	var adi=$(this).attr('name');
+	var url='https://mesajplus.com/resim/buyuk/'+adi;
+	var image='<img src="'+url+'" width="90%" height="auto"  style="margin-left:5%; margin-top:25px; box-shadow: 0 0 5px 2px white; border-radius:20px;"/>';
+	$('.kapa[name=fotograf]').html(image).show();
+	$('.yayiny').slideDown();
+	 $('.ic_kapat').click(function () { $('.yayiny').fadeOut(); $('.kapa[name=fotograf]').html(''); });		
+//------EKSİK PROFİL RESMİ TAMAMLAMA
+$("img").on("error", function(){ $(this).attr('src', 'icon/profil.jpg');});	 
+	});//resm click	
+	};//fotograf son	
+$.fotograf();	
+//PROFİL İŞLEMLERİ SON
+
+ $('.cikis').click(function(){
+$.uyari('Başarıyla Çıkış Yapıldı !');
+	$.sil();
+location.reload();	
+	});
+//kullanıcı yok üye ol gösterelim
+if(kek==null){$('.ust').html(uye_ol_div).show();}else{
+$('.ux:eq(1)').html('Güncelle');
+$('#giris').html('Güncelle');
+var isim=$('.kul').html();
+$('#g_tel').attr('placeholder','İsmini düzenle yada Boş Bırak...').val(isim);
+$('#g_sifre').attr('placeholder','Yeni Şifre Girin yada Boş Bırak...');
+}
+//UYE_OL_DİV TAKİP FONKSİYONU
+$.uye_ol_div=function(){
+$('.uye_ol_div').click(function(){
+$('.sol_panel,.orta').hide();
+$('.panel:eq('+10+')').show();
+$('.menu').attr('v',0);	
+$('.menu').css('background-image','url(icon/y.png)');
+});};	
+$.uye_ol_div();
+
+//UYE_OL okul FONKSİYONU
+$.uye_ol=function(){
+$('#uye_ol').click(function(){
+var k_okul=$('#k_okul').val();
+var k_kul=$('#k_kul').val();
+var k_tel=$('#k_tel').val();
+var k_eposta=$('#k_eposta').val();
+if(k_okul=='' || k_kul=='' || k_tel=='' || k_eposta==''){$.uyari('Tüm Alanları Doldurmalısınız !');}else{
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/uyeol.php",
+			data:({"k_okul":k_okul,
+			"k_kul":k_kul,
+			"k_eposta":k_eposta,
+			"k_tel":k_tel}),
+			dataType: "json",
+			success: function(cevap){
+    $.uyari(cevap.veri);	
+    $('.ust').html(cevap.uye);
+    var kayit = $('.ust').html();
+	
+	 //Fotoğraf hatası Düzelt
+$(".profil").on("error", function(){ $(this).attr('src', 'icon/profil.jpg');});	
+	 Cookies.set('kek',kayit);
+$('.panel').hide();
+$('.orta').slideDown();
+$('.metin').val('');
+	 
+}});//ajax son
+}//else tüm alanlar dolu
+});//uye ol click son
+}//uye_ol fonsksiyonu
+
+//MESAJ VE FOTOĞRAF SİL
+$.mesaj_sil=function(){
+//----BENİM MESAJLARI SİL GÖRME					
+var kul_id=$('.kul').attr('id');
+$('.silx[id='+kul_id+']').show();
+
+$('.silx').click(function(){
+var mesaj_id=$(this).attr('mesaj_id');
+var url=$(this).attr('url');
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/sohbet.php",
+			data:({"yorum_id":mesaj_id,
+			       "url":url}),
+			dataType: "json",
+			success: function(cevap){
+				if (cevap.hata){alert(cevap.hata);} else {
+					$('.uyari').html(cevap.olumlu);
+					$.uyari();
+
+$('.m_box[id='+mesaj_id+']').slideUp();
+
+}//ELSE
+}//CEVAP
+});//AJAX		
+});//click
+};
+
+//*********TOPLU MESAJ VE FOTOĞRAF SİL
+$.sil_box=function(){
+//----BENİM MESAJLARI SİL GÖRME					
+var kul_id=$('.kul').attr('id');
+$('.sil_box').click(function(){
+var gonderen=$(this).attr('gonderen');
+
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/sohbet.php",
+			data:({"alan":kul_id,
+				   "sil_box":gonderen}),
+			dataType: "json",
+			success: function(cevap){
+				if (cevap.hata){alert(cevap.hata);} else {
+					$('.uyari').html(cevap.olumlu);
+					$.uyari();
+                  $('.g_boxx[silup='+gonderen+']').slideUp();
+
+}//ELSE
+}//CEVAP
+});//AJAX		
+});//click
+};
+
+
+//sil_vt SİLME
+$.sil_vt=function(){
+$('.sil_ogr').click(function(){
+var z_kont=$('.kul').attr('zumre');	
+if(z_kont<16){
+var sil_ogr=$(this).attr('id');	
+var p_url=$(this).attr('p_url');	
+var vt=$(this).attr('vt');	
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"sil_ogr":sil_ogr,
+			       "vt":vt,
+				   "p_url":p_url}),
+			dataType: "json",
+			success: function(cevap){
+$('.b_daire[id='+sil_ogr+']').slideUp();	
+$.uyari(cevap.veri);			
+}});//ajax ve cevap
+}else{$.uyari('Yetkiniz Bulunmuyor...');}});//click
+};//sil_vt  son
+
+//SMS PANELİ AÇMA PROGRAMI
+$.panel_ac=function(){
+$('#gonder').click(function(){
+$('#sms_panel').slideDown();
+//smsm islemi basla
+});};
+$.c_box();//ilk geldiğinde çalıştırdık
+$.zum_box();
+
+//MESAJ GONDERİCİ
+$.mesaj_sender=function(){
+
+$('#send').click(function(){
+var m_alan=$(this).attr('m_alan');
+var m_gonderen=$(this).attr('m_gonderen');
+var tur=$(this).attr('tur');
+//var sson_id=$(this).attr('son_id');
+var sson_id=$('.m_box:last').attr('id');
+var mesaj=$('.m_veri').val();
+if(mesaj!=''){
+	
+var a=new Date();
+var saat1=a.getHours();
+var dk1=a.getMinutes();
+var ay=a.getMonth();
+var gun=a.getUTCDate();
+
+switch(ay){
+	case 0:
+	ay='Ocak';
+	break;
+	case 1:
+	ay='Şubat';
+	break;
+	case 2:
+	ay='Mart';
+	break;
+	case 3:
+	ay='Nisan';
+	break;
+	case 4:
+	ay='Mayıs';
+	break;
+	case 5:
+	ay='Haziran';
+	break;
+	case 6:
+	ay='Temmuz';
+	break;
+	case 7:
+	ay='Ağustos';
+	break;
+	case 8:
+	ay='Eylül';
+	break;
+	case 9:
+	ay='Ekim';
+	break;
+	case 10:
+	ay='Kasım';
+	break;
+	case 11:
+	ay='Aralık';
+	break;
+	};
+if(saat1<10){saat1='0'+saat1;}
+if(dk1<10){dk1='0'+dk1;}
+var zmnx=gun+' '+ay+' '+saat1+':'+dk1;		
+
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/sohbet.php",
+			data:({"kaydet_alan":m_alan,
+			       "m_gonderen":m_gonderen,
+				   "tur":tur,
+				   "mesaj":mesaj,
+				   "sson_id":sson_id,
+				   "zaman":zmnx}),
+			dataType: "json",
+			success: function(cevap){
+	$('.m_box:last').after(cevap.veri);	
+var son_id=$('.m_box:last').attr('id');	
+if(tur==2){Cookies.set('ilce_sayi',son_id); var i=$('#ilce_say').html(); var z=$('#zumre_say').html(); var nz=z-i; z=$('#zumre_say').html(nz); $('#ilce_say').html('0');}
+if(tur==0){Cookies.set('okul_sayi',son_id);$('#okul_say').html('0');}
+if(tur==3){Cookies.set('il_sayi',son_id); var i=$('#il_say').html(); var z=$('#zumre_say').html(); var nz=z-i; z=$('#zumre_say').html(nz); $('#il_say').html('0');}
+if(tur==4){Cookies.set('ulke_sayi',son_id); var i=$('#ulke_say').html(); var z=$('#zumre_say').html(); var nz=z-i; z=$('#zumre_say').html(nz); $('#ulke_say').html('0');}
+if(tur==5){Cookies.set('y_say',son_id); var i=$('#yonet').html(); var z=$('#zumre_say').html(); var nz=z-i;  z=$('#zumre_say').html(nz); $('#yonet').html('0');}
+
+$('.m_veri').val('');
+//Fotoğraf hatası Düzelt
+$(".profil").on("error", function(){ $(this).attr('src', 'icon/profil.jpg');});	
+$.fotograf();
+if(tur!=1)$.yan_menu();
+$.mesaj_sil();
+}});//ajax ve cevap
+}else{$.uyari('Boş mesaj gönderemezsiniz...');}//doluboş kontrol
+});//click	
+};//mesaj_gonder_son
+
+//m_kontrolü yan mennu içinden çağırıp clear ayapacaz önce
+/*son id den fazlası varsa mesaj getir ile 6 tane getir m_dive yaz bunu da 10 sny de bir yap*/
+$.mesaj_kontrol=function(){
+var m_alan=$('#send').attr('m_alan');
+var m_gonderen=$('#send').attr('m_gonderen');
+var tur=$('#send').attr('tur');
+var son_id=$('.m_box:last').attr('id');
+//$.uyari(son_id);
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/sohbet.php",
+			data:({"k_alan":m_alan,
+			       "m_gonderen":m_gonderen,
+				   "tur":tur,
+				   "son_id":son_id}),
+			dataType: "json",
+			success: function(cevap){
+if(cevap.yok){/*Buraya belki güncelleme gifi yaparız*/}
+if(cevap.veri){$('.m_box:last').after(cevap.veri);var son_id=$('.m_box:last').attr('id');
+if(tur==2){Cookies.set('ilce_sayi',son_id); var i=$('#ilce_say').html(); var z=$('#zumre_say').html(); var nz=z-i; z=$('#zumre_say').html(nz); $('#ilce_say').html('0');}
+if(tur==0){Cookies.set('okul_sayi',son_id);$('#okul_say').html('0');}
+if(tur==3){Cookies.set('il_sayi',son_id); var i=$('#il_say').html(); var z=$('#zumre_say').html(); var nz=z-i; z=$('#zumre_say').html(nz); $('#il_say').html('0');}
+if(tur==4){Cookies.set('ulke_sayi',son_id); var i=$('#ulke_say').html(); var z=$('#zumre_say').html(); var nz=z-i; z=$('#zumre_say').html(nz); $('#ulke_say').html('0');}
+if(tur==5){Cookies.set('y_say',son_id); var i=$('#yonet').html(); var z=$('#zumre_say').html(); var nz=z-i; z=$('#zumre_say').html(nz); $('#yonet').html('0');}
+}
+
+//Fotoğraf hatası Düzelt
+$(".profil").on("error", function(){ $(this).attr('src', 'icon/profil.jpg');});	
+$.mesaj_sil();
+if(tur!=1){$.yan_menu();}	
+}});//ajax ve cevap
+};//mesaj_kontrol
+
+
+
+//MESAJ GETİR BAŞALNGIÇ
+$.mesaj_getir=function(m_alan,m_gonderen,tur,ofset,kalan){
+mesaj_dongu=setInterval('$.mesaj_kontrol()',8000);	
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/sohbet.php",
+			data:({"m_alan":m_alan,
+			       "m_gonderen":m_gonderen,
+				   "tur":tur,
+				   "ofset":ofset,
+				   "kalan":kalan}),
+			dataType: "json",
+			success: function(cevap){
+		$('.yan_menu').slideDown();
+//ilk mesaj alma		
+if(ofset=='ilk'){$('.m_div').html(cevap.veri);
+//Fotoğraf hatası Düzelt
+$(".profil").on("error", function(){ $(this).attr('src', 'icon/profil.jpg');});	
+//$('.m_div').after(cevap.gonder);
+var son_id=$('.m_box:last').attr('id');
+//alert(son_id+"-"+tur);
+$('#send').attr('son_id',son_id);
+}else{$('.eski').after(cevap.veri)}//daha fazla yükle	
+if(tur==0){Cookies.set('okul_sayi',son_id);  $('#okul_say').html('0');}
+if(tur==2){Cookies.set('ilce_sayi',son_id); var i=$('#ilce_say').html(); var z=$('#zumre_say').html(); var nz=z-i; z=$('#zumre_say').html(nz); $('#ilce_say').html('0');}
+if(tur==3){Cookies.set('il_sayi',son_id); var i=$('#il_say').html(); var z=$('#zumre_say').html(); var nz=z-i; z=$('#zumre_say').html(nz); $('#il_say').html('0');}
+if(tur==4){Cookies.set('ulke_sayi',son_id); var i=$('#ulke_say').html(); var z=$('#zumre_say').html(); var nz=z-i; z=$('#zumre_say').html(nz); $('#ulke_say').html('0');}
+if(tur==5){Cookies.set('y_say',son_id);  var i=$('#yonet').html(); var z=$('#zumre_say').html(); var nz=z-i; z=$('#zumre_say').html(nz); $('#yonet').html('0');}
+$.mesaj_sender();
+$.mesaj_sil();
+if(tur!=1){$.yan_menu();}
+$.fotograf();
+
+$('#y_kapat').click(function() {
+                  $('.panel:eq(5)').hide();	  
+                  clearInterval(mesaj_dongu);
+                 // $.uyari('Döngü Temizlendi');
+                  if(tur=='0'){$('.panel:eq('+5+')').hide(); $('.orta').show();}
+                  $('.yan_menu').fadeOut();
+				  $('#send').attr('tur',0);
+				  $('#send').attr('m_alan','');
+				  $('#send').attr('m_gonderen','');});//y_kapat son
+
+$('.ic_kapat').click(function () { $('#dv_ekle,.d_gonder').fadeOut();});
+$('#d_ekle').click(function () { $('.d_gonder').fadeToggle();
+var a=new Date();
+var saat1=a.getHours();
+var dk1=a.getMinutes();
+var ay=a.getMonth();
+var gun=a.getUTCDate();
+
+switch(ay){
+	case 0:
+	ay='Ocak';
+	break;
+	case 1:
+	ay='Şubat';
+	break;
+	case 2:
+	ay='Mart';
+	break;
+	case 3:
+	ay='Nisan';
+	break;
+	case 4:
+	ay='Mayıs';
+	break;
+	case 5:
+	ay='Haziran';
+	break;
+	case 6:
+	ay='Temmuz';
+	break;
+	case 7:
+	ay='Ağustos';
+	break;
+	case 8:
+	ay='Eylül';
+	break;
+	case 9:
+	ay='Ekim';
+	break;
+	case 10:
+	ay='Kasım';
+	break;
+	case 11:
+	ay='Aralık';
+	break;
+	};
+if(saat1<10){saat1='0'+saat1;}
+if(dk1<10){dk1='0'+dk1;}
+var zmnx=gun+' '+ay+' '+saat1+':'+dk1;	
+$('.metin[name=zaman]').val(zmnx);
+$('.metin[name=m_alan]').val(m_alan);
+$('.metin[name=m_gonderen]').val(m_gonderen);
+$('.metin[name=m_tur]').val(tur).attr('placeholder',tur);
+
+var options={
+	    target:'#mesaj_dosya',
+	    dataType:'json',	 	
+        beforeSend: function() 
+        {
+	var html=' <div id="progress"><div id="bar"></div><div id="yuzde">0%</div></div><br/><div id="mesaj"></div>';
+	$('.uyari').html(html).slideDown();
+	
+            $("#progress").show();
+            //clear everything
+            $("#bar").width('0%');
+            $("#mesaj").html("");
+            $("#yuzde").html("0%");
+        },
+        uploadProgress: function(event, position, total, percentComplete) 
+        {
+            $("#bar").width(percentComplete+'%');
+            $("#yuzde").html(percentComplete+'%');
+ 
+        },
+        success:function() {      
+	      $('.buton[name="dosya"]').val('');
+            $("#bar").width('100%');
+            $("#yuzde").html('100%');
+},
+        complete: function(response) 
+        {
+        $('.uyari').html('Dosya Yüklendi !');
+		$.uyari();
+		$('#dv_ekle').slideUp();	
+		$('.buton[name="dosya"]').val('');
+        $("#bar").width('100%');
+        $("#yuzde").html('100%');
+	    $('.d_gonder').slideUp();
+	   
+	   // $('.m_box:eq('+index+')').after(cevap.veri);       		 
+},
+	
+        error: function()
+        {
+            $('.uyari').html('Bir Sorun Oluştu !');
+					$.uyari();
+		}}
+	
+$("#mesaj_dosya").ajaxForm(options);//---dosya yükleme son
+});
+
+
+$('.eski').click(function(){
+var m_alan=$(this).attr('m_alan');
+var m_gonderen=$(this).attr('m_gonderen');
+var tur=$(this).attr('tur');
+var ofset=$(this).attr('kalan');
+var ofsetson=ofset-6;
+if(ofsetson<0){ofsetson=0; var kalan=ofset;}
+if(ofset!=0){
+$(this).attr('kalan',ofsetson);
+$.mesaj_getir(m_alan,m_gonderen,tur,ofsetson,ofset);
+$.mesaj_sender();
+}else{$.uyari('Başka Mesaj Kalmadı !');}});	
+}});//ajax son	
+};//mesaj getir function son
+
+//MESAJLAŞMA PANELİ AÇ
+$.yan_menu=function(){
+$('.profil,.isimx').click(function(){		
+var m_alan=$(this).attr('m_alan');//alan=m_alan
+var m_gonderen=$('.kul').attr('id');//müracat ben
+$('#send').attr('tur',1);
+$('#send').attr('m_alan',m_alan);
+$('#send').attr('m_gonderen',m_gonderen);
+var baslik=	$(this).attr('placeholder');
+$('#m_baslik').html(baslik);
+
+	clearInterval(mesaj_dongu);
+	//$.uyari('Varsa Döngü Kapat!');	
+	
+$.mesaj_getir(m_alan,m_gonderen,1,'ilk',0);
+
+});};//MESAJLAŞMA PANELSON
+
+//özel_mesaj2
+$.ozel_mesaj2=function(){
+$('.kullanici').click(function(){
+$(this).css('box-shadow','0 0 0px 0px');			
+var m_alan=$(this).attr('m_alan');//alan=m_alan
+var m_gonderen=$('.kul').attr('id');//müracat ben
+$('#send').attr('tur',1);
+$('#send').attr('m_alan',m_alan);
+$('#send').attr('m_gonderen',m_gonderen);
+var baslik=	$(this).attr('placeholder');
+$('#m_baslik').html(baslik);
+$.mesaj_getir(m_alan,m_gonderen,1,'ilk',0);
+
+});};//özel_mesaj_son2
+
+	
+// SLAYT İŞLEMLERİ SONRA AJAX EKLENECEK
+$('.slayt:not(:first)').hide();
+var sayi=$('.slayt').length;
+var ac=0;
+sayim=sayi-1;
+$.slayt=function(){
+$('.slayt').slideUp();
+ac++;
+if(ac>sayim){ac=0;}	
+	$('.slayt:eq('+ac+')').slideDown();
+	};
+//Şimdilik iptal
+//setInterval('$.slayt()',8000);	
+			
+//MENU ALANI 
+$('.menu').click(function(){
+var v=$(this).attr('v');
+if(v==0){
+$(this).attr('v',1);	
+$(this).css('background-image','url(icon/xx.png)');
+$('.sol_panel,.ut:first').show();
+$('.ux').css('border-color','#FFFFFF').css('color','#FFFFFF');
+$('.ux:eq('+0+')').css('border-color','#00CCFF').css('color','#00CCFF');
+}
+if(v==1){
+$(this).attr('v',0);	
+$(this).css('background-image','url(icon/y.png)');
+$('.sol_panel').slideUp();
+	}	
+});	
+
+//yoklama sil fonksiyonu
+$.y_sil=function(){
+$('.sil').click(function(){
+//if(z_kont<16){}else{$.uyari('Yetkiniz Bulunmuyor...');}	
+var yok_id=$(this).attr('id');	
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"yok_id":yok_id}),
+			dataType: "json",
+			success: function(cevap){
+$('.d_daire[id='+yok_id+']').slideUp();	
+$('.b_daire[id='+yok_id+']').slideUp();	
+$.uyari(cevap.veri);			
+}});//ajax ve cevap
+});//yoklama sil son
+};		
+			
+//UYARİ FONKSİYONU
+$.uyari=function(uyari){
+$('.uyari').html(uyari).slideDown().delay(2000).slideUp();
+$('.uyari').click(function(){$(this).hide();});
+};		
+	
+//----PANEL KAPAT
+$.geri=function(){
+	 $('.geri').click(function(){
+	 $('.panel,.alt_panel,.y_panel').hide();
+	 $('.orta').slideDown();
+	 $('#yoklama').html('');
+	 $('.y_ogrenci').remove();
+
+	});};			
+$.geri();
+//altpanel kapat
+$.alt_kapat=function(){$('.alt_kapat').click(function(){
+	$('.alt_panel,#sms_panel2').slideUp();});}
+$.alt_kapat();	
+
+//ÜYELERİN GİRİŞ YAPMA ALANI
+$('#giris').click(function(){
+var g_tel=$('#g_tel').val();
+var g_sifre=$('#g_sifre').val();
+var durum=$(this).html();
+if(durum=='Giriş'){
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"g_tel":g_tel,
+			       "g_sifre":g_sifre}),
+			dataType: "json",
+			success: function(cevap){
+if(cevap.hata){$.uyari(cevap.hata);}
+if(cevap.veri){
+$('.ust').html(cevap.veri).show();
+$('.ux:eq(1)').html('Güncelle');
+$('#giris').html('Güncelle');
+//Fotoğraf hatası Düzelt
+$(".profil").on("error", function(){ $(this).attr('src', 'icon/profil.jpg');});	 
+var kayit = $('.ust').html();
+$('.ut').slideUp();
+$('.ut:eq('+0+')').show();
+$('.ux').css('border-color','#FFFFFF').css('color','#FFFFFF');
+$('.ux:eq('+0+')').css('border-color','#00CCFF').css('color','#00CCFF');
+$.uyari('Hoş Geldiniz !');	
+Cookies.set('kek', kayit);}
+}});//ajax cevap son 
+}//giriş yapmason
+if(durum=='Güncelle'){	
+	var kul_id=$('.kul').attr('id');
+
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"kim_isim":g_tel,
+			       "yeni_sifre":g_sifre,
+				   "kim":kul_id}),
+			dataType: "json",
+			success: function(cevap){
+if(cevap.hata){$.uyari(cevap.hata);}
+if(cevap.veri){
+$('.ust').html(cevap.veri).show();
+//Fotoğraf hatası Düzelt
+$(".profil").on("error", function(){ $(this).attr('src', 'icon/profil.jpg');});	 
+var kayit = $('.ust').html();
+$('.ut').slideUp();
+$('.ut:eq('+0+')').show();
+$('.ux').css('border-color','#FFFFFF').css('color','#FFFFFF');
+$('.ux:eq('+0+')').css('border-color','#00CCFF').css('color','#00CCFF');
+$.uyari('Güncelleme Başarılı...');	
+Cookies.set('kek', kayit);}
+}});//ajax cevap son 	
+
+}	
+});//üye giris son
+
+//------- GÜNLÜK BLOK YOKLAMALARI GETİR ALANI
+$.gunluk_yoklama=function(){
+var geri_div='<div class="taban"><div class="geri" id="geri" style="color:#F00; border-color:#F00;">Geri</div></div>';	
+$('#sms_panel').fadeOut();
+$('.yoklama').css({"box-shadow":"inset 0 0 3px 2px #0D596D"});
+var okul_id=$('.kul').attr('okul_id');	
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"bugun":okul_id}),
+			dataType: "json",
+			success: function(cevap){
+if(cevap.hata=='Henüz Yoklama Alınmamış !'){$.uyari(cevap.hata);}	
+		
+$('.kutu').hide();		
+$('#yoklama').html(cevap.veri).show();	
+$.geri();
+$.y_sil();
+
+$('#coklu_sec').click(function(){
+$('#sms_panel').slideDown();
+	
+	});//coklu_devamson
+
+//-------YOKLAMAdaki öğrencileri görme
+$('.dairex[tag="yoklama_blok"]').on("click",function(){
+var yoklama_id=$(this).attr('id');
+var ogr_id=$(this).attr('ogr_id');
+$('#basla').attr('yoklama_id',yoklama_id);
+$('#basla').attr('sms_tur','yoklama');
+
+$(this).css({"background-color":"#106b80","color":"#FFF"});
+$('.sinif').css({"box-shadow":"0 0 0px 0px #0D596D"});
+$('.kutu,.alt_panel').hide();
+var kul_id=$('.kul').attr('id');
+var okul_id=$('.kul').attr('okul_id');	
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"yok_ici":ogr_id,
+			       "yok_ici2":yoklama_id}),
+			dataType: "json",
+			success: function(cevap){
+$('.kutu').hide();
+$('#yoklama').html(cevap.veri).show();	
+$('#gonder').attr('yoklama_id',yoklama_id);
+$('.onay_ogrt').click(function(){
+var yoklama_id=$('#gonder').attr('yoklama_id');
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"onay_id":yoklama_id}),
+			dataType: "json",
+			success: function(cevap){
+$('.o_goster').html(cevap.veri).show();				
+}});//ajaxson	
+});//onayla_ogrt son
+
+var yok_index=Cookies.get(yoklama_id);
+yok_index++;
+$('.y_ogrenci:lt('+yok_index+')').css('background-color','#0F6');
+$.geri();
+//---YEREL YOKLAMA İPTALİ
+$('.iptal').click(function(){
+var index=$(this).attr('okul_no');
+//alert(index)
+$('.y_ogrenci[okul_no='+index+']').slideUp().remove();
+$.uyari('Geçici olarak sms kuyrugundan çıkarıldı!');	
+});//yerel son
+$.panel_ac();
+}});//AJAX	
+	
+});//----dairex tıklama son			
+}});//ajax cevap	
+};//gunluk_yoklama
+	
+//--------YÜKSEKLİK AYARLARI******************
+var yukseklik=screen.height;
+var yuksekx=yukseklik-90;
+//alert(yukseklik)
+//alert(yuksekx)
+$('.orta,.panel').css('height',yuksekx);
+
+//-----STATİK YOKLAMA GUNLUK BLOK GİRİŞİ
+$('.yoklama').click(function(){
+$('#sms_panel').hide();
+$('.alt_panel').hide();	
+$(this).css({"box-shadow":"inset 0 0 3px 2px #0D596D"});
+$('.sinif').css({"box-shadow":"0 0 0px 0px #0D596D"});
+$.gunluk_yoklama();});//statik son
+ var okul_id=$('.kul').attr('okul_id');
+if(okul_id>0) $('.daire:eq('+10+')').hide();
+//--------MENÜLER ALANI
+$('.daire').click(function(){
+                var index = $(this).index();
+ var okul_id=$('.kul').attr('okul_id');
+if(okul_id==null){index=10; $.uyari('Öncelikle Üye olmalısınız !');}
+   
+    $('.panel').hide();
+	$('.orta').hide();
+    $('.panel:eq('+index+')').show();
+
+
+	
+//-----SINIFLARIN GELMESİ VE YOK YAZMA
+if(index==0){	
+$('#yoklama').html('');	
+$.gunluk_yoklama();	
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"s_getir":okul_id}),
+			dataType: "json",
+			success: function(cevap){
+		
+$('#siniflar').html(cevap.veri);
+$.geri();
+//---siniflara tıklama 
+$('.sinif').click(function(){
+var yok_isim=$('#yok_isim').val();
+if(yok_isim==""){$('.ogrenci[isaret=1]').remove();} 	
+$('#sms_panel').fadeOut();		
+$('#liste').slideDown();
+var sinif_id=$(this).attr('id');
+$('#kaydet').attr('s_id',sinif_id);	
+$('.sinif').css({"box-shadow":"0 0 0px 0px #0D596D"});
+$(this).css({"box-shadow":"inset 0 0 3px 2px #0D596D"});
+$('.yoklama').css({"box-shadow":"0 0 0px 0px #0D596D"});
+$('.kutu').hide();
+
+//öğrencileri getir ajax
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"sinif_id":sinif_id}),
+			dataType: "json",
+			success: function(cevap){
+if(cevap.hata=="Sınıfa Öğrenci Eklenmemiş !")				
+{$.uyari(cevap.hata);}
+$('#sinif').html(cevap.veri).slideDown();
+//-----ÖĞRENCİLERE TIKLA 
+$('.ogrenci').click(function(){
+var isaret=$(this).attr('isaret');
+switch (isaret){
+
+case "0":
+$(this).attr('isaret',1);
+//öğrencileri klama yeri ilk tık
+$(this).appendTo("#liste");
+break;
+case "1":
+//tıkiptal
+$(this).attr('isaret',0);
+$(this).appendTo("#sinif");	
+break;	
+	}
+});//ogrenci click son	
+$.geri();
+
+//yoklama kaydet
+
+}});//ajax ve cevap
+
+});//??? sinif click				
+}});//ajax ve cevap
+}//-----sınıfların gelmesi son
+//SINIF VE ÖĞRENCİ İŞLEMLERİ İŞLEMLERİ İNDEX==1
+if(index==1){
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"siniflar":okul_id}),
+			dataType: "json",
+			success: function(cevap){
+			$('#sinifim').html(cevap.veri);
+$('.silg').click(function(){$('.y_panel').slideUp();});	
+// SINIF EKLE
+$('#s_ekle').click(function(){
+var z_kont=$('.kul').attr('zumre');	
+if(z_kont<16){
+$('.y_panel').slideDown();
+$('#kaydet_sinif').click(function(){
+var s_isim=$('#sinif_adi').val();
+if(s_isim==''){
+$.uyari('Sınıf adı olmadan kayıt yapılamaz !');
+}else{
+var o_id=$('.kul').attr('okul_id');
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"ss_isim":s_isim,
+			       "ox_id":o_id}),
+			dataType: "json",
+			success: function(cevap){
+				$.uyari(cevap.veri);
+				$('.y_panel').hide();
+				
+}});//ajax son	
+}//sınıf adi kontrol	
+});//sınıf kaydet
+}else{$.uyari('Yetkiniz Bulunmuyor...');}	
+});//sınıf ekle son			
+$.geri();	
+//SINIFI KOMPLE SİLME
+$('.sily').click(function(){
+var z_kont=$('.kul').attr('zumre');	
+if(z_kont<16){
+var sil_sinif=$(this).attr('id');	
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"sil_sinif":sil_sinif}),
+			dataType: "json",
+			success: function(cevap){
+$('.d_daire[id='+sil_sinif+']').slideUp();	
+$.uyari('Sınıf Silindi !');			
+}});//ajax ve cevap
+}else{$.uyari('Yetkiniz Bulunmuyor...');}});//sınıf sil
+
+//SINIF ÖĞRENCİLERİ GETİR	
+$('.dairey').click(function(){
+var si_isim=$(this).attr('adi');
+var getir_ogr=$(this).attr('id');		
+var sg_id=getir_ogr;
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"getir_ogr":getir_ogr}),
+			dataType: "json",
+			success: function(cevap){
+	$('.panel').hide();
+	$('#ogrenciler').html(cevap.veri).slideDown();	
+	$('#s_tabela').attr('placeholder',si_isim);
+$('.silg').click(function(){$('.y_panel').slideUp();});	
+
+//Yeni Öğrenci Ekleme
+$('#ogrenci_ekle').click(function(){	
+// HATALI $('#ogrenci_guncelle').attr('id','kaydet_ogrenci');
+var z_kont=$('.kul').attr('zumre');	
+if(z_kont<16){
+$('#ogrenci_add').slideDown();
+$('#kaydet_ogrenci').one("click",function(){
+var ogr_isim=$('#ogrenci_isim').val();
+var okul_no=$('#okul_numarasi').val();
+var tc=$('#tc').val();
+var vetel=$('#veli_telefonu').val();
+var islevsel=$('.kul').attr('islevsel');
+var veli_tel=vetel-islevsel;
+
+if(ogr_isim=='' || okul_no=='' || veli_tel<0 || tc<0){
+$.uyari('Tüm verileri girmelisiniz !');
+}else{
+
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"ogr_isim":ogr_isim,
+			       "okul_no":okul_no,
+				   "veli_tel":veli_tel,
+				    "sx_id":sg_id,
+					"tc":tc}),
+			dataType: "json",
+			success: function(cevap){
+				$.uyari(cevap.veri);
+				$('.y_panel').hide();
+var ogr_isim=$('#ogrenci_isim,#tc,#okul_numarasi,#veli_telefonu').val('');
+}});//ajax son	
+}//ogrenci veri kontrol	
+});//ogrenci kaydet
+}else{$.uyari('Yetkiniz Bulunmuyor...');}});//ogrenci ekle son
+$.sil_vt();
+//-----------------------ÖĞRENCİ BİLGİLERİNİ GÜNCELLEME
+$('.guncelle[tag="ogrenci"]').click(function(){
+var z_kont=$('.kul').attr('zumre');	
+if(z_kont<16){
+var up_id=$(this).attr('id');	
+$('#ogrenci_up').remove();
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"up_id":up_id}),
+			dataType: "json",
+			success: function(cevap){
+			$('.b_daire:last').after(cevap.veri);
+var islevsel=$('.kul').attr('islevsel');
+var telef=$('#up_veli').val();
+var telefon=parseInt(telef)+parseInt(islevsel);
+$('#up_veli').attr('value',telefon).html(telefon);		
+$('.silg').click(function(){$('.y_panel').slideUp();});	
+//GÜNCELLE.CLİCK			
+$('#ogrenci_guncelle').click(function(){
+	//change kilidi yazılmalı bence
+var up_isim=$('#up_isim').val();
+var up_okul=$('#up_okul').val();
+var up_tc=$('#up_tc').val();
+var telef=$('#up_veli').val();
+var up_veli=telef-islevsel;
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"up_isim":up_isim,
+			       "up_idx":up_id,
+			       "up_okul":up_okul,
+				   "up_veli":up_veli,
+				   "up_tc":up_tc}),
+			dataType: "json",
+			success: function(cevap){
+			
+$.uyari(cevap.veri);	
+$('.y_panel').hide();			
+}});//ajax son	
+});//ogrenci_guncelle.click son
+}});//guncelle_gelis son
+}else{$.uyari('Yetkiniz Bulunmuyor...');}	});//ögrenci güncelle son
+//sınıf adını güncelleme		
+$('#s_tabela').change(function(){	
+var yeni_isim=$('#s_tabela').val();
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"yeni_isim":yeni_isim,
+			       "sg_id":sg_id}),
+			dataType: "json",
+			success: function(cevap){
+$.uyari('Sınıf İsmi Değiştirildi !');				
+}});//ajax son
+});//Sınıf ismi değiştir
+
+$('#bigeri').click(function(){
+$('#ogrenciler').hide();
+$('.panel:eq(1)').show();	
+})//bigeri click
+}});//ajax ve cevap	
+});//dairey son	
+}});//sınıflar Ajaxı son
+
+}//index 1 son				
+
+//LİSTE OLUŞTURMA LİSTELERE MESAJ İŞLEMLERİ İNDEX==2
+if(index==2){
+var okul_id=$('.kul').attr('okul_id');
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"liste_id":okul_id}),
+			dataType: "json",
+			success: function(cevap){
+$('#liste_panel').show();
+$('#liste_div').html(cevap.veri).slideDown();	
+$.geri();	
+
+//LİSTELERE TIKLA DÜZNLE VEYA MESAJ GÖNDERMEYE BAŞLA
+$('.listey').click(function(){
+var li_id=$(this).attr('id');	
+var adi=$(this).attr('adi');
+$('#basla').attr('yoklama_id',li_id);
+$('#basla').attr('sms_tur','liste');
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"li_id":li_id}),
+			dataType: "json",
+			success: function(cevap){
+$('#liste_panel').hide();				
+$('#lis_ogr').html(cevap.veri).slideDown();
+$('#liste_ici').show();
+$('.liste[adi=li_adi]').html(adi).attr('id',li_id);
+
+//---YEREL YOKLAMA İPTALİ
+$('.iptal').click(function(){
+var index=$(this).attr('okul_no');
+//alert(index)
+$('.y_ogrenci[okul_no='+index+']').slideUp().remove();
+$.uyari('Öğrenci sms kuyruğundan çıkarıldı !');	
+});//yerel son
+
+$.panel_ac();
+$('.geri_a').click(function(){
+	 $('#liste_ici').hide();
+	 $('#liste_panel').show();
+	 $('.y_ogrenci').remove();
+	});
+}});//listey sonu		
+});//listey içerik tıkla son
+$.y_sil();
+}});//liste ajax son
+}//liste işlemleri son index2 son
+ 
+//TOPLU SMS İŞLEMLERİ
+if(index==3){
+$('#sinif_sec').show();	
+var okul_id=$('.kul').attr('okul_id');
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"toplu_id":okul_id}),
+			dataType: "json",
+			success: function(cevap){
+$('#sinif_sec').html(cevap.veri);
+$.geri();	
+
+//TOPLU SMS GÖNDERİLECEK SINIFLARI SEÇME
+$('.dairey').click(function(){
+var isaret=$(this).attr('isaret');
+switch (isaret){
+case "0":
+//ilk defa tıklama
+$(this).attr('isaret',1);
+$(this).css('border-color','#0F9');
+break;
+case "1":
+//tıklama iptal
+$(this).attr('isaret',0);
+$(this).css('border-color','#999');	
+break;	
+	}	
+});//dairey son	
+//DEVAM TIKLAMA 
+$('#devam').click(function(){
+$('#sms_panel').slideDown();
+});//devam tıklama son
+}});//ajax ve cevap		
+}//index==3 sonu
+
+
+
+
+//İŞ VE KOORDİNASYON AĞI
+if(index==4){
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"tum_okul":1}),
+			dataType: "json",
+			success: function(cevap){
+    $('#okullar').html(cevap.veri).show();
+	$.geri();
+$('.okul').click(function(){
+var okul_id=$(this).attr('id');	
+var kul_id=$('.kul').attr('id');
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"p_kullanici":okul_id,
+			       "ne_icin":1,
+				   "pers_id":kul_id}),
+			dataType: "json",
+			success: function(cevap){
+		$('#okullar').hide();		
+		$('#okul_personel').html(cevap.veri).slideDown();
+		$.ozel_mesaj2();
+$('.sil_ogr').hide();		
+$('#bigeri').click(function(){
+$('#okullar').show();
+$('#okul_personel').hide();
+
+});//birgeri		
+}});//ajax son	
+});	//ajaxkullanıcı
+}});//ajaxokullar son		
+}//index==4 sonu
+
+if(index==5){
+$('.orta').show();	
+$('.panel:eq(5)').hide();	 
+var m_alan=$('.kul').attr('okul_id');
+var m_gonderen=$('.kul').attr('id');
+$('#m_baslik').html('Okul Sohbeti');
+$('#send').attr('m_alan',m_alan);
+$('#send').attr('m_gonderen',m_gonderen);
+$('#send').attr('tur',0);
+var tur=0;
+var ofset='ilk';
+$.mesaj_getir(m_alan,m_gonderen,0,ofset,0);
+//içinde var$.mesaj_sender();
+}//==5son
+//sms sayacı
+if(index==6){
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"g_sayac":0}),
+			dataType: "json",
+			success: function(cevap){
+			$('#d_sayac').html(cevap.veri).show();
+				
+//daha fazla
+$('#o_sayac').click(function(){
+var ofset=$('.d_cer').length;
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"g_sayac":ofset}),
+			dataType: "json",
+			success: function(cevap){
+				if(cevap.hata){$.uyari(cevap.hata);}
+				if(cevap.veri){$('.d_cer:last').after(cevap.veri);	}
+			
+			
+}});//ajax		
+});//dahafazlason			
+}});//ajax	
+
+}
+if(index==7){
+//TAB FONKSİYON	
+$('.tab').click(function(){
+var tab_ac=$(this).index();
+$('.tab').css('background-color','#FFF').css('color','#3CF');	
+$(this).css('background-color','#3CF').css('color','#FFF');	
+if(tab_ac==0){$('#p_ekle').hide();	$('#p_kullanici').show();
+var okul_id=$('.kul').attr('okul_id');
+var kul_id=$('.kul').attr('id');
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"p_kullanici":okul_id,
+			       "ne_icin":0,
+				   "pers_id":kul_id}),
+			dataType: "json",
+			success: function(cevap){
+		$('#p_kullanici').html(cevap.veri);
+	$.ozel_mesaj2();
+    $.sil_vt();			
+}});//ajax son	
+}//ac==0son
+if(tab_ac==1){$('#p_ekle').show();	$('#p_kullanici').hide();}//ac==1son
+});//TAB SON	
+$('#p_kaydet').click(function(){
+var z_kont=$('.kul').attr('zumre');	
+if(z_kont<16){
+var p_adi=$('#p_adi').val();
+var p_eposta=$('#p_eposta').val();
+
+var okul_id=$('.kul').attr('okul_id');
+var p_zumre=$('#p_zumre').val();
+if(okul_id== null){$.uyari('Öncelikle Üye Olmalısınız, Personel ekleyemezsiniz');}else{
+if(p_adi=='' || p_eposta=='' || p_zumre=='0'){$.uyari('Tüm Bilgileri Doldudurun !');}else{
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/uyeol.php",
+			data:({"p_adi":p_adi,
+			       "p_eposta":p_eposta,
+				   "p_okul":okul_id,
+				   "p_zumre":p_zumre}),
+			dataType: "json",
+			success: function(cevap){
+   $.uyari(cevap.veri);
+   $.uyari(cevap.sinif);
+   $.uyari(cevap.ogrenci);
+   	
+}});//ajax son		
+}}//eksik veri üye_girisi kontrol son
+}else{$.uyari('Yetkiniz Bulunmuyor...');}});	//p_kaydetson
+}//index==7son
+//üye olma işlemleri
+if(index==10){
+$.uye_ol();
+}//üye olma son
+
+//Zümreler==9 index
+if(index==8){
+var zumre=$('.kul').attr('zumre');	
+var zumre_adi=$('option[value='+zumre+']').html();
+$('.zum_is').html(zumre_adi);
+$('.zum_is:eq(3)').html("Sistem Yöneticisi");
+//--------------ZÜMRELER
+$('.daires').click(function(){
+var zumre=$('.kul').attr('zumre');
+var name=$(this).attr('name');	
+if(name=='ilce'){var ilce=$('.kul').attr('ilce'); var zumrex=ilce+zumre; var baslik='İlçe Zümresi'; tur=2;}//ilçe_zümson
+if(name=='il'){var il=$('.kul').attr('il'); var zumrex=il+zumre; var baslik='İl Zümresi'; tur=3;}//ilson	
+if(name=='ulke'){var zumrex=zumre; var baslik='Ülke Zümresi'; tur=4}//ülke son
+if(name=='yonet'){var zumrex=1; var baslik='Sistem Yöneticisi'; tur=5;}//Sistem Yönecisi son
+
+var m_alan=zumrex;
+var m_gonderen=$('.kul').attr('id');
+$('#m_baslik').html(baslik);
+$('#send').attr('m_alan',m_alan);
+$('#send').attr('m_gonderen',m_gonderen);
+$('#send').attr('tur',tur);
+var tur=tur;
+var ofset='ilk';
+$.mesaj_getir(m_alan,m_gonderen,tur,ofset,0);
+});//daires.click
+}//zümre==9
+if(index==9){
+$.ozel_mesaj2();
+$('.kutu[name=yardim]').slideDown();
+	}
+
+});//----------------------------------------DAİRELER TIKLAMA SONU
+
+$('#kaydet').click(function(){	
+var yoklama=[];	
+var yok_ogr=$('.ogrenci[isaret=1]').length;
+
+if(yok_ogr==0){
+$.uyari('Öğrenci eklemediniz...');
+}else{
+
+var yok_isim=$('#yok_isim').val();
+//Liste kaydediyorsak id yoklama kaydediyorsak TC
+if(yok_isim!=''){	
+for(index=0;index<yok_ogr; index++){
+var id=$('.ogrenci[isaret=1]:eq('+index+')').attr('id'); yoklama.push(id); 	}
+yoklama.sort(function(a, b){return a-b});
+yoklama=yoklama.join();
+var y_tur='1';
+}else{
+for(index=0;index<yok_ogr; index++){
+var tc=$('.ogrenci[isaret=1]:eq('+index+')').attr('tc'); yoklama.push(tc); 	}
+yoklama.sort(function(a, b){return a-b});
+yoklama=yoklama.join();
+var y_tur=$('.y_tur').val();
+}
+
+
+var s_id=$(this).attr('s_id');
+var y_alan=$('.kul').attr('id');
+var ogr_id=yoklama;
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"oo_id":s_id,
+			       "ogr_id":yoklama,
+				   "yok_isim":yok_isim,
+				   "y_alan":y_alan,
+				   "y_tur":y_tur}),
+			dataType: "json",
+			success: function(cevap){
+$.uyari(cevap.veri);
+$('.y_tur').prop('selectedIndex',0);
+$('#selectelemanid option:selected').removeAttr('selected');
+$('.ogrenci[isaret=1]').remove();
+$('.listex,#yoklama').html('');	
+$('#yok_isim').val('');
+$('.panel,.alt_panel').hide();
+$('.orta').slideDown();	
+}});//ajax ve cevap	
+}//else
+});//kaydet son	
+//SİSTEM DIŞI STATİK SMS
+//-----SMS ŞİFRE SIFIRLAMA
+$('#sifirla').click(function(){
+var sifirla=$('#esifir').val();
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/uyeol.php",
+			data:({"sifirla":sifirla}),
+			dataType: "json",
+			success: function(cevap){
+$.uyari(cevap.veri);
+$('#esifir').val("");
+$("#sifirla").append('<p style="color:#FFF; margin-left:20px;">E-postanızı Kontrol Edin...</p>');
+}});//ajax ve cevap	
+})//şifre sıfırla son
+$('.marka').click(function(){location.reload();});
+    }
+
+    </script>
+<div class="uyari"></div>     
+<div class="alt_panel" id="liste">
+<select class="y_tur">
+<option selected value="0">Seç</option>
+<option value="2">Nöbetçi</option>
+<option value="3">Geç</option>
+</select>
+<input type="text" class="baslik" id="yok_isim" style="margin-left:10px;"  placeholder="Liste olarak kaydet..."/>
+
+<div class="taban">
+<div class="geri" id="geri" style="color:#F00; border-color:#F00;">Geri</div>
+<div class="onayla" id="kaydet">Kaydet</div>
+</div></div> 
+
+<div class="alt_panel" id="sms_panel">
+<div class="alt_kapat" id="alt_kapat">Kapat</div>
+<div class="u2" style="height:auto;     margin-top: 45px;">Google Play politikaları gereği sms çok özel veri kapsamındadır bu nedenle Mesaj Plus ile sms göndere bilmek için SMS Terminali içeren versiyonunu yüklemelisiniz.<hr>
+Sms Terminali tüm bu özelliklere ek sadece velilere sms göndermenizi sağlayacak.<hr>
+İstediğiniz zaman tekrar Google Play ile normal versiyona geçebilirsiniz.<hr>
+<details style="margin-top:10px;">
+    <summary style="color:#dbdc82; line-height:25px;"><a style="color:#0C9;">Sms Terminali</a> Neden Google Play'de yok ?</summary>
+    <p class="u2" style="height:auto;">Google Play sms terminali özelliğini içeren programların Tam Sms Yetkili olmasını istiyor, bu durumda programın aşırı yorulmasına neden oluyor. Öğretmenlerin veliye sms göndermek istememesi ihtimali de göz önüne alındığında Sms Terminali'nin sadece isteyen kullanıcılar tarafından yüklenmesi daha anlamlıdır.. Sonuç olarak Sms Terminalini harici olarak yüklemeniz çok daha mantıklı görünüyor.</p>
+</details>
+<img  style="border-radius:5px;" src="https://mesajplus.com/play.png" onclick="window.location='https://mesajplus.com/sms_terminali.apk'" alt="Sms Terminali İndir"/>
+
+</div>
+
+</div>         
+<div class="markabar"><div class="menu" v="0"></div>
+<div class="marka">Mesaj Plus</div></div>
+
+<div class="orta">
+      <div class="daire" style="background-image:url('');background: linear-gradient(31deg, rgba(12,26,51,1) 0%, rgba(34,193,195,1) 100%);">
+      <div class="ay"></div><div class="gun"></div>
+      <div class="d_yazi">Günlük Yoklama</div></div>
+  <div class="daire" style="background-image:url(icon/sinif.png); background-size:cover;">
+      <div class="d_yazi">Sınıflar</div></div>
+      <div class="daire" style="background-image:url(icon/islist.png); background-size:contain;">
+      <div class="d_yazi">Listeler</div></div> 
+      <div class="daire" style="background-image:url(icon/profils.png); background-size:cover;">
+      <div class="d_yazi"><p>Toplu Sms</p>  </div>
+  </div>
+      <div class="daire" style="background-image:url(icon/is.png); background-size:cover;">
+      <div class="d_yazi">İş Ağı</div></div>
+      <div class="daire" style="background-image:url(icon/okul.png);background-size:cover;">
+      <div class="msayi" id="okul_say">0</div>
+  <div class="d_yazi" >Sohbet</div></div>
+     
+  <div class="daire"  style="background-image:url(icon/syc.gif); background-size:contain;">
+      <div class="d_yazi">Sms Sayacı</div></div>
+      <div class="daire" style="background-image:url(icon/ogretmen.png); background-size:cover;">
+      <div class="d_yazi">Kullanıcılar</div>
+  </div>
+    <div class="daire" style="background-image:url(icon/zmr.png); background-size:contain;">
+     <div class="msayi" id="zumre_say">0</div>
+  <div class="d_yazi">Zümre</div></div>   
+  <div class="daire" style="background-image:url(icon/yrdm.png); background-size:contain;">
+      <div class="d_yazi">Yardım</div></div>
+    
+   <div class="daire" style="background-image:url('icon/merhabax.png'); background-size:cover;" >
+           <div class="d_yazi">Üye Ol !</div>
+  </div>
+</div>
+<div class="panel">
+<div class="yoklama">Yoklama</div>
+<div class="yatay" id="siniflar"></div>
+<div class="kutu" id="yoklama" style="display:block;"></div>
+<div class="kutu" id="sinif" style="overflow-y:scroll; height:270px;">
+</div>                             
+</div>
+<div class="panel" id="sinifim"></div>
+<div class="panel" id="liste_panel">
+<div class="liste">Listeler</div>
+<div class="kutu" id="liste_div" style="display:block; margin-top:0px;">
+<div class="taban">
+<div class="geri" id="geri" style="color:#F00; border-color:#F00;">Geri</div></div>
+</div>
+</div>
+<div class="panel">
+<div class="kutu" id="sinif_sec" style="display:block; margin-top:5px;">
+<div class="taban">
+<div class="geri" id="geri" style="color:#F00; border-color:#F00;">Geri</div></div></div>
+<div class="kutu" id="toplu_kutu" style="margin-top:5px;">
+<div class="kutu" id="kisiler" style="display:block; margin-top:5px; height:320px;"></div>
+<div class="taban">
+<div class="geri" id="s_sec_geri" style="color:#F00; border-color:#F00;">Geri</div>
+</div>
+<div class="alt_panel" id="sms_panel2" style="display:block; margin-top:5px; ">
+<div class="alt_kapat" id="alt_kapat">Kapat</div>
+<textarea rows="9"  placeholder="" id="mesaji"  class="mesaj"></textarea>
+<div class="basla" id="toplu_basla" toplam="0">Başla</div>
+</div>    
+</div>
+</div>
+<div class="panel">
+<div class="kutu" id="okullar" style="display:block; margin-top:0px;"></div>
+<div class="kutu" id="okul_personel" style="margin-top:5px;"></div>
+</div>
+<div class="panel"></div>
+<div class="panel">
+<div class="kutu" id="d_sayac" style="display:block; margin-top:0px;">
+</div>
+<div class="taban">
+<div class="geri"  style="color:#F00; border-color:#F00;">Geri</div>
+</div>
+</div>
+<div class="panel">
+<div class="tab" id="kullanicilar" style="margin-left:10%; border-bottom-left-radius:15px;">Kullanıcılar</div>
+<div class="tab" style="color:#FFF; background-color:#3CF; border-bottom-right-radius :15px;"> Ekle</div>
+<div class="kutu" style="margin-top:0px;" id="p_kullanici"></div> 
+<div class="kutu" style="margin-top:0px; display:block;" id="p_ekle">
+<input type="text" class="metin" placeholder="Personel Adı" id="p_adi" />
+<select class="metin" style="height:38px;" id="p_zumre">
+<option selected value="0">Zümresiz</option>
+<option value="1">Anaokulu Müdür</option>
+<option value="2">İlkokul Müdür</option>
+<option value="3">Ortaokul Müdür</option>
+<option value="4">Anadolu Lisesi Müdür</option>
+<option value="5">MTAL Müdür</option>
+<option value="6">MTAL Müdür Yard</option>
+<option value="7">Anadolu Müdür Yard</option>
+<option value="8">Anaokulu Müdür Yard</option>
+<option value="9">İlkokul Müdür Yard</option>
+<option value="10">Ortaokul Müdür Yard</option>
+<option value="11">İHL Müdür</option>
+<option value="12">İHL Müdür Yard</option>
+
+<option value="16">Sağlık Hizmetleri</option>
+<option value="17">Türk Dili ve Edebiyatı</option>
+<option value="18">Fizik</option>
+<option value="19">Kimya</option>
+<option value="20">Biyoloji</option>
+<option value="21">Matematik</option>
+<option value="22">Tarih</option>
+<option value="23">Felsefe</option>
+<option value="24">Beden Eğitimi</option>
+<option value="25">Müzik</option>
+<option value="26">Resim</option>
+<option value="27">Coğrafya</option>
+<option value="28">Din Kültürü</option>
+<option value="29">Diğer Öğretmen</option>
+<option value="13">Diğer İdareci</option>
+</select>
+<input type="text" class="metin" placeholder="E-posta" id="p_eposta" />
+<div class="basla" id="p_kaydet">Kaydet</div>
+<p style="color:#F00; font-family:sans-serif; font-size:14px; padding-top:10px;">Şifre e-postaya gelecektir.</p>
+</div>
+<div class="taban">
+<div class="geri" id="geri" style="color:#F00; border-color:#F00;">Geri</div></div>
+</div>
+<div class="panel"><div class="baslik">Zümreler</div>
+<div class="d_daire"><div class="msayi" id="ilce_say">0</div><div class="daires" name="ilce" style="background-image:url(icon/ogretmen.png);"><div class="d_yazis" style="color:#085b70; margin-top: 92px;">İlçe Zümresi</div><div class="zum_is"></div></div></div>
+
+<div class="d_daire"><div class="msayi" id="il_say">0</div><div class="daires" name="il" style="background-image:url(icon/ogretmen.png);"><div class="d_yazis" style="color:#085b70;  margin-top: 92px;">İl Zümresi</div><div class="zum_is"></div></div></div>
+
+<div class="d_daire"><div class="msayi" id="ulke_say">0</div><div class="daires" name="ulke" style="background-image:url(icon/ogretmen.png);"><div class="d_yazis" style="color:#085b70;  margin-top: 92px;">Ülke Geneli</div><div class="zum_is"></div></div></div>
+
+
+<div class="d_daire"><div class="msayi" id="yonet">0</div><div class="daires" name="yonet" style="background-image:url(icon/ogretmen.png);"><div class="d_yazis" style="color:#085b70;  margin-top: 92px;"></div><div class="zum_is" style=" margin-top:-40px; padding-top:5px; height: 27px;"></div></div></div>
+
+<div class="taban">
+<div class="geri"  style="color:#F00; border-color:#F00;">Geri</div>
+</div>
+</div>
+<div class="panel">
+<div class="kutu" name="yardim" style="display:block; margin-top:0px; height:100%; padding-bottom:35px;">
+<div class="baslik">Yardım</div>
+  <img class="kullanici" placeholder="Sistem Yöneticisi" id="1" m_alan="1" src="https://mesajplus.com/resim/buyuk/b4v95.jpg"  alt="Adem Çalhan" height="auto" style="margin-left:5%; margin-top:25px; box-shadow: 0 0 5px 2px #3F9; border-radius:5px; float:left; margin-right:10px; width:90px; height:auto;">
+  <p class="aciklama"><a style="color:#0C9;">Mesaj Plus</a> uygulaması öncelikle okullarda anlık ve ücretsiz sms göndermek amacıyla kuruldu. Gelişmiş  özellikleri ve maliyetinin rakiplerine göre neredeyse sıfır olması <a style="color:#0C9;">Mesaj Plus</a> uygulamasının tüm sektörlerde çalışabileceği fikrini doğurdu. Birden fazla sektörün iş birliği içinde ortak çalışabilmesi ayrıca zümreler oluşturmasıyla <a style="color:#0C9;">Mesaj Plus</a> bir sms programından çok daha fazlası oldu.<a style="color:#0C9;"> MP Terminali</a>'nin de programa entegre edilmesiyle artık sınıfta kolayca alınan yoklama analiz ve sentez yapabilen program zekası sayesinde eokula aktarılabilir hale geldi. </p>
+<details style="margin-top:10px;">
+    <summary style="color:#dbdc82; line-height:25px;">Üyelikten sonra yapmam gereken işlem var mı ?</summary>
+    <p class="u2" style="height:auto;">En önemli nokta telefonunuzun ayarlar menüsünden <a style="color:#0C9;">Mesaj Plus</a> uygulamasına girip izinler kısmındaki izinleri  açmanız gereklidir. Android işletim sistemi uygulamaların sms göndermesine (2019 Yenilenen Protokol Kuralları) sadece bu şekilde izin verir.En kısa sürede Sistem Yöneticisi sizinle iletişim kurup tam kurulum işlemleri için çalışmaya başlayacaktır. Bu sırada siz sistemi denemek için öğrenci ve personel ekleyerek sms gönderebilirsiniz.</p>
+</details>
+
+<details style="margin-top:10px;" style="margin-top:10px;">
+<summary style="color:#dbdc82; line-height:25px;">Sms gönderirken sürekli hata alıyorum.</summary>
+  <p class="u2" style="height:auto;">Öncelikle sistem yöneticisi ile iletişime geçin, şimdilik sizin yapabileceğiniz telefonunuzun ayarlar menüsünden <a style="color:#0C9;">Mesaj Plus</a> uygulamasına girip sms izni verilmiş mi kontorol etmek ve telefonunuzda sms kalmış mı kontrol etmek olabilir.</p>
+</details>
+
+<details style="margin-top:10px;">
+    <summary style="color:#dbdc82; line-height:25px;"><a style="color:#0C9;">Mesaj Plus </a> nasıl ücretsiz çalışabiliyor ?</summary>
+    <p class="u2" style="height:auto;"><a style="color:#0C9;">Mesaj Plus</a> çalıştığı telefonun smslerini kullanır. Bu sayede birden fazla telefondan sınırsız ve ücretsiz sms gönderirsiniz.</p>
+</details>
+<details style="margin-top:10px;">
+    <summary style="color:#dbdc82; line-height:25px;">Güvenlik 1.0 Sistemi ne işe yarar ?</summary>
+    <p class="u2" style="height:auto;">Güvenlik 1.0 kullanıcı ve müşteri telefon numaralarını çalınmaya karşı koruyan sistemindir. Veritabanına eklenen her telefonu benzersiz şekilde uçtan uca şifreleyerek numaralar çalınsa dahi kullanılamaz rastagele sayılar halde olmasını sağlar.</p>
+</details>
+
+<details style="margin-top:10px;">
+    <summary style="color:#dbdc82; line-height:25px;">Telefon numaramı veli görebilir mi?</summary>
+    <p class="u2" style="height:auto;">Öğretmenler yoklama alırken ve sistem üzerinden mesajlaşırken hiçbir şekilde telefon numarası görünmez. Yoklama ve bilgilendirme smsleri okul hattından veliye gönderilmelidir çünkü bu numara veli tarafından görülür.</p>
+</details>  
+
+<details style="margin-top:10px;">
+    <summary style="color:#dbdc82; line-height:25px;">İş ve Koordinasyon ağından mesaj attığımda numaram görünür mü ?</summary>
+    <p class="u2" style="height:auto;">Sistem üzerinden yapılan hiçbir mesajlaşmada karşı taraf telefon numaranızı göremez. Ayrıca Zümre alanının temel amacı aslında budur; telefon numarasına gerek kalmadan iletişim ortamı oluşturmak.</p>
+</details> 
+  
+<details style="margin-top:10px;">
+<summary style="color:#dbdc82; line-height:25px;">Şifremi unuttum ne yapmalıyım ?</summary>
+  <p class="u2" style="height:auto;">Sol panelden şifremi unuttum alanından şifrenizi yenileyebilirsiniz. Yeni şifreyi size sms ile kendi numaranız gönderecektir.</p>
+</details>
+  
+<details style="margin-top:10px;">
+<summary style="color:#dbdc82; line-height:25px;">Smsde Kırmızı ve Yeşil renk öğrenci ne anlama geliyor ?</summary>
+  <p class="u2" style="height:auto;">Kırmızı renk mesajın gönderilemediği Yeşil renk ise başarılı bir şekilde gönderildiği anlamına gelir.</p>
+</details>
+
+<details style="margin-top:10px;">
+<summary style="color:#dbdc82; line-height:25px;">Listeler nasıl kullanılır ?</summary>
+<div class="u2" style="height:auto;">Öğrencileri ödüllendirme veya yakın takip için listeler oluşturun.
+<hr>
+Günlük yoklama alanında öğrencileri seçmeden liste ismi oluşturarak kendi gruplarınızı kurabilirsiniz. 
+<hr>
+Örnek: Sabah Geç Gelenler listesi oluşturduğunuzda hem öğrenci yok yazılmaz hem de veliye geç geldiği bildirilebilir.
+<hr>
+Dikkat etmeniz gereken nokta yoklama türü olarak Nöbetçi veya Geç seçilirse bu otomatik eokula aktarılır, listeler ise eokula aktarılmaz.
+<hr>
+Listeleri okuldaki tüm öğretmenler görebilir.
+<hr>
+Müdür yardımcısı veya siz  listelere sms gönderebilirsiniz.
+</div> 
+</details>
+
+<details style="margin-top:10px;">
+<summary style="color:#dbdc82; line-height:25px;">Sms Gönderirken Lütfen Dikkat !</summary>
+  <p class="u2" style="height:auto;">Toplu sms göndermeden önce mutlaka yeterli sms hakkınız olduğundan emin olun çünkü sistem sms hakkınız bittikten sonra operatörün belirlediği ücret üzerinden kalan smsleri göndermeye devam edecektir.</p>
+</details>
+
+</div>
+<div class="taban">
+<div class="geri" id="geri" style="color:#F00; border-color:#F00;">Geri</div></div>
+</div>
+
+<div class="panel">
+<div class="kutu" style="display:block; margin-top:0px; height:auto;">
+<div class="baslik">Hemen Başlayalım ...</div>
+<input type="text" class="metin" placeholder="Okul Adı" id="k_okul" />
+<input type="text" class="metin" placeholder="Ad Soyad" id="k_kul" />
+<input type="number" class="metin" placeholder="Telefon" id="k_tel" />
+<input type="text" class="metin" placeholder="E-posta" id="k_eposta" />
+<div class="basla" id="uye_ol">Üye Ol !</div>
+<div class="u2" style="height:auto;">
+Şifre e-postaya gönderilecek.<hr>
+Sistemi tanımanız için yapılan ön üyeliktir.<hr><p>Deneme amaçlı öğretmen, öğrenci eklendi.</p>
+<p><strong>Sistem Yöneticisi</strong> tüm öğrencilerinizi otomatik olarak e-okuldan ekleyecektir.</p><hr>
+<p>Zümre alanı deneme modunda herkesi Adana Zümresi olarak kabul eder.</p>
+</div>
+</div>
+<div class="taban">
+<div class="geri" id="geri" style="color:#F00; border-color:#F00;">Geri</div></div>
+</div>
+<div class="sol_panel">
+<div class="ut">
+<div class="ust">
+<div class="uye_ol_div">Üye Ol !</div>
+<p style="color:#FFF;">Hemen üye olup sistemin nasıl çalıştığını görebilirsin.</p> <p style="color:#FFF;">Okullar üye olur, öğretmenler personel olarak eklenir.</p><p style="color:#FFF;"> Sonrasıda Tam kurulum için sizinle iletişime geçeriz...</p>
+</div>
+<div class="kapa" style="height: 70px; float: left; display: none; 	position: absolute;	margin-top:50px;" id="dv_ekle">
+<form id="profilx" action="https://mesajplus.com/profil.php" method="post" enctype="multipart/form-data">
+      <input type="file" name="dosya" class="buton">
+      <input type="text" style="display:none;" value="Fear" name="p_img" id="p_img">
+      <input type="text" style="display:none;" value="Fear" name="kul_id" id="profil_id">
+      <input type="submit" style="height:33px; width:25%;  box-shadow: 0 0 5px 2px white;" class="buton" value="Yükle">
+ </form>
+<div class="ic_kapat">İptal</div>
+</div>
+</div>
+<div class="ut">
+        <input type="text" class="metin" placeholder="E-posta" id='g_tel'>
+        <input type="password" class="metin" placeholder="Şifre" id='g_sifre'>
+        <div class="basla" id="giris">Giriş</div>
+</div>
+<div class="ut" name="g_kutusu"></div>
+<div class="ut" style="background-color:#115d20;">
+<div class="kutu" style="display:block;margin-top:-10px;   height:98%;">
+<div class="baslik" style="margin-top:0px;">Etkileşimli tahta için kod oluşturun </div>
+<div class="scode" id="scode">------</div>
+<div style="width:100%; height:50px; margin-top:15px;">
+<div class="s_sure" durum="1" style="background-color:#09F; color:#FFF;" value="0">Tek Sefer</div>
+<div class="s_sure" style="width:20%;" durum="0" value="H">1 Saat</div>
+<div class="s_sure" style="width:20%;" durum="0" value="z">1 Gün</div>
+<div class="s_sure" durum="0" value="W">1 Hafta</div> 
+</div>
+<div class="basla" id="k_scode">Tamam</div>
+<div class="kutu" id="ascode" style="display:block; margin-top:10px; height:100%; border-top:solid 1px #FFF;">
+<div class="baslik" style="margin-top:0px;">Aktif SCode</div>
+</div>
+</div>
+</div>
+<div class="ut">
+
+<input type="text" class="metin" placeholder="E-postanızı yazın..." id='esifir'>
+        <div class="basla" id="sifirla">Yeni Şifre </div>
+        
+       
+</div>
+<div class="ut">
+<div class="baslik">Sms Terminal İzinleri</div>
+<div class="dikkat" name="d_term1" style="display:block;"><label>Birinci adım, yenilenen <a style="color:#0F0">Android Gizlilik Kuralları</a> gereği Mesaj Plus uygulamasına <a style="color:#0F0">Sms Gönderme İzni</a> vermeniz gerekir. Şimdi butona tıklayıp gelen uyarıda <a style="color:#0F0">Var</a>'a dokunun. </label>
+<div class="evet"  name="terminal1">1. Adım </div>
+</div>
+
+<div class="dikkat" name="d_term2">İkinci adım, Mesaj Plus <a style="color:#0F0">Varsayılan Sms Uygulaması</a> özelliğini iptal etmeliyiz. Çünkü  Mesaj Plus'ın sms okumak gibi bir amacı yoktur. Butona dokunum tekrar <a style="color:#0F0">Mesajlar</a> uygulamasını seçin. Bu adımı mutlaka tamamlamalısınız, aksi taktirde size gelen smsleri göremezsiniz !
+<div class="evet"  name="terminal2" style="margin-top:50px;">2. Adım</div>
+</div>
+<div class="dikkat" name="d_term3">Tebrikler herşey yolunda artık <a style="color:#0F0">Mesaj Plus</a> ile sms gönderebilirsiniz.İşlemin bu kadar uzun olmasının nedeni smslerinizi okumamak için gösterdiğimiz garettir. Bu sayede smsleriniz sizin, mutlu kullanıcılar ise bizim oluyor ✔</div>
+</div>
+<div class="alti" id="style-3">
+<div class="uzun2" style="width:690px;">
+<div class="ux" style="color:cyan; width:90px; border-color:cyan;">Hesabım</div>
+<div class="ux" style="width:90px;">Giriş Yap</div>
+<div class="ux" style="width:120px;"  id="g_box">Gelen Kutusu</div>
+<div class="ux" style="width:120px;" name="scode">SCode</div>
+<div class="ux" style="width:120px;">Şifremi Unuttum</div>
+
+
+
+</div>
+</div>
+</div><div class="tam_panel" id="ogrenciler"></div>
+<div class="tam_panel" id="liste_ici">
+<div class="liste" id="li_adi" adi="li_adi">Liste Adı</div>
+<div class="kutu" id="lis_ogr" style="overflow-y:scroll; margin-top:0px;">
+<div class="u2" style="height:auto;">Öğrencileri ödüllendirme veya yakın takip için listeler oluşturun.
+<hr>
+Örnek: Sabah geç gelenler listesi oluşturduğunuzda hem öğrenci yok yazılmaz hemde veliye geç geldiği bildirilebilir.
+<hr>
+Listeleri okuldaki tüm öğretmenler görebilir.
+<hr>
+Müdür yardımcısı listelere sms gönderebilir.
+</div>
+</div> 
+<div class="taban">
+<div class="geri_a"  style="color:#F00; border-color:#F00;">Geri</div>
+<div class="onayla" id="gonder" >Gönder</div>
+</div>
+
+</div>
+<div class="yayiny">
+<div class="kapa" id="style-3" style="height:auto;" name="fotograf"></div>
+<p  style="color:#FFFFFF; font-family:Verdana; font-size:10px; text-align:center;">Telefonu yatay konumda kullanabilirsiniz</p>
+<div class="ic_kapat" style="margin-top:5px;" id="yayiny_kapat">Kapat</div></div>
+
+<div class="yan_menu" value="kapali">
+<div class="baslik" id="m_baslik"></div>
+<div class="m_div" id="mesaj"></div>
+
+</div>
+</body>
+</html>
