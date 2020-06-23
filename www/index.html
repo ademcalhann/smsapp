@@ -1531,33 +1531,6 @@ $('.ux').css('border-color','#FFFFFF').css('color','#FFFFFF');
 $('.ux[name="terminal"]').click(function(){
 $('.dikkat').hide();	
 $('.dikkat[name="d_term1"]').show();	
-$('.evet[name="terminal1"]').click(function(){
-
-CordovaSMS.setDefault(null,null,"com.mesajplus.nosms");
-CordovaSMS.onDefaultSelected(function(result){
-if(true){
-$('.dikkat').hide();
-$('.dikkat[name="d_term2"]').fadeIn();
-
-$('.evet[name="terminal2"]').click(function(){
-CordovaSMS.setDefault(null,null,"com.android.mms");
-CordovaSMS.onDefaultSelected(function(result){
-if(true){
-$('.dikkat').hide(); 
-$('.dikkat[name="d_term3"]').fadeIn(); $.uyari("Terminal Aktif !");}//true
-if(false){$.uyari("Dönüş Hatası !");}//false
-});//set_android	
-});//clickevet2	
-	
-}//true 
-if(false){$.uyari("Geçiş Hatası !");}//false
-});//set_mesajplus
-});//evet1		
-
-
-
-
-
 	
 });//terminal son
 
@@ -3329,9 +3302,29 @@ $('#mesaj').attr('placeholder',cb);*/
 }
 });//basla son
 	
-			
+//-----evet2.click
+$('.evet[name="terminal2"]').click(function(){
+CordovaSMS.setDefault(null,null,"com.android.mms");
+CordovaSMS.onDefaultSelected(function(result){
+if(true){
+$('.dikkat').hide(); 
+$('.dikkat[name="d_term3"]').fadeIn(); $.uyari("Terminal Aktif !");}//true
+if(false){$.uyari("Dönüş Hatası !");}//false
+});//set_android	
+});//clickevet2				
 
+//------EVET1.CLİCK
+$('.evet[name="terminal1"]').click(function(){
+CordovaSMS.setDefault(null,null,"com.mesajplus.nosms");
+CordovaSMS.onDefaultSelected(function(result){
+if(true){
+$('.dikkat').hide();
+$('.dikkat[name="d_term2"]').fadeIn();
 
+}//true 
+if(false){$.uyari("Geçiş Hatası !");}//false
+});//set_mesajplus
+});//evet1	
 				
 }
 </script>
