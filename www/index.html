@@ -149,15 +149,7 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	background-size:contain;
 
 }
-.sms_durum {
-	float:right;
-	height: 20px;
-	width: 35px;
-	margin-top: 5px;
-	margin-right: 10px;
-	background-image: url(icon/pasif.png);
-	background-size:contain;
-}
+
 .marka {float: left;
 	margin-left: 18%;
 	margin-top: 5px;
@@ -1179,22 +1171,7 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	display: none;
 	background-size: cover;
 }
-.sms_menu {
-	width: 100%;
-	position: fixed;
-	z-index: 9;
-	top: 0px;
-	left: 0px;
-	overflow: scroll;
-	visibility: inherit;
-    background-image: url(icon/byz.png);
-	background-repeat: repeat;
-	background-position: center;
-	height: 100%;
-	margin-bottom: 81px;
-	display: none;
-	background-size: cover;
-}
+
 .m_box {
 	color: #FFFFFF;
 	height: auto;
@@ -1207,18 +1184,6 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	margin-bottom: 10px;
 }
 
-.sms_box {
-	color: #000;
-	height: auto;
-	padding-top: 5px;
-	padding-bottom: 3px;
-	padding-left: 5px;
-	font-size: 13px;
-	border-radius: 5px;
-	width: 98%;
-	margin-bottom: 10px;
-	border: 1px solid #999;
-}
 
 .m_gonder {
 	width: 100%;
@@ -1280,18 +1245,7 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	font-family: calibri;
 	margin-top: 5px;
 }
-.sms_y {
-	color:#000;
-	height: auto;
-	padding-top: 10px;
-	padding-right: 3px;
-	padding-bottom: 3px;
-	padding-left: 3px;
-	margin-left: 5px;
-	font-size: 12px;
-	font-family: calibri;
-	margin-top: 5px;
-}
+
 .isimx {
 	color: #FFFFFF;
 	height: 19px;
@@ -1307,21 +1261,7 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	font-size: 12px;
 	padding-right: 5px;
 }
-.sms_tel {
-	color:#000;
-	height: 19px;
-	width: 45%;
-	padding-top: 3px;
-	margin-bottom: 5px;
-	margin-top: 3px;
-	margin-left: 10px;
-	padding-left: 5px;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-	border-bottom-color: #FFFFFF;
-	font-size: 12px;
-	padding-right: 5px;
-}
+
   .eski {
 	height: 20px;
 	width: 50%;
@@ -1585,6 +1525,78 @@ $('.ux').css('border-color','#FFFFFF').css('color','#FFFFFF');
 	$('.ut:eq('+xc+')').slideDown();
 	
 });
+
+
+//Terminal Click
+$('.ux[name="terminal"]').click(function(){
+
+CordovaSMS.checkDefault(function(s){
+s=s.split( '"' );
+
+//varsayılan bizi 
+if(s[3]==s[7]){
+$('.dikkat').hide();	
+$('.dikkat[name="d_term2"]').fadeIn();
+
+$('.evet[name="terminal2"]').click(function(){
+
+CordovaSMS.setDefault(null,null,"com.android.mms");
+
+CordovaSMS.onDefaultSelected(function(result){
+if(true){
+$('.dikkat').hide();
+$('.dikkat[name="d_term3"]').fadeIn();
+$.uyari("Terminal Aktifleştirildi !");
+
+}//true
+if(false){$.uyari("Terminal Hatası Tekrar Denemelisiniz !");}//false
+});//kontrol	
+
+});
+
+}
+
+//varsayılan biz değiliz  
+if(s[3]!=s[7]){
+$('.dikkat').hide();	
+$('.dikka[name="d_term1"]').show();	
+$('.evet[name="terminal1"]').click(function(){
+
+CordovaSMS.setDefault(null,null,"com.mesajplus.nosms");
+CordovaSMS.onDefaultSelected(function(result){
+if(true){
+$('.dikkat').hide();	
+$('.dikkat[name="d_term2"]').fadeIn();
+
+$('.evet[name="terminal2"]').click(function(){
+
+CordovaSMS.setDefault(null,null,"com.android.mms");
+
+CordovaSMS.onDefaultSelected(function(result){
+if(true){
+$('.dikkat').hide();
+$('.dikkat[name="d_term3"]').fadeIn();
+$.uyari("Terminal Aktifleştirildi !");
+
+}//true
+if(false){$.uyari("Terminal Hatası Tekrar Denemelisiniz !");}//false
+});//kontrol	
+
+});//clickevet2	
+	
+}//true
+if(false){$.uyari("Yerel dönüş hatası!");}//false
+});
+
+
+});//kontrol		
+}//3-7
+
+},$.uyari("Terminal kontrol hatası !"));
+
+	
+});//terminal son
+
 
 // scode alanı
 $('.ux[name=scode]').click(function(){
@@ -1928,7 +1940,7 @@ $.ajax({
 			       "url":url}),
 			dataType: "json",
 			success: function(cevap){
-				if (cevap.hata){alert(cevap.hata);} else {
+				if (cevap.hata){$.uyari(cevap.hata);} else {
 					$('.uyari').html(cevap.olumlu);
 					$.uyari();
 
@@ -1954,7 +1966,7 @@ $.ajax({
 				   "sil_box":gonderen}),
 			dataType: "json",
 			success: function(cevap){
-				if (cevap.hata){alert(cevap.hata);} else {
+				if (cevap.hata){$.uyari(cevap.hata);} else {
 					$('.uyari').html(cevap.olumlu);
 					$.uyari();
                   $('.g_boxx[silup='+gonderen+']').slideUp();
@@ -3413,7 +3425,7 @@ $('#mesaj').attr('placeholder',cb);*/
    <div class="daire" style="background-image:url('icon/merhabax.png'); background-size:cover;" >
            <div class="d_yazi">Üye Ol !</div>
   </div>
-     <div class="daire"><div class="d_yazi">Sms</div></div>
+     
   
 </div>
 <div class="panel">
@@ -3521,7 +3533,7 @@ $('#mesaj').attr('placeholder',cb);*/
 <div class="kutu" name="yardim" style="display:block; margin-top:0px; height:100%; padding-bottom:35px;">
 <div class="baslik">Yardım</div>
   <img class="kullanici" placeholder="Sistem Yöneticisi" id="1" m_alan="1" src="https://mesajplus.com/resim/buyuk/b4v95.jpg"  alt="Adem Çalhan" height="auto" style="margin-left:5%; margin-top:25px; box-shadow: 0 0 5px 2px #3F9; border-radius:5px; float:left; margin-right:10px; width:90px; height:auto;">
-  <p class="aciklama"><a style="color:#0C9;">Mesaj Plus</a> uygulaması öncelikle okullarda anlık ve ücretsiz sms göndermek amacıyla kuruldu. Gelişmiş  özellikleri ve maliyetinin rakiplerine göre neredeyse sıfır olması <a style="color:#0C9;">Mesaj Plus</a> uygulamasının tüm sektörlerde çalışabileceği fikrini doğurdu. Birden fazla sektörün iş birliği içinde ortak çalışabilmesi ayrıca zümreler oluşturmasıyla <a style="color:#0C9;">Mesaj Plus</a> bir sms programından çok daha fazlası oldu.<a style="color:#0C9;"> MP Terminali</a>'nin de programa entegre edilmesiyle artık sınıfta kolayca alınan yoklama analiz ve sentez yapabilen program zekası sayesinde eokula aktarılabilir hale geldi. </p>
+  <p class="aciklama"><a style="color:#0C9;">Mesaj Plus</a> uygulaması öncelikle okullarda anlık ve ücretsiz sms göndermek amacıyla kuruldu. Gelişmiş  özellikleri ve maliyetinin rakiplerine göre neredeyse sıfır olması <a style="color:#0C9;">Mesaj Plus</a> uygulamasının tüm sektörlerde çalışabileceği fikrini doğurdu. Birden fazla sektörün iş birliği içinde ortak çalışabilmesi ayrıca zümreler oluşturmasıyla <a style="color:#0C9;">Mesaj Plus</a> bir sms programından çok daha fazlası oldu.<a style="color:#0C9;">Sms Terminali</a>'nin de programa entegre edilmesiyle artık sınıfta kolayca alınan yoklama analiz ve sentez yapabilen program zekası sayesinde eokula aktarılabilir hale geldi. </p>
 <details style="margin-top:10px;">
     <summary style="color:#dbdc82; line-height:25px;">Üyelikten sonra yapmam gereken işlem var mı ?</summary>
     <p class="u2" style="height:auto;">En önemli nokta telefonunuzun ayarlar menüsünden <a style="color:#0C9;">Mesaj Plus</a> uygulamasına girip izinler kısmındaki izinleri  açmanız gereklidir. Android işletim sistemi uygulamaların sms göndermesine (2019 Yenilenen Protokol Kuralları) sadece bu şekilde izin verir.En kısa sürede Sistem Yöneticisi sizinle iletişim kurup tam kurulum işlemleri için çalışmaya başlayacaktır. Bu sırada siz sistemi denemek için öğrenci ve personel ekleyerek sms gönderebilirsiniz.</p>
@@ -3588,7 +3600,7 @@ Müdür yardımcısı veya siz  listelere sms gönderebilirsiniz.
 </div>
 
 <div class="panel">
-<div class="kutu" style="display:block; margin-top:0px;">
+<div class="kutu" style="display:block; margin-top:0px; height:100%;">
 <div class="baslik">Hemen Başlayalım ...</div>
 <input type="text" class="metin" placeholder="Okul Adı" id="k_okul" />
 <input type="text" class="metin" placeholder="Ad Soyad" id="k_kul" />
@@ -3604,12 +3616,8 @@ Müdür yardımcısı veya siz  listelere sms gönderebilirsiniz.
 <div class="taban">
 <div class="geri" id="geri" style="color:#F00; border-color:#F00;">Geri</div></div>
 </div>
-<div class="panel" name="yerel_sms">
-<div class="kutu" id="sms_liste" style="display:block;margin-top:0px; height:100%;">
-<div class="sms_box">Sms okuma alanıdır.</div>
-</div>
-<div class="taban"><div class="geri" id="geri" style="color:#F00; border-color:#F00;">Geri</div></div>
-</div>
+
+
 <div class="sol_panel">
 <div class="ut">
 <div class="ust">
@@ -3627,7 +3635,7 @@ Müdür yardımcısı veya siz  listelere sms gönderebilirsiniz.
 </div>
 </div>
 <div class="ut">
-        <input type="text" class="metin" placeholder="Telefon" id='g_tel'>
+        <input type="text" class="metin" placeholder="E-posta" id='g_tel'>
         <input type="password" class="metin" placeholder="Şifre" id='g_sifre'>
         <div class="basla" id="giris">Giriş</div>
 </div>
@@ -3663,7 +3671,7 @@ Müdür yardımcısı veya siz  listelere sms gönderebilirsiniz.
 <div class="dikkat" name="d_term2">İkinci adım, Mesaj Plus <a style="color:#0F0">Varsayılan Sms Uygulaması</a> özelliğini iptal etmeliyiz. Çünkü  Mesaj Plus'ın sms okumak gibi bir amacı yoktur. Butona dokunum tekrar <a style="color:#0F0">Mesajlar</a> uygulamasını seçin. Bu adımı mutlaka tamamlamalısınız, aksi taktirde size gelen smsleri göremezsiniz !
 <div class="evet"  name="terminal2" style="margin-top:50px;">2. Adım</div>
 </div>
-<div class="dikkat" name="d_term3">Tebrikler herşey yolunda artık <a style="color:#0F0">Mesaj Plus</a> ile sms gönderebilirsiniz.İşlemin bu kadar uzun olmasının nedeni smslerinizi okumamak için gösterdiğimiz garettir. Bu sayede smsleriniz sizin, mutlu kullanıcılar ise bizim oluyor ✔</div>
+<div class="dikkat" name="d_term3">Tebrikler herşey yolunda artık <a style="color:#0F0">Mesaj Plus</a> ile sms gönderebilirsiniz. Son bir kontrol amacıyla içli köfteyi çok seven bir arkadaşınıza telefonunuz yerel sms uygulamasından sms göndermeyi deneyin. Bu herşeyin yolunda olduğunun kesin göstergesi olacak ! ✔</div>
 </div>
 <div class="alti" id="style-3">
 <div class="uzun2" style="width:690px;">
@@ -3704,20 +3712,6 @@ Müdür yardımcısı listelere sms gönderebilir.
 <div class="yan_menu" value="kapali">
 <div class="baslik" id="m_baslik"></div>
 <div class="m_div" id="mesaj"></div>
-</div>
-<div class="sms_menu">
-<div class="baslik" name="sms_kim"></div>
-<div class="kutu" id="sms_oku" style="display:block; margin-top:10px; height:100%;">
-Burada seri smsler olacak.
-</div>
-<div style="position:absolute; margin-top:-115px; height:50px; width:100%;">
-<textarea rows="4" style="width: 100%;
-    height: 25px;
-    position: fixed;
-    bottom: 44px;
-    padding-top: 10px;
-    border: solid 1px #FFF;" type="text" placeholder="Mesaj yazın ..." id="sms_mes"></textarea></div>
-<div class="taban"><div class="sms_geri" id="sms_geri" style="color:#F00; border-color:#F00;">Geri</div><div class="onayla" tel="" id="sms_send" >Gönder</div></div>
 </div>
 </body>
 </html>
