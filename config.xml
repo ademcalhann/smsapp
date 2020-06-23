@@ -18,7 +18,9 @@
     <plugin name="cordova-plugin-network-information" source="npm" spec="~1.2.0" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
 	<plugin spec="https://github.com/rampicos/Cordova-SMS-Plugin" source="git" />
-	<gap:plugin name="cordova-plugin-sms" source="npm" />
+	<plugin spec="https://github.com/floatinghotpot/cordova-plugin-sms.git" source="git" />
+
+	
 	
 
 	<access origin="*" />
