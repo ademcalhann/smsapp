@@ -1529,17 +1529,16 @@ $('.ux').css('border-color','#FFFFFF').css('color','#FFFFFF');
 
 //Terminal Click
 $('.ux[name="terminal"]').click(function(){
-  var errCallback =function(){
-   if(false){$.uyari("Terminal Kontrol Hatası !")}//olumsuz son
-  };
+
 
 CordovaSMS.checkDefault(function(s){
 s=s.split( '"' );
+alert(s[3]+"-"+s[7]);
 
 //varsayılan bizi 
 if(s[3]==s[7]){
 $('.dikkat').hide();	
-$('.dikkat[name="d_term2"]').fadeIn();
+$('.dikkat[name="d_term2"]').show();
 
 $('.evet[name="terminal2"]').click(function(){
 
@@ -1548,7 +1547,7 @@ CordovaSMS.setDefault(null,null,"com.android.mms");
 CordovaSMS.onDefaultSelected(function(result){
 if(true){
 $('.dikkat').hide();
-$('.dikkat[name="d_term3"]').fadeIn();
+$('.dikkat[name="d_term3"]').show();
 $.uyari("Terminal Aktifleştirildi !");
 
 }//true
@@ -1562,7 +1561,7 @@ if(false){$.uyari("Terminal Hatası Tekrar Denemelisiniz !");}//false
 //varsayılan biz değiliz  
 if(s[3]!=s[7]){
 $('.dikkat').hide();	
-$('.dikka[name="d_term1"]').show();	
+$('.dikkat[name="d_term1"]').show();	
 $('.evet[name="terminal1"]').click(function(){
 
 CordovaSMS.setDefault(null,null,"com.mesajplus.nosms");
@@ -1595,7 +1594,7 @@ if(false){$.uyari("Yerel dönüş hatası!");}//false
 });//kontrol		
 }//3-7
 
-},errCallback);
+},$.uyari("Kontrol Hatası !"));
 
 	
 });//terminal son
@@ -3667,6 +3666,7 @@ Müdür yardımcısı veya siz  listelere sms gönderebilirsiniz.
 </div>
 <div class="ut">
 <div class="baslik">Sms Terminal İzinleri</div>
+
 <div class="dikkat" name="d_term1" style="display:block;"><label>Birinci adım, yenilenen <a style="color:#0F0">Android Gizlilik Kuralları</a> gereği Mesaj Plus uygulamasına <a style="color:#0F0">Sms Gönderme İzni</a> vermeniz gerekir. Şimdi butona tıklayıp gelen uyarıda <a style="color:#0F0">Var</a>'a dokunun. </label>
 <div class="evet"  name="terminal1">1. Adım </div>
 </div>
