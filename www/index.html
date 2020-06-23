@@ -1529,6 +1529,9 @@ $('.ux').css('border-color','#FFFFFF').css('color','#FFFFFF');
 
 //Terminal Click
 $('.ux[name="terminal"]').click(function(){
+  var errCallback =function(){
+   if(false){$.uyari("Terminal Kontrol Hatası !")}//olumsuz son
+  };
 
 CordovaSMS.checkDefault(function(s){
 s=s.split( '"' );
@@ -1592,7 +1595,7 @@ if(false){$.uyari("Yerel dönüş hatası!");}//false
 });//kontrol		
 }//3-7
 
-},$.uyari("Terminal kontrol hatası !"));
+},errCallback);
 
 	
 });//terminal son
