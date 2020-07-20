@@ -1830,7 +1830,7 @@ $.uye_ol_div();
 
 //UYE_OL okul FONKSİYONU
 $.uye_ol=function(){
-$('#uye_ol').click(function(){
+$('#uye_ol').one("click",function(){
 var k_okul=$('#k_okul').val();
 var k_kul=$('#k_kul').val();
 var k_tel=$('#k_tel').val();
@@ -3095,7 +3095,7 @@ if(okul_id== null){$.uyari('Öncelikle Üye Olmalısınız, Personel ekleyemezsi
 if(p_adi=='' || p_eposta=='' || p_zumre=='0'){$.uyari('Tüm Bilgileri Doldudurun !');}else{
 $.ajax({
 			type: "POST",
-			url: "https://mesajplus.com/yoklama.php",
+			url: "https://mesajplus.com/uyeol.php",
 			data:({"p_adi":p_adi,
 			       "p_eposta":p_eposta,
 				   "p_okul":okul_id,
