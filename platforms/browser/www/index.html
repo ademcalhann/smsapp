@@ -146,10 +146,10 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	margin-top: 5px;
 	margin-left: 10px;
 	background-image: url(icon/y.png);
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
+	background-size:contain;
+
 }
+
 .marka {float: left;
 	margin-left: 18%;
 	margin-top: 5px;
@@ -417,6 +417,7 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	border-radius: 50%;
 	background-image: url(icon/x.png);
     background-size:contain;
+	float:right;
 }
 .msayi {
 	height: 12px;
@@ -455,6 +456,19 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	display: none;
 	background-image: url(icon/x.png);
 	background-position: center center;
+}
+.sms_sil {
+	height: 25px;
+	width: 25px;
+	margin-top:10px;
+	border: 1px solid #FF0000;
+	text-align: center;
+	float: right;
+	margin-right: 2px;
+	border-radius: 50%;
+	background-image: url(icon/x.png);
+	background-size:cover;
+	z-index:3;
 }
 .sil_box {
 	height: 15px;
@@ -543,6 +557,19 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	border-radius: 6px;
 	background-color: #FFFFFF;
 }
+.sms_geri {
+	width: 35%;
+	border: 1px solid #00CC00;
+	color: #00CC00;
+	float: left;
+	margin-left: 10%;
+	margin-top: 5px;
+	margin-bottom: 3px;
+	padding-top: 3px;
+	height: 22px;
+	border-radius: 6px;
+	background-color: #FFFFFF;
+}
 
 .geri_a {
 	width: 35%;
@@ -596,9 +623,7 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	background-image: url(icon/byz.png);
 }
 .saat {
-	width:auto;
-	padding-left:5px;
-	padding-right:5px;
+	width: 100px;
 	margin-bottom: 10px;
 	margin-left: 10px;
 	height: 24px;
@@ -764,7 +789,7 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	overflow: scroll;
 }
 .alt_panel {
-	width:100%;
+	width: 100%;
 	position: fixed;
 	z-index: 3;
 	left: 0px;
@@ -775,7 +800,7 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	background-position: center;
     bottom:0px;
 	display: none;
-	height:81%;
+	height: 180px;
 	padding-bottom:80px;
 }
 .listex {
@@ -1146,6 +1171,7 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	display: none;
 	background-size: cover;
 }
+
 .m_box {
 	color: #FFFFFF;
 	height: auto;
@@ -1157,6 +1183,7 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	width: 98%;
 	margin-bottom: 10px;
 }
+
 
 .m_gonder {
 	width: 100%;
@@ -1218,6 +1245,7 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	font-family: calibri;
 	margin-top: 5px;
 }
+
 .isimx {
 	color: #FFFFFF;
 	height: 19px;
@@ -1233,6 +1261,7 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	font-size: 12px;
 	padding-right: 5px;
 }
+
   .eski {
 	height: 20px;
 	width: 50%;
@@ -1361,6 +1390,7 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	background: linear-gradient(184deg, rgba(2,0,36,0.9220063025210083) 0%, rgba(16,228,226,1) 100%);
 
 	}
+
 .c_sinif {
 	color: #085B70;
 	font-size: 18px;
@@ -1495,6 +1525,15 @@ $('.ux').css('border-color','#FFFFFF').css('color','#FFFFFF');
 	$('.ut:eq('+xc+')').slideDown();
 	
 });
+
+
+//Terminal Click
+$('.ux[name="terminal"]').click(function(){
+$('.dikkat').hide();	
+$('.dikkat[name="d_term1"]').show();	
+	
+});//terminal son
+
 
 // scode alanı
 $('.ux[name=scode]').click(function(){
@@ -1796,14 +1835,14 @@ var k_okul=$('#k_okul').val();
 var k_kul=$('#k_kul').val();
 var k_tel=$('#k_tel').val();
 var k_eposta=$('#k_eposta').val();
-if(k_okul=='' || k_kul=='' || k_tel=='' || k_eposta==''){$.uyari('Tüm Alanları Doldurmalısınız !');}else{
+if(k_okul=='' || k_kul=='' || k_tel=='' || k_eposta=='' ){$.uyari('Tüm Alanları Doldurmalısınız !');}else{
 $.ajax({
 			type: "POST",
 			url: "https://mesajplus.com/uyeol.php",
 			data:({"k_okul":k_okul,
 			"k_kul":k_kul,
-			"k_eposta":k_eposta,
-			"k_tel":k_tel}),
+			"k_tel":k_tel,
+			"k_eposta":k_eposta}),
 			dataType: "json",
 			success: function(cevap){
     $.uyari(cevap.veri);	
@@ -1838,7 +1877,7 @@ $.ajax({
 			       "url":url}),
 			dataType: "json",
 			success: function(cevap){
-				if (cevap.hata){alert(cevap.hata);} else {
+				if (cevap.hata){$.uyari(cevap.hata);} else {
 					$('.uyari').html(cevap.olumlu);
 					$.uyari();
 
@@ -1864,7 +1903,7 @@ $.ajax({
 				   "sil_box":gonderen}),
 			dataType: "json",
 			success: function(cevap){
-				if (cevap.hata){alert(cevap.hata);} else {
+				if (cevap.hata){$.uyari(cevap.hata);} else {
 					$('.uyari').html(cevap.olumlu);
 					$.uyari();
                   $('.g_boxx[silup='+gonderen+']').slideUp();
@@ -1974,6 +2013,7 @@ $.ajax({
 			       "m_gonderen":m_gonderen,
 				   "tur":tur,
 				   "mesaj":mesaj,
+
 				   "sson_id":sson_id,
 				   "zaman":zmnx}),
 			dataType: "json",
@@ -2262,15 +2302,21 @@ $.y_sil=function(){
 $('.sil').click(function(){
 //if(z_kont<16){}else{$.uyari('Yetkiniz Bulunmuyor...');}	
 var yok_id=$(this).attr('id');	
+var kul_id=$('.kul').attr('id');
 $.ajax({
 			type: "POST",
 			url: "https://mesajplus.com/yoklama.php",
-			data:({"yok_id":yok_id}),
+			data:({"yok_id":yok_id,
+			       "sil_ben":kul_id}),
 			dataType: "json",
 			success: function(cevap){
+if(cevap.veri){
 $('.d_daire[id='+yok_id+']').slideUp();	
 $('.b_daire[id='+yok_id+']').slideUp();	
-$.uyari(cevap.veri);			
+$.uyari(cevap.veri);
+}
+if(cevap.hata){$.uyari(cevap.hata);}				
+			
 }});//ajax ve cevap
 });//yoklama sil son
 };		
@@ -2371,11 +2417,57 @@ $('.kutu').hide();
 $('#yoklama').html(cevap.veri).show();	
 $.geri();
 $.y_sil();
+$('#coklu_sec').click(function(){$('.dairec').show(); $(this).hide(); 
+$('#coklu_devam').show();
+$('.dairec').click(function(){
+var sec=$(this).attr('sec');
+if(sec==0){$(this).attr('sec',1);$(this).css('background-color','#0F3');}
+if(sec==1){$(this).attr('sec',0);	$(this).css('background-color','#099');}	
+});
+});//coklusec son
+$('#coklu_devam').click(function(){
+var cok_ici='';	
+var yoklama_id='';	
+var yok_sayi=$('.dairec[sec="1"]').length;
+for(index=0;index<yok_sayi; index++){
+var ogr_id=$('.dairec[sec="1"]:eq('+index+')').attr('ogr_id');
+cok_ici+=','+ogr_id;
 
-$('#coklu_sec').click(function(){
-$('#sms_panel').slideDown();
-	
-	});//coklu_devamson
+////-----ARTIK ÖĞRENCİLERİN TCLERİ BİZDE VAR HALİYLE YOKLAMA MODELİNİ BURDA YENİLE	
+var id=$('.dairec[sec="1"]:eq('+index+')').attr('id');
+yoklama_id+=','+id;	
+}
+cok_ici=cok_ici.slice(1);
+yoklama_id=yoklama_id.slice(1);
+
+//Cookies işlem yapılanalar diye kaydederiz
+$('#basla').attr('yoklama_id',yoklama_id);
+$('.sinif').css({"box-shadow":"0 0 0px 0px #0D596D"});
+$('.kutu,.alt_panel').hide();
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"cok_ici":cok_ici,
+			       "cok_id":yoklama_id}),
+			dataType: "json",
+			success: function(cevap){
+$('.kutu').hide();
+$('#yoklama').html(cevap.veri).show();	
+$('#gonder').attr('tek_id',yoklama_id);
+var yok_index=Cookies.get(yoklama_id);
+yok_index++;
+$('.y_ogrenci:lt('+yok_index+')').css('background-color','#0F6');
+$.geri();
+//---YEREL YOKLAMA İPTALİ
+$('.iptal').click(function(){
+var index=$(this).attr('okul_no');
+//alert(index)
+$('.y_ogrenci[okul_no='+index+']').slideUp().remove();
+$.uyari('Geçici olarak sms kuruğundan çıkarıldı!');	
+});//yerel son
+$.panel_ac();
+}});//AJAX	
+});//coklu_devamson
 
 //-------YOKLAMAdaki öğrencileri görme
 $('.dairex[tag="yoklama_blok"]').on("click",function(){
@@ -2772,12 +2864,123 @@ break;
 });//dairey son	
 //DEVAM TIKLAMA 
 $('#devam').click(function(){
-$('#sms_panel').slideDown();
-});//devam tıklama son
+var yoklama='';	
+var yok_ogr=$('.dairey[isaret=1]').length;
+if(yok_ogr==0){$.uyari('Sms Gönderilecek Sınıf Seçin !');}else{
+$('#sinif_sec').hide();
+$('#toplu_kutu').show();
+$('#kisiler,#sms_panel2').slideDown();
+//Sınıf Seçmeye geri Dön
+$('#s_sec_geri').click(function(){
+$('#sinif_sec').show();
+$('#toplu_kutu').hide();
+$('#kisiler').html('');	
+});
+
+for(index=0;index<yok_ogr; index++){
+var id=$('.dairey[isaret=1]:eq('+index+')').attr('id');
+yoklama+=','+id;	}
+yoklama=yoklama.slice(1);
+$("#toplu_basla").attr("yoklama",yoklama);
+var ofset=0;
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"t_count":yoklama}),
+			dataType: "json",
+			success: function(cevap){
+$('#kisiler').html(cevap.veri);	
+$('#toplu_basla').attr('toplam',cevap.toplam);
+
+}});//ajax ve cevap		
+}});//devam tıklama son
 }});//ajax ve cevap		
 }//index==3 sonu
 
+//---------BAĞIMSIZ BAŞLA 
 
+//TOPLU SMS GÖNDERMEYE BAŞLAYALIM ---- toplu_basla.click
+$('#toplu_basla').one("click",function(){
+var toplam=$('#toplu_basla').attr('toplam');//toplamda sms gidecek
+var sahne=$('.ogrenci').length;//sahnede ki herkes
+var yoklama=$(this).attr("yoklama");
+$.sms_dng=function(index){
+var toplam=$('#toplu_basla').attr('toplam');//toplamda sms gidecek
+
+if(index<toplam){	
+//----SMS PLUGIN
+var telef=$('.ogrenci[tag=toplu]:eq('+index+')').attr('veli_tel');	
+var isim=$('.isim[tag=toplu]:eq('+index+')').html();
+var mesa=$('#mesaji').val();
+var mesaj=isim+'-'+mesa;
+var islevsel=$('.kul').attr('islevsel');
+var telefo=parseInt(telef)+parseInt(islevsel);
+var telefon='0'+telefo;
+
+SMS.sendSMS(telefon,mesaj, function(){
+//başarılı	
+$('.ogrenci[tag=toplu]:eq('+index+')').css("box-shadow","0px 0px 7px 2px #27fd19").attr('sayac',3);
+index++;	
+$.sms_dng(index); 
+}, function(){
+//hata
+$('.ogrenci[tag=toplu]:eq('+index+')').css("box-shadow","0px 0px 7px 2px #ff0000").attr('sayac',6); 
+index++; 	
+$.sms_dng(index);	
+	});
+	
+}//sms gönderecek kişi var son
+if(index==toplam-1){$.uyari('Görev Tamamlandı !');
+
+/*var ca=$('#mesaj').attr('placeholder');
+var cb=ca+' ======  Görev tamam: ';
+$('#mesaj').attr('placeholder',cb);*/
+$('.alt_panel').hide();
+//şimdilik deneme////-------$('#mesaji').html('');
+var say=$('.ogrenci[sayac=3]').length;
+var hata=$('.ogrenci[sayac=6]').length;
+
+var o_id=$('.kul').attr('okul_id');
+ var sayi=say+1;
+
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"sao_id":o_id,
+			        "sayi":sayi,
+					"hata":hata}),
+			dataType: "json",
+			success: function(cevap){
+$.uyari(cevap.veri);	
+$("#mesaji").val();		
+}});//sayac son
+}//Herkes tamamlandı		
+};//sms_dng son
+
+$.sahne=function(son,yokx){
+
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"t_list":yokx,
+			        "ofset":son}),
+			dataType: "json",
+			success: function(cevap){
+		
+if(son=='0'){
+	$('#kisiler').html(cevap.veri)
+	}else{$('.ogrenci[tag=toplu]:last').after(cevap.veri);}				
+
+var toplam=$('#toplu_basla').attr('toplam');//toplamda sms gidecek
+var sahne=$('.ogrenci[tag="toplu"]').length;//sahnede ki herkes
+
+if(sahne<toplam){var lat=$('.ogrenci[tag="toplu"]').length; $.sahne(lat,yokx);}//gelmeyenler var ajax getirsin
+if(sahne==toplam){ $.sms_dng(0); };//Herkes geldi sms başlasın // ilk kişiden başla
+}});//ajax	
+};//sahne func son
+$.sahne(0,yoklama);
+});//toplu_basla son
+//-----BAĞIMSIZ SON
 
 
 //İŞ VE KOORDİNASYON AĞI
@@ -2886,14 +3089,13 @@ var z_kont=$('.kul').attr('zumre');
 if(z_kont<16){
 var p_adi=$('#p_adi').val();
 var p_eposta=$('#p_eposta').val();
-
 var okul_id=$('.kul').attr('okul_id');
 var p_zumre=$('#p_zumre').val();
 if(okul_id== null){$.uyari('Öncelikle Üye Olmalısınız, Personel ekleyemezsiniz');}else{
 if(p_adi=='' || p_eposta=='' || p_zumre=='0'){$.uyari('Tüm Bilgileri Doldudurun !');}else{
 $.ajax({
 			type: "POST",
-			url: "https://mesajplus.com/uyeol.php",
+			url: "https://mesajplus.com/yoklama.php",
 			data:({"p_adi":p_adi,
 			       "p_eposta":p_eposta,
 				   "p_okul":okul_id,
@@ -2909,9 +3111,10 @@ $.ajax({
 }else{$.uyari('Yetkiniz Bulunmuyor...');}});	//p_kaydetson
 }//index==7son
 //üye olma işlemleri
-if(index==10){
-$.uye_ol();
-}//üye olma son
+if(index==10){ $.uye_ol(); }//üye olma son 
+if(index==11){		
+listSMS();		
+}//index==11
 
 //Zümreler==9 index
 if(index==8){
@@ -2996,7 +3199,7 @@ $('.orta').slideDown();
 }//else
 });//kaydet son	
 //SİSTEM DIŞI STATİK SMS
-//-----SMS ŞİFRE SIFIRLAMA
+//-----Eposta ŞİFRE SIFIRLAMA
 $('#sifirla').click(function(){
 var sifirla=$('#esifir').val();
 $.ajax({
@@ -3010,10 +3213,121 @@ $('#esifir').val("");
 $("#sifirla").append('<p style="color:#FFF; margin-left:20px;">E-postanızı Kontrol Edin...</p>');
 }});//ajax ve cevap	
 })//şifre sıfırla son
-$('.marka').click(function(){location.reload();});
-    }
 
-    </script>
+$('.marka').click(function(){location.reload();});
+
+//-------DÖNGÜLERDEN ETKİLENMEYEN BAŞLA FONKSİYONU
+$('#basla').click(function(){
+//cookies işlemleri
+var yoklama_id=$(this).attr('yoklama_id');
+var sms_tur=$(this).attr('sms_tur');
+if(Cookies.get(yoklama_id)== null){ var list="";}else{ var list=Cookies.get(yoklama_id);}
+var yok_index=Cookies.get(yoklama_id);
+
+$('.uyari').html('');
+//liste boş ilk defa sms gidiyor ! index=0
+//-----SMS DÖNGÜSÜ
+$.sms_gonder=function(index){
+/*	
+var ca=$('#mesaj').attr('placeholder');
+var cb=ca+' ======  sms_gonder gelen: '+index;
+$('#mesaj').attr('placeholder',cb);
+*/
+var ogr_sayi=$('.y_ogrenci').length;
+if(index<ogr_sayi){
+var telef=$('.y_ogrenci:eq('+index+')').attr('veli_tel');	
+var isim=$('.isim:eq('+index+')').html();
+var islevsel=$('.kul').attr('islevsel');
+var telefo=parseInt(telef)+parseInt(islevsel);
+var telefon='0'+telefo;
+var mesaj=$('#mesaj').val();
+var mesajx=isim+'-'+mesaj;
+
+
+SMS.sendSMS(telefon,mesajx, function(){
+//başarılı	
+$('.y_ogrenci:eq('+index+')').css("box-shadow","0px 0px 7px 2px #27fd19").attr('sayac',1);
+if(sms_tur!='liste'){Cookies.set(yoklama_id,index);}
+index++; $.sms_gonder(index);
+
+	}, function(){
+//hata
+$('.y_ogrenci:eq('+index+')').css("box-shadow","0px 0px 7px 2px #ff0000").attr('sayac',4); index++; $.sms_gonder(index); 	
+	});
+
+}//if
+if(index==ogr_sayi-1){
+
+var ca=$('#mesaj').attr('placeholder');
+var cb=ca+' ======  Görev tamam: ';
+$('#mesaj').attr('placeholder',cb);
+$.uyari('Görev Tamamlandı !');
+//Cookies.set(yoklama_id,index);
+$('#sms_panel').fadeOut();
+var say=$('.y_ogrenci[sayac=1]').length;
+var hata=$('.y_ogrenci[sayac=4]').length;
+var yoklama_id=$('.basla').attr('yoklama_id');
+var o_id=$('.kul').attr('okul_id');
+ var sayi=say+1;
+
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"sao_id":o_id,
+			        "sayi":sayi,
+					"hata":hata,
+					"ekran":yoklama_id}),
+			dataType: "json",
+			success: function(cevap){
+//$.uyari(cevap.veri);			
+}});
+
+}
+}//sms_gonder_son
+
+if(list==""){$.uyari('Sistem Göreve Başladı !'); 
+$.sms_gonder(0);}
+//liste boş değil işlem yarım kalmış index=cookies.get('index');
+if(list>0){
+var ogr_sayi=$('.y_ogrenci').length;	
+yok_index++;
+if(yok_index<ogr_sayi){$.uyari('Sistem '+yok_index+'. Kişiden Devam Edecek !'); $('.y_ogrenci:eq('+yok_index+')').css('background-color','#0F6');
+$.sms_gonder(yok_index);}
+if(yok_index==ogr_sayi || yok_index>ogr_sayi){$.uyari('Görev Tamamlandı !');
+/*var ca=$('#mesaj').attr('placeholder');
+var cb=ca+' ======  Görev tamamlandı !';
+$('#mesaj').attr('placeholder',cb);*/
+}
+	
+}
+});//basla son
+	
+//-----evet2.click
+$('.evet[name="terminal2"]').click(function(){
+CordovaSMS.setDefault(null,null,"com.android.mms");
+CordovaSMS.onDefaultSelected(function(result){
+if(true){
+$('.dikkat').hide(); 
+$('.dikkat[name="d_term3"]').fadeIn(); $.uyari("Terminal Aktif !");}//true
+if(false){$.uyari("Dönüş Hatası !");}//false
+});//set_android	
+});//clickevet2				
+
+//------EVET1.CLİCK
+$('.evet[name="terminal1"]').click(function(){
+CordovaSMS.setDefault(null,null,"com.mesajplus.nosms");
+CordovaSMS.onDefaultSelected(function(result){
+if(true){
+$('.dikkat').hide();
+$('.dikkat[name="d_term2"]').fadeIn();
+
+}//true 
+if(false){$.uyari("Geçiş Hatası !");}//false
+});//set_mesajplus
+});//evet1	
+				
+}
+</script>
 <div class="uyari"></div>     
 <div class="alt_panel" id="liste">
 <select class="y_tur">
@@ -3028,21 +3342,13 @@ $('.marka').click(function(){location.reload();});
 <div class="onayla" id="kaydet">Kaydet</div>
 </div></div> 
 
-<div class="alt_panel" id="sms_panel">
-<div class="alt_kapat" id="alt_kapat">Kapat</div>
-<div class="u2" style="height:auto;     margin-top: 45px;">Google Play politikaları gereği sms çok özel veri kapsamındadır bu nedenle Mesaj Plus ile sms göndere bilmek için SMS Terminali içeren versiyonunu yüklemelisiniz.<hr>
-Sms Terminali tüm bu özelliklere ek sadece velilere sms göndermenizi sağlayacak.<hr>
-İstediğiniz zaman tekrar Google Play ile normal versiyona geçebilirsiniz.<hr>
-<details style="margin-top:10px;">
-    <summary style="color:#dbdc82; line-height:25px;"><a style="color:#0C9;">Sms Terminali</a> Neden Google Play'de yok ?</summary>
-    <p class="u2" style="height:auto;">Google Play sms terminali özelliğini içeren programların Tam Sms Yetkili olmasını istiyor, bu durumda programın aşırı yorulmasına neden oluyor. Öğretmenlerin veliye sms göndermek istememesi ihtimali de göz önüne alındığında Sms Terminali'nin sadece isteyen kullanıcılar tarafından yüklenmesi daha anlamlıdır.. Sonuç olarak Sms Terminalini harici olarak yüklemeniz çok daha mantıklı görünüyor.</p>
-</details>
-<img  style="border-radius:5px;" src="https://mesajplus.com/play.png" onclick="window.location='https://mesajplus.com/sms_terminali.apk'" alt="Sms Terminali İndir"/>
-
-</div>
-
+<div class="alt_panel" id="sms_panel" style="height:260px; padding-bottom:0px;">
+ <div class="alt_kapat" id="alt_kapat">Kapat</div>
+<textarea rows="9"  placeholder="" id="mesaj"  class="mesaj"></textarea>
+<div class="basla" id="basla">Başla</div>
 </div>         
 <div class="markabar"><div class="menu" v="0"></div>
+<div class="sms_durum" durum="0"></div>
 <div class="marka">Mesaj Plus</div></div>
 
 <div class="orta">
@@ -3072,10 +3378,12 @@ Sms Terminali tüm bu özelliklere ek sadece velilere sms göndermenizi sağlaya
   <div class="d_yazi">Zümre</div></div>   
   <div class="daire" style="background-image:url(icon/yrdm.png); background-size:contain;">
       <div class="d_yazi">Yardım</div></div>
-    
+     
    <div class="daire" style="background-image:url('icon/merhabax.png'); background-size:cover;" >
            <div class="d_yazi">Üye Ol !</div>
   </div>
+     
+  
 </div>
 <div class="panel">
 <div class="yoklama">Yoklama</div>
@@ -3182,7 +3490,7 @@ Sms Terminali tüm bu özelliklere ek sadece velilere sms göndermenizi sağlaya
 <div class="kutu" name="yardim" style="display:block; margin-top:0px; height:100%; padding-bottom:35px;">
 <div class="baslik">Yardım</div>
   <img class="kullanici" placeholder="Sistem Yöneticisi" id="1" m_alan="1" src="https://mesajplus.com/resim/buyuk/b4v95.jpg"  alt="Adem Çalhan" height="auto" style="margin-left:5%; margin-top:25px; box-shadow: 0 0 5px 2px #3F9; border-radius:5px; float:left; margin-right:10px; width:90px; height:auto;">
-  <p class="aciklama"><a style="color:#0C9;">Mesaj Plus</a> uygulaması öncelikle okullarda anlık ve ücretsiz sms göndermek amacıyla kuruldu. Gelişmiş  özellikleri ve maliyetinin rakiplerine göre neredeyse sıfır olması <a style="color:#0C9;">Mesaj Plus</a> uygulamasının tüm sektörlerde çalışabileceği fikrini doğurdu. Birden fazla sektörün iş birliği içinde ortak çalışabilmesi ayrıca zümreler oluşturmasıyla <a style="color:#0C9;">Mesaj Plus</a> bir sms programından çok daha fazlası oldu.<a style="color:#0C9;"> MP Terminali</a>'nin de programa entegre edilmesiyle artık sınıfta kolayca alınan yoklama analiz ve sentez yapabilen program zekası sayesinde eokula aktarılabilir hale geldi. </p>
+  <p class="aciklama"><a style="color:#0C9;">Mesaj Plus</a> uygulaması öncelikle okullarda anlık ve ücretsiz sms göndermek amacıyla kuruldu. Gelişmiş  özellikleri ve maliyetinin rakiplerine göre neredeyse sıfır olması <a style="color:#0C9;">Mesaj Plus</a> uygulamasının tüm sektörlerde çalışabileceği fikrini doğurdu. Birden fazla sektörün iş birliği içinde ortak çalışabilmesi ayrıca zümreler oluşturmasıyla <a style="color:#0C9;">Mesaj Plus</a> bir sms programından çok daha fazlası oldu.<a style="color:#0C9;">Sms Terminali</a>'nin de programa entegre edilmesiyle artık sınıfta kolayca alınan yoklama analiz ve sentez yapabilen program zekası sayesinde eokula aktarılabilir hale geldi. </p>
 <details style="margin-top:10px;">
     <summary style="color:#dbdc82; line-height:25px;">Üyelikten sonra yapmam gereken işlem var mı ?</summary>
     <p class="u2" style="height:auto;">En önemli nokta telefonunuzun ayarlar menüsünden <a style="color:#0C9;">Mesaj Plus</a> uygulamasına girip izinler kısmındaki izinleri  açmanız gereklidir. Android işletim sistemi uygulamaların sms göndermesine (2019 Yenilenen Protokol Kuralları) sadece bu şekilde izin verir.En kısa sürede Sistem Yöneticisi sizinle iletişim kurup tam kurulum işlemleri için çalışmaya başlayacaktır. Bu sırada siz sistemi denemek için öğrenci ve personel ekleyerek sms gönderebilirsiniz.</p>
@@ -3249,7 +3557,7 @@ Müdür yardımcısı veya siz  listelere sms gönderebilirsiniz.
 </div>
 
 <div class="panel">
-<div class="kutu" style="display:block; margin-top:0px; height:auto;">
+<div class="kutu" style="display:block; margin-top:0px; height:100%;">
 <div class="baslik">Hemen Başlayalım ...</div>
 <input type="text" class="metin" placeholder="Okul Adı" id="k_okul" />
 <input type="text" class="metin" placeholder="Ad Soyad" id="k_kul" />
@@ -3257,8 +3565,7 @@ Müdür yardımcısı veya siz  listelere sms gönderebilirsiniz.
 <input type="text" class="metin" placeholder="E-posta" id="k_eposta" />
 <div class="basla" id="uye_ol">Üye Ol !</div>
 <div class="u2" style="height:auto;">
-Şifre e-postaya gönderilecek.<hr>
-Sistemi tanımanız için yapılan ön üyeliktir.<hr><p>Deneme amaçlı öğretmen, öğrenci eklendi.</p>
+Şifre e-postaya gönderilecek.<hr>Sistemi tanımanız için yapılan ön üyeliktir.<hr><p>Deneme amaçlı öğretmen, öğrenci ekleyiniz.</p>
 <p><strong>Sistem Yöneticisi</strong> tüm öğrencilerinizi otomatik olarak e-okuldan ekleyecektir.</p><hr>
 <p>Zümre alanı deneme modunda herkesi Adana Zümresi olarak kabul eder.</p>
 </div>
@@ -3266,6 +3573,8 @@ Sistemi tanımanız için yapılan ön üyeliktir.<hr><p>Deneme amaçlı öğret
 <div class="taban">
 <div class="geri" id="geri" style="color:#F00; border-color:#F00;">Geri</div></div>
 </div>
+
+
 <div class="sol_panel">
 <div class="ut">
 <div class="ust">
@@ -3308,11 +3617,11 @@ Sistemi tanımanız için yapılan ön üyeliktir.<hr><p>Deneme amaçlı öğret
 
 <input type="text" class="metin" placeholder="E-postanızı yazın..." id='esifir'>
         <div class="basla" id="sifirla">Yeni Şifre </div>
-        
-       
+   
 </div>
 <div class="ut">
 <div class="baslik">Sms Terminal İzinleri</div>
+
 <div class="dikkat" name="d_term1" style="display:block;"><label>Birinci adım, yenilenen <a style="color:#0F0">Android Gizlilik Kuralları</a> gereği Mesaj Plus uygulamasına <a style="color:#0F0">Sms Gönderme İzni</a> vermeniz gerekir. Şimdi butona tıklayıp gelen uyarıda <a style="color:#0F0">Var</a>'a dokunun. </label>
 <div class="evet"  name="terminal1">1. Adım </div>
 </div>
@@ -3320,7 +3629,7 @@ Sistemi tanımanız için yapılan ön üyeliktir.<hr><p>Deneme amaçlı öğret
 <div class="dikkat" name="d_term2">İkinci adım, Mesaj Plus <a style="color:#0F0">Varsayılan Sms Uygulaması</a> özelliğini iptal etmeliyiz. Çünkü  Mesaj Plus'ın sms okumak gibi bir amacı yoktur. Butona dokunum tekrar <a style="color:#0F0">Mesajlar</a> uygulamasını seçin. Bu adımı mutlaka tamamlamalısınız, aksi taktirde size gelen smsleri göremezsiniz !
 <div class="evet"  name="terminal2" style="margin-top:50px;">2. Adım</div>
 </div>
-<div class="dikkat" name="d_term3">Tebrikler herşey yolunda artık <a style="color:#0F0">Mesaj Plus</a> ile sms gönderebilirsiniz.İşlemin bu kadar uzun olmasının nedeni smslerinizi okumamak için gösterdiğimiz garettir. Bu sayede smsleriniz sizin, mutlu kullanıcılar ise bizim oluyor ✔</div>
+<div class="dikkat" name="d_term3">Tebrikler herşey yolunda artık <a style="color:#0F0">Mesaj Plus</a> ile sms gönderebilirsiniz. Son bir kontrol amacıyla içli köfteyi çok seven bir arkadaşınıza telefonunuz yerel sms uygulamasından sms göndermeyi deneyin. Bu herşeyin yolunda olduğunun kesin göstergesi olacak ! ✔</div>
 </div>
 <div class="alti" id="style-3">
 <div class="uzun2" style="width:690px;">
@@ -3329,7 +3638,7 @@ Sistemi tanımanız için yapılan ön üyeliktir.<hr><p>Deneme amaçlı öğret
 <div class="ux" style="width:120px;"  id="g_box">Gelen Kutusu</div>
 <div class="ux" style="width:120px;" name="scode">SCode</div>
 <div class="ux" style="width:120px;">Şifremi Unuttum</div>
-
+<div class="ux" style="width:120px;" name="terminal">Terminal</div>
 
 
 </div>
@@ -3337,7 +3646,7 @@ Sistemi tanımanız için yapılan ön üyeliktir.<hr><p>Deneme amaçlı öğret
 </div><div class="tam_panel" id="ogrenciler"></div>
 <div class="tam_panel" id="liste_ici">
 <div class="liste" id="li_adi" adi="li_adi">Liste Adı</div>
-<div class="kutu" id="lis_ogr" style="overflow-y:scroll; margin-top:0px;">
+<div class="kutu" id="lis_ogr" style="overflow-y:scroll; height:51%; margin-top:0px;">
 <div class="u2" style="height:auto;">Öğrencileri ödüllendirme veya yakın takip için listeler oluşturun.
 <hr>
 Örnek: Sabah geç gelenler listesi oluşturduğunuzda hem öğrenci yok yazılmaz hemde veliye geç geldiği bildirilebilir.
@@ -3361,7 +3670,6 @@ Müdür yardımcısı listelere sms gönderebilir.
 <div class="yan_menu" value="kapali">
 <div class="baslik" id="m_baslik"></div>
 <div class="m_div" id="mesaj"></div>
-
 </div>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <widget id="com.mesajplus.nosms" version="2.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Mesaj Plus</name>
     <description>
-     Yoklama Terminali Entegreli Ücretsiz Sms ve Kurumsal Mesajlaşma Programı...
+     Mesaj Plus sms terminali içeren sürümüdür.
     </description>
     <author email="ademcalhan@yandex.com" href="https://mesajplus.com">
       Adem Çalhan
