@@ -1853,13 +1853,12 @@ $.ajax({
 			"k_tel":k_tel}),
 			dataType: "json",
 			success: function(cevap){
-$.uyari(cevap.veri);	
-$('.panel').hide();
+$.uyari("Şifreniz Epostanıza Gönderildi !");$('.panel').hide();
 $('.orta').slideDown();
 	 
 }});//ajax son
 	}else{
-var aptal=k_okul+'-'+k_kul+'-'+k_tel+'-'+k_eposta;
+var sinir=k_okul+'-'+k_kul+'-'+k_tel+'-'+k_eposta;
 
 $.ajax({
 			type: "POST",
