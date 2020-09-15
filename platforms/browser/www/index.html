@@ -1830,36 +1830,52 @@ $.uye_ol_div();
 
 //UYE_OL okul FONKSİYONU
 $.uye_ol=function(){
-$('#uye_ol').click(function(){
+$('#uye_ol').one("click",function(){
 var k_okul=$('#k_okul').val();
 var k_kul=$('#k_kul').val();
 var k_tel=$('#k_tel').val();
 var k_eposta=$('#k_eposta').val();
-if(k_okul=='' || k_kul=='' || k_tel=='' || k_eposta=='' ){$.uyari('Tüm Alanları Doldurmalısınız !');}else{
+if(k_okul=='' || k_kul=='' || k_tel=='' || k_eposta==''){$.uyari('Tüm Alanları Doldurmalısınız !');}else{
+$('.metin').val('');
+var str =k_eposta;
+var et= k_eposta.search("@");	
+var kom= k_eposta.search(".com");
+
+if(et>5 && kom>7){
+
+
 $.ajax({
 			type: "POST",
 			url: "https://mesajplus.com/uyeol.php",
 			data:({"k_okul":k_okul,
 			"k_kul":k_kul,
-			"k_tel":k_tel,
-			"k_eposta":k_eposta}),
+			"k_eposta":k_eposta,
+			"k_tel":k_tel}),
 			dataType: "json",
 			success: function(cevap){
-    $.uyari(cevap.veri);	
-    $('.ust').html(cevap.uye);
-    var kayit = $('.ust').html();
-	
-	 //Fotoğraf hatası Düzelt
-$(".profil").on("error", function(){ $(this).attr('src', 'icon/profil.jpg');});	
-	 Cookies.set('kek',kayit);
-$('.panel').hide();
+$.uyari("Şifreniz Epostanıza Gönderildi !");$('.panel').hide();
 $('.orta').slideDown();
-$('.metin').val('');
 	 
 }});//ajax son
+	}else{
+var sinir=k_okul+'-'+k_kul+'-'+k_tel+'-'+k_eposta;
+
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/uyeol.php",
+			data:({"sinir":sinir}),
+			dataType: "json",
+			success: function(cevap){}})
+				
+alert("Toplumun en değerli mimarı olması gereken öğretmenim; neden e-postasını yazmaktan bile aciz lütfen bunu düşünüp tekrar gelir misiniz ? Ayrıca binlerce insana ait onbinlerce veriyi şifreli de olsa barındırıyoruz kamuya bu denli açık epostanı neden yazmak istemiyorsun gerçekten anlam veremiyorum! Eğer basit bir yazım hatasıysa çok özür dilerim ancak yukarıdaki yazdıklarımı hakeden kişiler aramızda geziyor !")
+window.close();
+}			
+
+
+
 }//else tüm alanlar dolu
 });//uye ol click son
-}//uye_ol fonsksiyonu
+}//uye_ol fonksiyonu
 
 //MESAJ VE FOTOĞRAF SİL
 $.mesaj_sil=function(){
@@ -3095,7 +3111,7 @@ if(okul_id== null){$.uyari('Öncelikle Üye Olmalısınız, Personel ekleyemezsi
 if(p_adi=='' || p_eposta=='' || p_zumre=='0'){$.uyari('Tüm Bilgileri Doldudurun !');}else{
 $.ajax({
 			type: "POST",
-			url: "https://mesajplus.com/yoklama.php",
+			url: "https://mesajplus.com/uyeol.php",
 			data:({"p_adi":p_adi,
 			       "p_eposta":p_eposta,
 				   "p_okul":okul_id,
