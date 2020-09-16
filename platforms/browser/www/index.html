@@ -184,7 +184,7 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	font-size: 11px;
 	color:#0d586b;
 	text-align: center;
-	margin-top: 35px;
+	margin-top:35px;
 	width: 80px;
 	
 }
@@ -1019,7 +1019,6 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
     text-align: center;
     width: 74px;
     height: 20px;
-    margin-top: -50px;
     margin-left: 1px;
     border-bottom-right-radius: 29px;
     border-bottom-left-radius: 29px;
@@ -1031,7 +1030,7 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
     background: linear-gradient(31deg, rgba(94,194,132,1) 0%, rgba(41,251,8,1) 100%);
     box-shadow: inset 0px 0px 5px 1px #0d586b;
 }
-
+.guncelle:hover { 	box-shadow: 0 0 10px 5px #00CCFF; }
     .tut {
 	background-color: #CCC;
 	height: 250px;
@@ -1956,6 +1955,7 @@ $.uyari(cevap.veri);
 //SMS PANELİ AÇMA PROGRAMI
 $.panel_ac=function(){
 $('#gonder').click(function(){
+$('.y_ogrenci[veli_tel=0]').slideUp().remove();	
 $('#sms_panel').slideDown();
 //smsm islemi basla
 });};
@@ -2936,13 +2936,13 @@ var telefon='0'+telefo;
 SMS.sendSMS(telefon,mesaj, function(){
 //başarılı	
 $('.ogrenci[tag=toplu]:eq('+index+')').css("box-shadow","0px 0px 7px 2px #27fd19").attr('sayac',3);
-index++;	
-$.sms_dng(index); 
+setTimeout(function(){index++;  $.sms_dng(index);},500);
+
 }, function(){
 //hata
 $('.ogrenci[tag=toplu]:eq('+index+')').css("box-shadow","0px 0px 7px 2px #ff0000").attr('sayac',6); 
-index++; 	
-$.sms_dng(index);	
+ setTimeout(function(){index++; $.sms_dng(index);},500);
+
 	});
 	
 }//sms gönderecek kişi var son
@@ -3264,11 +3264,12 @@ SMS.sendSMS(telefon,mesajx, function(){
 //başarılı	
 $('.y_ogrenci:eq('+index+')').css("box-shadow","0px 0px 7px 2px #27fd19").attr('sayac',1);
 if(sms_tur!='liste'){Cookies.set(yoklama_id,index);}
-index++; $.sms_gonder(index);
+setTimeout(function(){index++; $.sms_gonder(index);},500);
 
 	}, function(){
 //hata
-$('.y_ogrenci:eq('+index+')').css("box-shadow","0px 0px 7px 2px #ff0000").attr('sayac',4); index++; $.sms_gonder(index); 	
+$('.y_ogrenci:eq('+index+')').css("box-shadow","0px 0px 7px 2px #ff0000").attr('sayac',4); 
+setTimeout(function(){index++; $.sms_gonder(index);},500);
 	});
 
 }//if
