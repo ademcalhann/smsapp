@@ -293,14 +293,14 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	font-size: 17px;
 	font-weight: bold;
 	color: #FFF;
-	height: 24px;
+	height: 25px;
 	margin-top: 30px;
 	width: 90px;
 	text-align: center;
 	background-color: #09F;
 	border-radius: 8px;
 	padding-top: 3px;
-	padding-bottom: 3px;
+	
 	}
     .panel {
 	display: none;
@@ -1276,9 +1276,30 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	box-shadow: 0 0 5px 2px #00CCFF;
 	border: 1px solid #FFFFFF;
 	margin-bottom: 5px;
-		border-radius:5px;
+	border-radius:5px;
 
 }
+  .daha {
+	height: 20px;
+	width: 50%;
+	padding-top: 5px;
+	padding-bottom: 2px;
+	text-align: center;
+	font-size: 13px;
+	float:left;
+	position:relative;
+	color: #FFFFFF;
+	background-image: url(icon/mavi.png);
+	margin-top: 53px;
+	margin-left: 24%;
+	font-family: Verdana;
+	box-shadow: 0 0 5px 2px #00CCFF;
+	border: 1px solid #FFFFFF;
+	margin-bottom: 5px;
+	border-radius:5px;
+
+}
+
 .resim {
 	margin-top: 10px;
 	box-shadow: 0 0 5px 2px #FFF;
@@ -1537,6 +1558,7 @@ $('.dikkat[name="d_term1"]').show();
 // scode alanı
 $('.ux[name=scode]').click(function(){
 $(".kutu").show();
+
 	function scode(length) {
    var result           = '';
    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -1551,14 +1573,17 @@ var scode=scode(6);
 $('.scode').html(scode);
 //AKTİF SCODE GETİRİLMESİ
 var kul_id=$('.kul').attr('id');
+var o_id=$('.kul').attr('okul_id');
+
 if(kul_id>0){
 $.ajax({
 			type: "POST",
 			url: "https://mesajplus.com/yoklama.php",
-			data:({"gscode":kul_id}),
+			data:({"gscode":kul_id,"gso":o_id}),
 			dataType: "json",
 			success: function(cevap){
 				$('#ascode').html(cevap.veri);
+				$('#c_id').html(cevap.ogretmen);
 var aa=$('.daires').length;
 
 $.yenile=function(i){
@@ -1599,6 +1624,7 @@ $(this).attr('durum',1).css('background-color','#09F').css('color','#FFF');
 //KAYDET SCODE
 $('#k_scode').click(function(){
 var scode=$('.scode').html();
+var c_id=$('#c_id').val();
 var s_sure=$('.s_sure[durum=1]').attr('value');
 var kul_id=$('.kul').attr('id');
 if(kul_id>0){
@@ -1609,6 +1635,7 @@ $.ajax({
 			data:({"scode":scode,
 			       "s_sure":s_sure,
 				   "sp_id":kul_id,
+				   "c_id":c_id,
 				   "so_id":o_id}),
 			dataType: "json",
 			success: function(cevap){
@@ -3001,15 +3028,9 @@ $.sahne(0,yoklama);
 
 //İŞ VE KOORDİNASYON AĞI
 if(index==4){
-$.ajax({
-			type: "POST",
-			url: "https://mesajplus.com/yoklama.php",
-			data:({"tum_okul":1}),
-			dataType: "json",
-			success: function(cevap){
-    $('#okullar').html(cevap.veri).show();
-	$.geri();
-$('.okul').click(function(){
+
+$.okul_click=function(){
+$('.okul').on("click",function(){
 var okul_id=$(this).attr('id');	
 var kul_id=$('.kul').attr('id');
 $.ajax({
@@ -3024,13 +3045,51 @@ $.ajax({
 		$('#okul_personel').html(cevap.veri).slideDown();
 		$.ozel_mesaj2();
 $('.sil_ogr').hide();		
+
 $('#bigeri').click(function(){
 $('#okullar').show();
 $('#okul_personel').hide();
-
 });//birgeri		
+
 }});//ajax son	
-});	//ajaxkullanıcı
+
+});//okulson
+
+};//function
+
+$.daha=function(){
+$('#daha_okul').on("click",function(){
+var offset=$('.okul').length;
+
+	
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"daha_okul":offset}),
+			dataType: "json",
+			success: function(cevap){
+ if(cevap.veri){$('.okul:last').after(cevap.veri);}
+	if(cevap.bitti){$.uyari(cevap.bitti);} 
+	$.okul_click();
+	}});
+		
+})};;//DAHAFAZLA
+
+	
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/yoklama.php",
+			data:({"tum_okul":1}),
+			dataType: "json",
+			success: function(cevap){
+    $('#okullar').html(cevap.veri).show();
+	$.geri();
+    $.okul_click();
+    $.daha();
+
+	
+
+
 }});//ajaxokullar son		
 }//index==4 sonu
 
@@ -3355,6 +3414,8 @@ var b_eposta=$('#b_eposta').val();
 var b_zumre=$('#b_zumre').val();
 var b_scode=$('#b_scode').val();
 
+$('#b_adi,#b_scode,#b_zumre,#b_eposta').val('');
+
 if(b_adi=='' || b_eposta=='' || b_zumre=='0'){$.uyari('Tüm Bilgileri Doldudurun !');}else{
 $.ajax({
 			type: "POST",
@@ -3370,7 +3431,7 @@ $.ajax({
    	
 }});//ajax son		
 }//ifelse
-});	//p_kaydetson
+});	//b_kaydetson
 				
 }
 </script>
@@ -3604,15 +3665,17 @@ Müdür yardımcısı veya siz  listelere sms gönderebilirsiniz.
 
 <div class="panel">
 <div class="kutu" style="display:block; margin-top:0px; height:100%; padding-bottom:50px;">
+<div  style="background:linear-gradient(31deg, rgb(3 3 3 / 95%) 0%, rgb(126 232 213) 57%); color:#FFF; padding-left:10px; padding-bottom:15px;">
 <div class="baslik">Yeni Okul Üyeliği</div>
 <input type="text" class="metin" placeholder="Okul Adı" id="k_okul" />
 <input type="text" class="metin" placeholder="Ad Soyad" id="k_kul" />
 <input type="number" class="metin" placeholder="Telefon" id="k_tel" />
 <input type="text" class="metin" placeholder="E-posta" id="k_eposta" />
+<p>Şifre Epostanıza gönderilecek</p>
 <div class="basla" id="uye_ol">Üye Ol !</div>
-
-<div  style="background:linear-gradient(31deg, rgb(3 3 3 / 95%) 0%, rgb(20 162 110) 57%); color:#FFF; padding-left:10px; padding-bottom:15px; margin-top: 20px;">
-<div class="baslik" style="background: linear-gradient(184deg, rgba(2,0,36,0.9220063025210083) 0%, #3cf 100%);">Öğretmen Üyeliği</div>
+</div>
+<div  style="background:linear-gradient(31deg, rgb(3 3 3 / 95%) 0%, rgb(201 247 60) 57%);color:#FFF; padding-left:10px; padding-bottom:15px;">
+<div class="baslik">Öğretmen Üyeliği</div>
 <input type="text" class="metin" placeholder="Ad Soyad" id="b_adi" />
 <select class="metin" style="height:38px;" id="b_zumre">
 <option selected value="0">Zümre Seç</option>
@@ -3647,7 +3710,7 @@ Müdür yardımcısı veya siz  listelere sms gönderebilirsiniz.
 </select>
 <input type="text" class="metin" placeholder="E-posta" id="b_eposta" />
 <input type="text" class="metin" placeholder="SCode" id="b_scode" />
-<p style="font-family:Verdana, Geneva, sans-serif; font-size:13px;">SCode okul idaresi tarafından verilen davet kodudur.<hr> Aynı SCode ile birden fazla öğretmen üye olabilir.<hr>SCode türü <a style="color:#0F0;">Tek Sefer</a> olan davet kodu sayılır. </p>
+<p style="">SCode okul idaresi tarafından verilen davet kodudur.<hr> Aynı SCode ile birden fazla öğretmen üye olabilir.<hr>SCode türü <a style="color:#0F0;">Tek Sefer</a> olan davet kodu sayılır. </p>
 <div class="basla" id="b_kaydet">Üye Ol !</div>
 </div>
 </div>
@@ -3688,8 +3751,10 @@ Müdür yardımcısı veya siz  listelere sms gönderebilirsiniz.
 <div class="s_sure" style="width:20%;" durum="0" value="z">1 Gün</div>
 <div class="s_sure" durum="0" value="W">1 Hafta</div> 
 </div>
+<select class="metin" style="height:38px;" id="c_id"></select>
+<p style="color:#FFF; margin-left:10px; font-family: sansa; font-size: 13px;">İşlemler seçilen kullanıcı adına kaydedilir.</p>
 <div class="basla" id="k_scode">Tamam</div>
-<div class="kutu" id="ascode" style="display:block; margin-top:10px; height:100%; border-top:solid 1px #FFF;">
+<div class="kutu" id="ascode" style="display:block; margin-top:25px; height:100%; border-top:solid 1px #FFF;">
 <div class="baslik" style="margin-top:0px;">Aktif SCode</div>
 </div>
 </div>
