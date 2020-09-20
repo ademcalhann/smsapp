@@ -923,9 +923,8 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	width: 570px;
 }
 .ust {
-	width: 79%;
-	height: 70px;
-	padding-left: 5%;
+	width: 100%;
+	
 }.px{
     float: left;
     height: 20px;
@@ -1421,6 +1420,31 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	height: 26px;
 	font-family: calibri;
 }
+.sec_okul {
+	color: #FFF;
+	width: 40%;
+	min-height: 20px;
+	margin-left: 5%;
+	margin-top:15px;
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 4px;
+	float: left;
+	border-radius: 5px;
+	background: linear-gradient(50deg, rgb(0 0 0) 0%, rgb(26 255 223) 100%);	padding-right: 5px;
+	padding-left: 5px;
+	font-family:sansa;
+	font-size:4vw;
+	box-shadow: 0 0 5px 2px white;
+}
+    .okul_div {
+	width: 100%;
+    background: linear-gradient(50deg, rgb(8 30 27) 0%, rgb(12 92 113) 100%);
+	margin-top: 70px;
+	padding-bottom:15px;
+	float:left;
+}
+
     </style>
 </head>
 <body onload="onLoad()">
@@ -1659,7 +1683,7 @@ c_boxx=setInterval('$.c_box()',30000);
 $.sil_box();
 $.ozel_mesaj2();
 //------EKSİK PROFİL RESMİ TAMAMLAMA
-$("img").on("error", function(){ $(this).attr('src', 'icon/profil.jpg');});	
+$("img").on("error", function(){ $(this).attr('src', 'https:mesajplus.com/resim/kucuk/profil.jpg');});	
  				
 }});//ajax ve cevap
 });//g_box
