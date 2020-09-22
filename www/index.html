@@ -419,6 +419,17 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
     background-size:contain;
 	float:right;
 }
+.o_sil {
+	height: 15px;
+	width: 15px;
+	border: 1px solid #FF0000;
+	border-radius: 50%;
+	background-image: url(icon/x.png);
+    background-size:contain;
+	float:right;
+	margin-right: -20px;
+    margin-top: -10px
+}
 .msayi {
 	height: 12px;
 	padding-bottom: 5px;
@@ -1030,6 +1041,9 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
     background: linear-gradient(31deg, rgba(94,194,132,1) 0%, rgba(41,251,8,1) 100%);
     box-shadow: inset 0px 0px 5px 1px #0d586b;
 }
+
+.basla:hover{    background: linear-gradient(50deg, rgb(0, 0, 0) 0%, rgb(251, 255, 122) 100%);
+    box-shadow: rgb(243, 247, 22) 0px 0px 5px 2px;}
 .guncelle:hover { 	box-shadow: 0 0 10px 5px #00CCFF; }
     .tut {
 	background-color: #CCC;
@@ -1423,20 +1437,28 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 }
 .sec_okul {
 	color: #FFF;
-	width: 40%;
+	width: 100%;
 	min-height: 20px;
-	margin-left: 5%;
-	margin-top:15px;
-	text-align: center;
 	padding-top: 5px;
 	padding-bottom: 4px;
-	float: left;
 	border-radius: 5px;
 	background: linear-gradient(50deg, rgb(0 0 0) 0%, rgb(26 255 223) 100%);	padding-right: 5px;
 	padding-left: 5px;
 	font-family:sansa;
+	text-align:center;
 	font-size:4vw;
 	box-shadow: 0 0 5px 2px white;
+}
+
+
+.sec_kap {
+	width: 40%;
+	min-height: 20px;
+	margin-left: 4%;
+	margin-right:6%;
+	margin-top:15px;
+	float: left;
+	
 }
     .okul_div {
 	width: 100%;
@@ -1444,6 +1466,9 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	margin-top: 110px;
 	padding-bottom:15px;
 	float:left;
+	box-shadow: 0 0 17px 4px #ffffff;
+	max-height:571px;
+	overflow:scroll;
 }
 
     </style>
@@ -1695,6 +1720,9 @@ var kek=Cookies.get('kek');
 var kekim=kek+'</div>';
 var uye_ol_div=$('.ust').html();
 $('.ust').html(kekim).show();
+var aktif_id=$('.kul').attr('okul_id');
+$('.sec_okul[id='+aktif_id+']').css({"background":"linear-gradient(50deg, rgb(0, 0, 0) 0%, rgb(251 255 122) 100%)","box-shadow":" 0 0 5px 2px #f3f716"});
+$('.o_sil[b='+aktif_id+']').hide();
 //Fotoğraf hatası Düzelt
 $(".profil").on("error", function(){ $(this).attr('src', 'icon/profil.jpg');});	 
  // null ile deneriz var harf = $('.ust').html();
@@ -2615,7 +2643,8 @@ $(this).css({"box-shadow":"inset 0 0 3px 2px #0D596D"});
 $('.sinif').css({"box-shadow":"0 0 0px 0px #0D596D"});
 $.gunluk_yoklama();});//statik son
  var okul_id=$('.kul').attr('okul_id');
-if(okul_id>0) $('.daire:eq('+10+')').hide();
+if(okul_id!=null){$('.daire:eq('+10+')').hide();}
+
 //--------MENÜLER ALANI
 $('.daire').click(function(){
                 var index = $(this).index();
@@ -3467,8 +3496,77 @@ $.ajax({
    
    	
 }});//ajax son		
-}//ifelse
+}//bos
 });	//b_kaydetson
+
+//---SEC OKUL 
+
+$('.sec_okul').click(function(){
+var okul_id=$(this).attr("id");
+$('.o_sil').show();
+$('.o_sil[b='+okul_id+']').hide();
+var il=$(this).attr("il");
+var ilce=$(this).attr("ilce");
+var islevsel=$(this).attr("islevsel");
+
+$('.sec_okul').css({"background":"linear-gradient(50deg, rgb(0 0 0) 0%, rgb(26 255 223) 100%)","box-shadow":" 0 0 5px 2px white"});
+$(this).css({"background":"linear-gradient(50deg, rgb(0, 0, 0) 0%, rgb(251 255 122) 100%)","box-shadow":" 0 0 5px 2px #f3f716"});
+$('.kul').attr({"okul_id":okul_id,"il":il,"ilce":ilce,"islevsel":islevsel});
+kayit=$('.ust').html();
+Cookies.set('kek', kayit); 
+	
+	
+}); //sec_okul
+
+
+$('.o_sil').click(function(){
+var kul_id=$('.kul').attr('id');	
+var b=$(this).attr("b");
+$('.sec_kap[b='+b+']').remove();	
+kayit=$('.ust').html();
+Cookies.set('kek', kayit); 
+o_id=[];
+var sayi=$('.sec_okul').length;
+for(index=0;index<sayi; index++){var id=$('.sec_okul:eq('+index+')').attr('id'); o_id.push(id);}
+o_id=o_id.join();
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/uyeol.php",
+			data:({"sil_oid":o_id,"kul_id":kul_id}),
+			dataType: "json",
+			success: function(cevap){ $.uyari(cevap.veri);}});
+
+	});
+	 
+
+//---SCODE İLE OKUL EKLEME    
+
+$('#okul_ekle').on("click",function(){
+	
+var kul_id=$('.kul').attr('id');
+var c_scode=$('#ekle_scode').val();
+
+$('#ekle_scode').val('');
+
+if(c_scode==''){$.uyari('SCode girin !');}else{
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/uyeol.php",
+			data:({"kul_id":kul_id,"c_scode":c_scode}),
+			dataType: "json",
+			success: function(cevap){
+           
+		   if(cevap.hata){$.uyari(cevap.hata);}
+           if(cevap.veri){$('.sec_kap:last').after(cevap.veri);   
+		   var kayit = $('.ust').html();
+		   Cookies.set('kek', kayit); }
+        
+   	
+}});//ajax son		
+}//bos
+});	//o_ekleson
+	
+	
 				
 }
 </script>

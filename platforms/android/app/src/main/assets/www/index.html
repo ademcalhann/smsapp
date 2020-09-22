@@ -419,6 +419,17 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
     background-size:contain;
 	float:right;
 }
+.o_sil {
+	height: 15px;
+	width: 15px;
+	border: 1px solid #FF0000;
+	border-radius: 50%;
+	background-image: url(icon/x.png);
+    background-size:contain;
+	float:right;
+	margin-right: -20px;
+    margin-top: -10px
+}
 .msayi {
 	height: 12px;
 	padding-bottom: 5px;
@@ -1012,7 +1023,8 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 	font-weight: bold;
 	border-radius: 6px;
 	padding: 5px;
-	  }
+	margin-left:5%;
+ }
  .guncelle {
     color: #FFFFFF;
     text-align: center;
@@ -1029,6 +1041,9 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
     background: linear-gradient(31deg, rgba(94,194,132,1) 0%, rgba(41,251,8,1) 100%);
     box-shadow: inset 0px 0px 5px 1px #0d586b;
 }
+
+.basla:hover{    background: linear-gradient(50deg, rgb(0, 0, 0) 0%, rgb(251, 255, 122) 100%);
+    box-shadow: rgb(243, 247, 22) 0px 0px 5px 2px;}
 .guncelle:hover { 	box-shadow: 0 0 10px 5px #00CCFF; }
     .tut {
 	background-color: #CCC;
@@ -1422,27 +1437,38 @@ background: linear-gradient(56deg, rgba(7,7,11,0.9528186274509804) 0%, rgba(12,9
 }
 .sec_okul {
 	color: #FFF;
-	width: 40%;
+	width: 100%;
 	min-height: 20px;
-	margin-left: 5%;
-	margin-top:15px;
-	text-align: center;
 	padding-top: 5px;
 	padding-bottom: 4px;
-	float: left;
 	border-radius: 5px;
 	background: linear-gradient(50deg, rgb(0 0 0) 0%, rgb(26 255 223) 100%);	padding-right: 5px;
 	padding-left: 5px;
 	font-family:sansa;
+	text-align:center;
 	font-size:4vw;
 	box-shadow: 0 0 5px 2px white;
+}
+
+
+.sec_kap {
+	width: 40%;
+	min-height: 20px;
+	margin-left: 4%;
+	margin-right:6%;
+	margin-top:15px;
+	float: left;
+	
 }
     .okul_div {
 	width: 100%;
     background: linear-gradient(50deg, rgb(8 30 27) 0%, rgb(12 92 113) 100%);
-	margin-top: 70px;
+	margin-top: 110px;
 	padding-bottom:15px;
 	float:left;
+	box-shadow: 0 0 17px 4px #ffffff;
+	max-height:571px;
+	overflow:scroll;
 }
 
     </style>
@@ -1694,6 +1720,9 @@ var kek=Cookies.get('kek');
 var kekim=kek+'</div>';
 var uye_ol_div=$('.ust').html();
 $('.ust').html(kekim).show();
+var aktif_id=$('.kul').attr('okul_id');
+$('.sec_okul[id='+aktif_id+']').css({"background":"linear-gradient(50deg, rgb(0, 0, 0) 0%, rgb(251 255 122) 100%)","box-shadow":" 0 0 5px 2px #f3f716"});
+$('.o_sil[b='+aktif_id+']').hide();
 //Fotoğraf hatası Düzelt
 $(".profil").on("error", function(){ $(this).attr('src', 'icon/profil.jpg');});	 
  // null ile deneriz var harf = $('.ust').html();
@@ -1740,6 +1769,17 @@ $('#p_img').val(p_img);
 		  $('.buton[name="dosya"]').val('');
             $("#bar").width('100%');
             $("#yuzde").html('100%');
+
+
+var url=$('#p_sil').attr('name');
+if(url!="profil.jpg"){
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/profil.php",
+			data:({"p_sil":url}),
+			dataType: "json",
+			success: function(cevap){}});//AJAX	
+}
 		 
  $.ajax({
                     type: "POST",
@@ -1748,8 +1788,11 @@ $('#p_img').val(p_img);
 					        "cokul_id":okul_id }),
                     dataType: "json",
                     success: function (cevap) {
-                           $('.ust').html(cevap.veri).show();
-                            var kayit = $('.ust').html();
+$('#p_sil,#profilim').attr("name",cevap.url);
+$('#profilim').attr("src","https://mesajplus.com/resim/kucuk/"+cevap.url);
+$('#p_degistir').attr("p_img",cevap.url);
+         
+		 var kayit = $('.ust').html();
 		 Cookies.set('kek', kayit); 
 		 $.fotograf();}
 
@@ -1826,17 +1869,13 @@ $.ajax({
 			success: function(cevap){
 				if (cevap.hata){alert(cevap.hata);} else {
 					$('.uyari').html(cevap.olumlu);
-					$.uyari();
-					
-        $('.ust').html();
-         var kayit = $('.ust').html();
+									
+               var kayit = $('.ust').html();
 		 Cookies.set('kek', kayit); $.fotograf();
 $('#profilim').css('background-image','url(profil.jpg)');
 
 
-}//ELSE
-}//CEVAP
-});//AJAX	
+}}});//AJAX	
 });};//----fotograf silson
 $.p_sil();
 //fotograf function
@@ -2430,6 +2469,9 @@ $('#giris').html('Güncelle');
 //Fotoğraf hatası Düzelt
 $(".profil").on("error", function(){ $(this).attr('src', 'icon/profil.jpg');});	 
 var kayit = $('.ust').html();
+var aktif_id=$('.kul').attr('okul_id');
+$('.sec_okul[id='+aktif_id+']').css({"background":"linear-gradient(50deg, rgb(0, 0, 0) 0%, rgb(251 255 122) 100%)","box-shadow":" 0 0 5px 2px #f3f716"});
+
 $('.ut').slideUp();
 $('.ut:eq('+0+')').show();
 $('.ux').css('border-color','#FFFFFF').css('color','#FFFFFF');
@@ -2451,9 +2493,7 @@ $.ajax({
 			success: function(cevap){
 if(cevap.hata){$.uyari(cevap.hata);}
 if(cevap.veri){
-$('.ust').html(cevap.veri).show();
-//Fotoğraf hatası Düzelt
-$(".profil").on("error", function(){ $(this).attr('src', 'icon/profil.jpg');});	 
+$('.kul').html(kim_isim);
 var kayit = $('.ust').html();
 $('.ut').slideUp();
 $('.ut:eq('+0+')').show();
@@ -2603,7 +2643,8 @@ $(this).css({"box-shadow":"inset 0 0 3px 2px #0D596D"});
 $('.sinif').css({"box-shadow":"0 0 0px 0px #0D596D"});
 $.gunluk_yoklama();});//statik son
  var okul_id=$('.kul').attr('okul_id');
-if(okul_id>0) $('.daire:eq('+10+')').hide();
+if(okul_id!=null){$('.daire:eq('+10+')').hide();}
+
 //--------MENÜLER ALANI
 $('.daire').click(function(){
                 var index = $(this).index();
@@ -3122,7 +3163,8 @@ $('.orta').show();
 $('.panel:eq(5)').hide();	 
 var m_alan=$('.kul').attr('okul_id');
 var m_gonderen=$('.kul').attr('id');
-$('#m_baslik').html('Okul Sohbeti');
+var baslik=$('.sec_okul[id='+m_alan+']').html();
+$('#m_baslik').html(baslik);
 $('#send').attr('m_alan',m_alan);
 $('#send').attr('m_gonderen',m_gonderen);
 $('#send').attr('tur',0);
@@ -3454,8 +3496,77 @@ $.ajax({
    
    	
 }});//ajax son		
-}//ifelse
+}//bos
 });	//b_kaydetson
+
+//---SEC OKUL 
+
+$('.sec_okul').click(function(){
+var okul_id=$(this).attr("id");
+$('.o_sil').show();
+$('.o_sil[b='+okul_id+']').hide();
+var il=$(this).attr("il");
+var ilce=$(this).attr("ilce");
+var islevsel=$(this).attr("islevsel");
+
+$('.sec_okul').css({"background":"linear-gradient(50deg, rgb(0 0 0) 0%, rgb(26 255 223) 100%)","box-shadow":" 0 0 5px 2px white"});
+$(this).css({"background":"linear-gradient(50deg, rgb(0, 0, 0) 0%, rgb(251 255 122) 100%)","box-shadow":" 0 0 5px 2px #f3f716"});
+$('.kul').attr({"okul_id":okul_id,"il":il,"ilce":ilce,"islevsel":islevsel});
+kayit=$('.ust').html();
+Cookies.set('kek', kayit); 
+	
+	
+}); //sec_okul
+
+
+$('.o_sil').click(function(){
+var kul_id=$('.kul').attr('id');	
+var b=$(this).attr("b");
+$('.sec_kap[b='+b+']').remove();	
+kayit=$('.ust').html();
+Cookies.set('kek', kayit); 
+o_id=[];
+var sayi=$('.sec_okul').length;
+for(index=0;index<sayi; index++){var id=$('.sec_okul:eq('+index+')').attr('id'); o_id.push(id);}
+o_id=o_id.join();
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/uyeol.php",
+			data:({"sil_oid":o_id,"kul_id":kul_id}),
+			dataType: "json",
+			success: function(cevap){ $.uyari(cevap.veri);}});
+
+	});
+	 
+
+//---SCODE İLE OKUL EKLEME    
+
+$('#okul_ekle').on("click",function(){
+	
+var kul_id=$('.kul').attr('id');
+var c_scode=$('#ekle_scode').val();
+
+$('#ekle_scode').val('');
+
+if(c_scode==''){$.uyari('SCode girin !');}else{
+$.ajax({
+			type: "POST",
+			url: "https://mesajplus.com/uyeol.php",
+			data:({"kul_id":kul_id,"c_scode":c_scode}),
+			dataType: "json",
+			success: function(cevap){
+           
+		   if(cevap.hata){$.uyari(cevap.hata);}
+           if(cevap.veri){$('.sec_kap:last').after(cevap.veri);   
+		   var kayit = $('.ust').html();
+		   Cookies.set('kek', kayit); }
+        
+   	
+}});//ajax son		
+}//bos
+});	//o_ekleson
+	
+	
 				
 }
 </script>
@@ -3747,9 +3858,10 @@ Müdür yardımcısı veya siz  listelere sms gönderebilirsiniz.
 <div class="ut">
 <div class="ust">
 <div class="uye_ol_div">Üye Ol !</div>
-<p style="color:#FFF;">Hemen üye olup sistemin nasıl çalıştığını görebilirsin.</p> <p style="color:#FFF;">Okullar üye olur, öğretmenler personel olarak eklenir.</p><p style="color:#FFF;"> Sonrasıda Tam kurulum için sizinle iletişime geçeriz...</p>
+<p style="color:#FFF; padding-left:5px;">Hemen üye olup sistemin nasıl çalıştığını görebilirsin.</p><hr>
+<p style="color:#FFF; padding-left:5px;">Okulunuz zaten üye ise sistemde kayıtlı arkadaşınız Tek Kullanım türünde SCode üreterek sizi davet edebilir. </p>
 </div>
-<div class="kapa" style="height: 70px; float: left; display: none; 	position: absolute;	margin-top:50px;" id="dv_ekle">
+<div class="kapa" style="height: 70px; float: left; display: none; 	position: absolute;	margin-top:110px;" id="dv_ekle">
 <form id="profilx" action="https://mesajplus.com/profil.php" method="post" enctype="multipart/form-data">
       <input type="file" name="dosya" class="buton">
       <input type="text" style="display:none;" value="Fear" name="p_img" id="p_img">
@@ -3838,7 +3950,7 @@ Müdür yardımcısı listelere sms gönderebilir.
 <div class="ic_kapat" style="margin-top:5px;" id="yayiny_kapat">Kapat</div></div>
 
 <div class="yan_menu" value="kapali">
-<div class="baslik" id="m_baslik"></div>
+<div class="baslik" id="m_baslik" style="background: linear-gradient(50deg, rgb(0, 0, 0) 0%, rgb(251, 255, 122) 100%); box-shadow: rgb(243, 247, 22) 0px 0px 5px 2px;"></div>
 <div class="m_div" id="mesaj"></div>
 </div>
 </body>
