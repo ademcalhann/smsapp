@@ -1698,7 +1698,7 @@ $.ajax({
 			dataType: "json",
 			success: function(cevap){
 				$('#ascode').html(cevap.veri);
-				$('#c_id').html(cevap.ogretmen);
+				$('#kime_id').html(cevap.ogretmen);
 var aa=$('.daires').length;
 
 $.yenile=function(i){
@@ -1739,7 +1739,7 @@ $(this).attr('durum',1).css('background-color','#09F').css('color','#FFF');
 //KAYDET SCODE
 $('#k_scode').click(function(){
 var scode=$('.scode').html();
-var c_id=$('#c_id').val();
+var c_id=$('#kime_id').val();
 var s_sure=$('.s_sure[durum=1]').attr('value');
 var kul_id=$('.kul').attr('id');
 if(kul_id>0){
