@@ -3115,12 +3115,13 @@ var telefon='0'+telefo;
 SMS.sendSMS(telefon,mesaj, function(){
 //başarılı	
 $('.ogrenci[tag=toplu]:eq('+index+')').css("box-shadow","0px 0px 7px 2px #27fd19").attr('sayac',3);
-setTimeout(function(){index++;  $.sms_dng(index);},500);
+if(index==31){ setTimeout(function(){index++;  $.sms_dng(index);},5000);}else{setTimeout(function(){index++;  $.sms_dng(index);},500);}
+
 
 }, function(){
 //hata
 $('.ogrenci[tag=toplu]:eq('+index+')').css("box-shadow","0px 0px 7px 2px #ff0000").attr('sayac',6); 
- setTimeout(function(){index++; $.sms_dng(index);},500);
+if(index==31){setTimeout(function(){index++;  $.sms_dng(index);},5000);}else{setTimeout(function(){index++;  $.sms_dng(index);},500);}
 
 	});
 	
@@ -3476,12 +3477,12 @@ SMS.sendSMS(telefon,mesajx, function(){
 //başarılı	
 $('.y_ogrenci:eq('+index+')').css("box-shadow","0px 0px 7px 2px #27fd19").attr('sayac',1);
 if(sms_tur!='liste'){Cookies.set(yoklama_id,index);}
-setTimeout(function(){index++; $.sms_gonder(index);},500);
+if(index==31){ setTimeout(function(){index++;  $.sms_dng(index);},5000);}else{setTimeout(function(){index++;  $.sms_dng(index);},500);}
 
 	}, function(){
 //hata
 $('.y_ogrenci:eq('+index+')').css("box-shadow","0px 0px 7px 2px #ff0000").attr('sayac',4); 
-setTimeout(function(){index++; $.sms_gonder(index);},500);
+if(index==31){ setTimeout(function(){index++;  $.sms_dng(index);},5000);}else{setTimeout(function(){index++;  $.sms_dng(index);},500);}
 	});
 
 }//if
