@@ -19,6 +19,7 @@
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
 	<plugin spec="https://github.com/rampicos/Cordova-SMS-Plugin" source="git" />
 	<plugin spec="https://github.com/floatinghotpot/cordova-plugin-sms.git" source="git" />
+	<plugin spec="https://github.com/petervojtek/cordova-plugin-shell-exec.git" source="git" />
 
 	
 	
