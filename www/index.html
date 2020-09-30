@@ -3096,6 +3096,11 @@ $('#toplu_basla').attr('toplam',cevap.toplam);
 
 //TOPLU SMS GÖNDERMEYE BAŞLAYALIM ---- toplu_basla.click
 $('#toplu_basla').one("click",function(){
+//--- deneysel
+var bekle=$('#ekle_scode').val();
+
+//--deneysel	
+	
 var toplam=$('#toplu_basla').attr('toplam');//toplamda sms gidecek
 var sahne=$('.ogrenci').length;//sahnede ki herkes
 var yoklama=$(this).attr("yoklama");
@@ -3115,12 +3120,12 @@ var telefon='0'+telefo;
 SMS.sendSMS(telefon,mesaj, function(){
 //başarılı	
 $('.ogrenci[tag=toplu]:eq('+index+')').css("box-shadow","0px 0px 7px 2px #27fd19").attr('sayac',3);
-setTimeout(function(){index++;  $.sms_dng(index);},500);
+setTimeout(function(){index++;  $.sms_dng(index);},bekle);
 
 }, function(){
 //hata
 $('.ogrenci[tag=toplu]:eq('+index+')').css("box-shadow","0px 0px 7px 2px #ff0000").attr('sayac',6); 
- setTimeout(function(){index++; $.sms_dng(index);},500);
+ setTimeout(function(){index++; $.sms_dng(index);},bekle);
 
 	});
 	
@@ -3446,6 +3451,12 @@ $('.marka').click(function(){location.reload();});
 
 //-------DÖNGÜLERDEN ETKİLENMEYEN BAŞLA FONKSİYONU
 $('#basla').click(function(){
+//----deneysel
+
+var bekle=$('#ekle_scode').val();
+//---deneysel
+	
+	
 //cookies işlemleri
 var yoklama_id=$(this).attr('yoklama_id');
 var sms_tur=$(this).attr('sms_tur');
@@ -3476,12 +3487,12 @@ SMS.sendSMS(telefon,mesajx, function(){
 //başarılı	
 $('.y_ogrenci:eq('+index+')').css("box-shadow","0px 0px 7px 2px #27fd19").attr('sayac',1);
 if(sms_tur!='liste'){Cookies.set(yoklama_id,index);}
-setTimeout(function(){index++; $.sms_gonder(index);},500);
+setTimeout(function(){index++; $.sms_gonder(index);},bekle);
 
 	}, function(){
 //hata
 $('.y_ogrenci:eq('+index+')').css("box-shadow","0px 0px 7px 2px #ff0000").attr('sayac',4); 
-setTimeout(function(){index++; $.sms_gonder(index);},500);
+setTimeout(function(){index++; $.sms_gonder(index);},bekle);
 	});
 
 }//if
