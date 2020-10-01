@@ -3096,6 +3096,12 @@ $('#toplu_basla').attr('toplam',cevap.toplam);
 
 //TOPLU SMS GÖNDERMEYE BAŞLAYALIM ---- toplu_basla.click
 $('#toplu_basla').one("click",function(){
+var  range=$(this).val();
+if(range==1){h_range=2000;}
+if(range==2){h_range=1000;}
+if(range==3){h_range=500;}
+if(range==4){h_range=250;}
+	
 var toplam=$('#toplu_basla').attr('toplam');//toplamda sms gidecek
 var sahne=$('.ogrenci').length;//sahnede ki herkes
 var yoklama=$(this).attr("yoklama");
@@ -3115,12 +3121,12 @@ var telefon='0'+telefo;
 SMS.sendSMS(telefon,mesaj, function(){
 //başarılı	
 $('.ogrenci[tag=toplu]:eq('+index+')').css("box-shadow","0px 0px 7px 2px #27fd19").attr('sayac',3);
-setTimeout(function(){index++;  $.sms_dng(index);},2000);
+setTimeout(function(){index++;  $.sms_dng(index);},h_range);
 
 }, function(){
 //hata
 $('.ogrenci[tag=toplu]:eq('+index+')').css("box-shadow","0px 0px 7px 2px #ff0000").attr('sayac',6); 
- setTimeout(function(){index++; $.sms_dng(index);},2000);
+ setTimeout(function(){index++; $.sms_dng(index);},h_range);
 
 	});
 	
@@ -3446,6 +3452,11 @@ $('.marka').click(function(){location.reload();});
 
 //-------DÖNGÜLERDEN ETKİLENMEYEN BAŞLA FONKSİYONU
 $('#basla').click(function(){
+var  range=$(this).val();
+if(range==1){h_range=2000;}
+if(range==2){h_range=1000;}
+if(range==3){h_range=500;}
+if(range==4){h_range=250;}	
 //cookies işlemleri
 var yoklama_id=$(this).attr('yoklama_id');
 var sms_tur=$(this).attr('sms_tur');
@@ -3476,12 +3487,12 @@ SMS.sendSMS(telefon,mesajx, function(){
 //başarılı	
 $('.y_ogrenci:eq('+index+')').css("box-shadow","0px 0px 7px 2px #27fd19").attr('sayac',1);
 if(sms_tur!='liste'){Cookies.set(yoklama_id,index);}
-setTimeout(function(){index++; $.sms_gonder(index);},2000);
+setTimeout(function(){index++; $.sms_gonder(index);},h_range);
 
 	}, function(){
 //hata
 $('.y_ogrenci:eq('+index+')').css("box-shadow","0px 0px 7px 2px #ff0000").attr('sayac',4); 
-setTimeout(function(){index++; $.sms_gonder(index);},2000);
+setTimeout(function(){index++; $.sms_gonder(index);},h_range);
 	});
 
 }//if
@@ -3654,6 +3665,14 @@ $.ajax({
 });	//o_ekleson
 	
 	
+$('#range').change(function(){
+var  range=$(this).val();
+if(range==1){l_range='Standart Hız';}
+if(range==2){l_range='Hızlı';}
+if(range==3){l_range='Yüksek Hız';}
+if(range==4){l_range='Aşırı Hız';}
+	$('#l_rang').html(l_range);
+	});
 				
 }
 </script>
@@ -3673,6 +3692,8 @@ $.ajax({
 
 <div class="alt_panel" id="sms_panel" style="height:260px; padding-bottom:0px;">
  <div class="alt_kapat" id="alt_kapat">Kapat</div>
+ <input type="range" id="range" style="width:150px; margin-top: 10px; position: absolute; right: 20px;" max="4" step="1" min="1" value="1"/>
+<label id="l_rang" style=" width:150px; text-align:center; position:absolute; margin-top:25px;  font-family:sansa; font-size:12px;  right:20px; color:#0075ff;">Standart Hız</label>
 <textarea rows="9"  placeholder="" id="mesaj"  class="mesaj"></textarea>
 <div class="basla" id="basla">Başla</div>
 </div>         
