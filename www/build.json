@@ -1,0 +1,13 @@
+{
+     "android": {
+         "release": {
+             "keystore": "C:\Users\ADEM\Desktop\LexusKey.keystore",
+             "storePassword": "Lexus-900",
+             "alias": "LexusKey",
+             "password" : "Lexus-900",
+             "keystoreType": ""
+         }
+     }
+ }
+
+

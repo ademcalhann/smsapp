@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Mesaj Plus",
+  "short_name": "Mesaj Plus",
+  "version": "com.mesajplus.nosms",
+  "description": "Mesaj Plus sms terminali içeren sürümüdür.",
+  "author": "Adem Çalhan",
+  "icons": [],
+  "start_url": "index.html"
+}

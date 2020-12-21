@@ -1,14 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/cordova-plugin-sms/www/SMS.js",
-        "id": "cordova-plugin-sms.SMS",
-        "pluginId": "cordova-plugin-sms",
-        "clobbers": [
-            "window.SMS"
-        ]
-    },
-    {
         "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
         "id": "cordova-plugin-file.DirectoryEntry",
         "pluginId": "cordova-plugin-file",
@@ -233,16 +225,33 @@ module.exports = [
         "id": "cordova-plugin-network-information.NetworkInfoProxy",
         "pluginId": "cordova-plugin-network-information",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-android-permissions/www/permissions-dummy.js",
+        "id": "cordova-plugin-android-permissions.Permissions",
+        "pluginId": "cordova-plugin-android-permissions",
+        "clobbers": [
+            "cordova.plugins.permissions"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-sms/www/SMS.js",
+        "id": "cordova-plugin-sms.SMS",
+        "pluginId": "cordova-plugin-sms",
+        "clobbers": [
+            "window.SMS"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-sms": "1.0.5",
     "cordova-plugin-whitelist": "1.3.3",
     "cordova-plugin-file": "4.1.1",
     "cordova-plugin-file-transfer": "1.5.1",
-    "cordova-plugin-network-information": "1.2.1"
+    "cordova-plugin-network-information": "1.2.1",
+    "cordova-plugin-android-permissions": "1.1.2",
+    "cordova-plugin-sms": "1.0.5"
 }
 // BOTTOM OF METADATA
 });

@@ -1,27 +1,30 @@
 {
-    "prepare_queue": {
-        "installed": [],
-        "uninstalled": []
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.mesajplus.nosms"
     },
-    "config_munge": {
-        "files": {}
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.mesajplus.nosms"
     },
-    "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.mesaj.dnm"
-        },
-        "cordova-plugin-sms": {
-            "PACKAGE_NAME": "com.mesaj.dnm"
-        },
-        "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.smsplus.system"
-        },
-        "cordova-plugin-file-transfer": {
-            "PACKAGE_NAME": "com.smsplus.system"
-        },
-        "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "com.smsplus.system"
-        }
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.mesajplus.nosms"
     },
-    "dependent_plugins": {}
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.mesajplus.nosms"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "com.mesajplus.nosms"
+    },
+    "cordova-plugin-sms": {
+      "PACKAGE_NAME": "com.mesajplus.nosms"
+    }
+  },
+  "dependent_plugins": {}
 }

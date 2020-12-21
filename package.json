@@ -1,0 +1,32 @@
+{
+  "name": "com.mesajplus.nosms",
+  "version": "2.0.9",
+  "displayName": "Mesaj Plus",
+  "dependencies": {},
+  "devDependencies": {
+    "CordovaSMS": "0.0.3",
+    "cordova-android": "^7.1.4",
+    "cordova-browser": "^6.0.0",
+    "cordova-plugin-android-permissions": "^1.1.2",
+    "cordova-plugin-file": "~4.1.1",
+    "cordova-plugin-file-transfer": "~1.5.0",
+    "cordova-plugin-network-information": "~1.2.0",
+    "cordova-plugin-shell-exec": "git+https://github.com/Poyser1911/cordova-plugin-shell-exec.git",
+    "cordova-plugin-sms": "^1.0.5",
+    "cordova-plugin-whitelist": "~1.2.1"
+  },
+  "cordova": {
+    "platforms": [
+      "android",
+      "browser"
+    ],
+    "plugins": {
+      "cordova-plugin-file": {},
+      "cordova-plugin-file-transfer": {},
+      "cordova-plugin-network-information": {},
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-android-permissions": {},
+      "cordova-plugin-sms": {}
+    }
+  }
+}

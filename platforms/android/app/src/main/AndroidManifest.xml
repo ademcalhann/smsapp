@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<manifest android:hardwareAccelerated="true" android:versionCode="20009" android:versionName="2.0.9" package="com.mesajplus.nosms" xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest android:hardwareAccelerated="true" android:versionCode="20011" android:versionName="2.0.11" package="com.mesajplus.nosms" xmlns:android="http://schemas.android.com/apk/res/android">
     <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:resizeable="true" android:smallScreens="true" android:xlargeScreens="true" />
     <uses-permission android:name="android.permission.INTERNET" />
     <application android:hardwareAccelerated="true" android:icon="@mipmap/icon" android:label="@string/app_name" android:supportsRtl="true">
@@ -10,15 +10,15 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
-    <uses-feature android:name="android.hardware.telephony" android:required="false" />
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH" />
     <uses-permission android:name="android.permission.RECEIVE_MMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-feature android:name="android.hardware.telephony" android:required="false" />
     <uses-permission android:name="android.permission.WRITE_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>
