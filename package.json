@@ -5,7 +5,7 @@
   "dependencies": {},
   "devDependencies": {
     "CordovaSMS": "0.0.3",
-    "cordova-android": "^7.1.4",
+    "cordova-android": "^11.0.0",
     "cordova-browser": "^6.0.0",
     "cordova-plugin-android-permissions": "^1.1.2",
     "cordova-plugin-file": "~4.1.1",
